@@ -4,14 +4,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ContainsDuplicate {
-    public boolean hasDuplicate(int[] nums) {
-        Set<Integer> numSet = new HashSet<>();
-        for (int num : nums) {
-            boolean addOutcome = numSet.add(num);
-            if (!addOutcome) {
-                return true;
-            }
-        }
-        return false;
+  public boolean hasDuplicate(int[] nums) {
+    Set<Integer> numSet = new HashSet<>();
+    for (int num : nums) {
+      boolean addOutcome = numSet.add(num);
+      if (!addOutcome) {
+        return true;
+      }
     }
+    return false;
+  }
 }
