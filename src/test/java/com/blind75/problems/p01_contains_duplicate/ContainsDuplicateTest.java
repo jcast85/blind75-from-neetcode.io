@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ContainsDuplicateTest {
     @Test
-    void testHasDuplicate() {
+    void testHasNotDuplicate() {
         ContainsDuplicate containsDuplicate = new ContainsDuplicate();
         int[] nums = { 1, 2, 3, 4 };
         boolean result = containsDuplicate.hasDuplicate(nums);
@@ -13,7 +13,7 @@ class ContainsDuplicateTest {
     }
 
     @Test
-    void testHasDuplicate2() {
+    void testHasDuplicate() {
         ContainsDuplicate containsDuplicate = new ContainsDuplicate();
         int[] nums = { 1, 2, 3, 3 };
         boolean result = containsDuplicate.hasDuplicate(nums);
