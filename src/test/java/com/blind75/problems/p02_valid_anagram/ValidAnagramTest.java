@@ -7,14 +7,14 @@ class ValidAnagramTest {
   @Test
   void isAnagram() {
     ValidAnagram validAnagram = new ValidAnagram();
-    boolean actialOutcome = validAnagram.isAnagram("racecar", "carrace");
-    Assertions.assertTrue(actialOutcome);
+    boolean actualOutcome = validAnagram.isAnagram("racecar", "carrace");
+    Assertions.assertTrue(actualOutcome);
   }
 
   @Test
   void isNotAnagram() {
     ValidAnagram validAnagram = new ValidAnagram();
-    boolean actialOutcome = validAnagram.isAnagram("jar", "jam");
-    Assertions.assertFalse(actialOutcome);
+    boolean actualOutcome = validAnagram.isAnagram("jar", "jam");
+    Assertions.assertFalse(actualOutcome);
   }
 }

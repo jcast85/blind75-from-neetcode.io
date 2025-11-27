@@ -7,14 +7,14 @@ class ValidPalindromeTest {
   @Test
   void testExample() {
     ValidPalindrome validPalindrome = new ValidPalindrome();
-    boolean actialOutcome = validPalindrome.isPalindrome("Was it a car or a cat I saw?");
-    Assertions.assertTrue(actialOutcome);
+    boolean actualOutcome = validPalindrome.isPalindrome("Was it a car or a cat I saw?");
+    Assertions.assertTrue(actualOutcome);
   }
 
   @Test
   void testExample2() {
     ValidPalindrome validPalindrome = new ValidPalindrome();
-    boolean actialOutcome = validPalindrome.isPalindrome("tab a cat");
-    Assertions.assertFalse(actialOutcome);
+    boolean actualOutcome = validPalindrome.isPalindrome("tab a cat");
+    Assertions.assertFalse(actualOutcome);
   }
 }
