@@ -1,6 +1,5 @@
-package com.blind75.problems;
+package com.blind75.problems.p05_best_time_to_buy_and_sell_stock;
 
-import com.blind75.problems.p05_best_time_to_buy_and_sell_stock.BestTimeToBuyAndSellStock;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
