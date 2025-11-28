@@ -29,6 +29,14 @@ class BestTimeToBuyAndSellStockTest {
     BestTimeToBuyAndSellStockInputAndOutput.builder()
       .prices(new int[] {3,2,6,5,0,3})
       .expectedProfit(4)
+      .build(),
+    BestTimeToBuyAndSellStockInputAndOutput.builder()
+      .prices(new int[] {10,2,16,1,3,4,5,6,7,1})
+      .expectedProfit(14)
+      .build(),
+    BestTimeToBuyAndSellStockInputAndOutput.builder()
+      .prices(new int[] {10,3,4,5,6,7,9,-15,8})
+      .expectedProfit(23)
       .build()
   );
 
