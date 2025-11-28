@@ -5,41 +5,49 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 class BestTimeToBuyAndSellStockTest {
 
-  static Stream<BestTimeToBuyAndSellStock> implementations() {
-    return Stream.of(
-      new BestTimeToBuyAndSellStockFirstTry()
-    );
+  private static final List<BestTimeToBuyAndSellStock> bestTimeToBuyAndSellStockList = List.of(
+    new BestTimeToBuyAndSellStockFirstTry());
+
+  private static final List<BestTimeToBuyAndSellStockInputAndOutput> bestTimeToBuyAndSellStockInputAndOutputList = List.of(
+    BestTimeToBuyAndSellStockInputAndOutput.builder()
+      .prices(new int[] {10,1,5,6,7,1})
+      .expectedProfit(6)
+      .build(),
+    BestTimeToBuyAndSellStockInputAndOutput.builder()
+      .prices(new int[] {10,8,7,5,2})
+      .expectedProfit(0)
+      .build(),
+    BestTimeToBuyAndSellStockInputAndOutput.builder()
+      .prices(new int[] {1,2,11,4,7})
+      .expectedProfit(10)
+      .build(),
+    BestTimeToBuyAndSellStockInputAndOutput.builder()
+      .prices(new int[] {3,2,6,5,0,3})
+      .expectedProfit(4)
+      .build()
+  );
+
+  static Stream<BestTimeToBuyAndSellStockTestConfig> testConfigs() {
+    Stream.Builder<BestTimeToBuyAndSellStockTestConfig> streamBuilder = Stream.builder();
+    for (BestTimeToBuyAndSellStock bestTimeToBuyAndSellStock : bestTimeToBuyAndSellStockList) {
+      for (BestTimeToBuyAndSellStockInputAndOutput bestTimeToBuyAndSellStockInputAndOutput : bestTimeToBuyAndSellStockInputAndOutputList) {
+        streamBuilder.add(BestTimeToBuyAndSellStockTestConfig.builder()
+          .bestTimeToBuyAndSellStocks(bestTimeToBuyAndSellStock)
+          .inputAndOutput(bestTimeToBuyAndSellStockInputAndOutput).build());
+      }
+    }
+    return streamBuilder.build();
   }
 
   @ParameterizedTest
-  @MethodSource("implementations")
-  void testExample(BestTimeToBuyAndSellStock bestTimeToBuyAndSellStock) {
-    int result = bestTimeToBuyAndSellStock.maxProfit(new int[] {10,1,5,6,7,1});
-    Assertions.assertEquals(6, result);
-  }
-
-  @ParameterizedTest
-  @MethodSource("implementations")
-  void testExample2(BestTimeToBuyAndSellStock bestTimeToBuyAndSellStock) {
-    int result = bestTimeToBuyAndSellStock.maxProfit(new int[] {10,8,7,5,2});
-    Assertions.assertEquals(0, result);
-  }
-
-  @ParameterizedTest
-  @MethodSource("implementations")
-  void testExample3(BestTimeToBuyAndSellStock bestTimeToBuyAndSellStock) {
-    int result = bestTimeToBuyAndSellStock.maxProfit(new int[] {1,2,11,4,7});
-    Assertions.assertEquals(10, result);
-  }
-
-  @ParameterizedTest
-  @MethodSource("implementations")
-  void testExample4(BestTimeToBuyAndSellStock bestTimeToBuyAndSellStock) {
-    int result = bestTimeToBuyAndSellStock.maxProfit(new int[] {3,2,6,5,0,3});
-    Assertions.assertEquals(4, result);
+  @MethodSource("testConfigs")
+  void testExample(BestTimeToBuyAndSellStockTestConfig testConfig) {
+    int result = testConfig.bestTimeToBuyAndSellStocks().maxProfit(testConfig.inputAndOutput().prices());
+    Assertions.assertEquals(testConfig.inputAndOutput().expectedProfit(), result);
   }
 }
