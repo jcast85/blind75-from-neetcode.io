@@ -3,7 +3,7 @@ package com.blind75.problems.p05_best_time_to_buy_and_sell_stock;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class BestTimeToBuyAndSellStockFirstTryTest {
+class BestTimeToBuyAndSellStockTest {
   @Test
   void testExample() {
     BestTimeToBuyAndSellStock bestTimeToBuyAndSellStock = new BestTimeToBuyAndSellStockFirstTry();
