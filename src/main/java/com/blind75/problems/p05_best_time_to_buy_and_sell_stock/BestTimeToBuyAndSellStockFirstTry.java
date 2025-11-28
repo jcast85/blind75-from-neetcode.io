@@ -35,7 +35,7 @@ public class BestTimeToBuyAndSellStockFirstTry implements BestTimeToBuyAndSellSt
         if(currentIndexFromEnd > lowestFromStartIndex) {
           currentEndLowestDifference = prices[currentIndexFromEnd] - prices[lowestFromStartIndex];
         }
-        if(lowestFromStartIndex > currentIndexFromStart) {
+        if(currentIndexFromStart > lowestFromStartIndex) {
           currentStartLowestDifference = prices[currentIndexFromStart] - prices[lowestFromStartIndex];
         }
       }
