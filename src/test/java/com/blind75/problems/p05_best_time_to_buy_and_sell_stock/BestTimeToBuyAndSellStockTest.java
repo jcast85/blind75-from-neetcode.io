@@ -11,7 +11,9 @@ import java.util.stream.Stream;
 class BestTimeToBuyAndSellStockTest {
 
   private static final List<BestTimeToBuyAndSellStock> bestTimeToBuyAndSellStockList = List.of(
-    new BestTimeToBuyAndSellStockFirstTry());
+    new BestTimeToBuyAndSellStockFirstTry(),
+    new BestTimeToBuyAndSellStockSimple()
+  );
 
   private static final List<BestTimeToBuyAndSellStockInputAndOutput> bestTimeToBuyAndSellStockInputAndOutputList = List.of(
     BestTimeToBuyAndSellStockInputAndOutput.builder()
