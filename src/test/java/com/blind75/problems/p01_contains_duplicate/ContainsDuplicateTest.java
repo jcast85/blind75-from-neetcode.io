@@ -1,21 +1,43 @@
 package com.blind75.problems.p01_contains_duplicate;
 
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+import java.util.stream.Stream;
 
 class ContainsDuplicateTest {
-  @Test void testHasNotDuplicate() {
-    ContainsDuplicate containsDuplicate = new ContainsDuplicate();
-    int[] nums = {1, 2, 3, 4};
-    boolean result = containsDuplicate.hasDuplicate(nums);
-    assertFalse(result);
+
+  private static final List<ContainsDuplicate> containsDuplicateList = List.of(
+      new ContainsDuplicateFirstTry());
+
+  private static final List<ContainsDuplicateInputAndOutput> containsDuplicateInputAndOutputList = List.of(
+      ContainsDuplicateInputAndOutput.builder()
+          .nums(new int[] { 1, 2, 3, 4 })
+          .expectedHasDuplicate(false)
+          .build(),
+      ContainsDuplicateInputAndOutput.builder()
+          .nums(new int[] { 1, 2, 3, 3 })
+          .expectedHasDuplicate(true)
+          .build());
+
+  static Stream<ContainsDuplicateTestConfig> testConfigs() {
+    Stream.Builder<ContainsDuplicateTestConfig> streamBuilder = Stream.builder();
+    for (ContainsDuplicate containsDuplicate : containsDuplicateList) {
+      for (ContainsDuplicateInputAndOutput containsDuplicateInputAndOutput : containsDuplicateInputAndOutputList) {
+        streamBuilder.add(ContainsDuplicateTestConfig.builder()
+            .containsDuplicate(containsDuplicate)
+            .inputAndOutput(containsDuplicateInputAndOutput).build());
+      }
+    }
+    return streamBuilder.build();
   }
 
-  @Test void testHasDuplicate() {
-    ContainsDuplicate containsDuplicate = new ContainsDuplicate();
-    int[] nums = {1, 2, 3, 3};
-    boolean result = containsDuplicate.hasDuplicate(nums);
-    assertTrue(result);
+  @ParameterizedTest
+  @MethodSource("testConfigs")
+  void testExample(ContainsDuplicateTestConfig testConfig) {
+    boolean result = testConfig.containsDuplicate().hasDuplicate(testConfig.inputAndOutput().nums());
+    Assertions.assertEquals(testConfig.inputAndOutput().expectedHasDuplicate(), result);
   }
 }
