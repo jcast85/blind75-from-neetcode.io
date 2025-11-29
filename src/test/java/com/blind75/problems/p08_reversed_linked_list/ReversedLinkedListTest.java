@@ -42,6 +42,10 @@ public class ReversedLinkedListTest {
     ReversedLinkedListInputAndOutput.builder()
       .head(ListNode.builder().build())
       .expected(ListNode.builder().build())
+      .build(),
+    ReversedLinkedListInputAndOutput.builder()
+      .head(null)
+      .expected(null)
       .build()
   );
 
