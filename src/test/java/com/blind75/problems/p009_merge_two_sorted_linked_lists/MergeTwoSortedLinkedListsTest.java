@@ -1,4 +1,4 @@
-package com.blind75.problems.p09_merge_two_sorted_linked_lists;
+package com.blind75.problems.p009_merge_two_sorted_linked_lists;
 
 import com.blind75.problems.common.ListNode;
 import org.junit.jupiter.api.Assertions;
