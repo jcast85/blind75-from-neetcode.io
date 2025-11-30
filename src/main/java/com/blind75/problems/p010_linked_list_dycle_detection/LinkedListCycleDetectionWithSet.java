@@ -5,7 +5,7 @@ import com.blind75.problems.common.ListNode;
 import java.util.HashSet;
 import java.util.Set;
 
-public class LinkedListCycleDetectionFirstTry implements LinkedListCycleDetection {
+public class LinkedListCycleDetectionWithSet implements LinkedListCycleDetection {
   @Override
   public boolean hasCycle(ListNode head) {
     Set<Integer> seen = new HashSet<>();

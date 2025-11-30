@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class LinkedListCycleDetectionTest {
 
   private static final List<LinkedListCycleDetection> linkedListCycleDetectionList = List.of(
-    new LinkedListCycleDetectionFirstTry());
+    new LinkedListCycleDetectionWithSet());
 
   private static final List<LinkedListCycleDetectionInputAndOutput> linkedListCycleDetectionInputAndOutputList;
 
