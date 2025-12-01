@@ -1,6 +1,6 @@
-
 package com.blind75.problems.p005_best_time_to_buy_and_sell_stock;
 
+import com.blind75.problems.common.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -15,40 +15,41 @@ class BestTimeToBuyAndSellStockTest {
     new BestTimeToBuyAndSellStockSimple()
   );
 
-  private static final List<BestTimeToBuyAndSellStockInputAndOutput> bestTimeToBuyAndSellStockInputAndOutputList = List.of(
-    BestTimeToBuyAndSellStockInputAndOutput.builder()
-      .prices(new int[] {10,1,5,6,7,1})
-      .expectedProfit(6)
+  private static final List<InputAndOutput> bestTimeToBuyAndSellStockInputAndOutputList = List.of(
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {10, 1, 5, 6, 7, 1})
+      .output(6)
       .build(),
-    BestTimeToBuyAndSellStockInputAndOutput.builder()
-      .prices(new int[] {10,8,7,5,2})
-      .expectedProfit(0)
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {10, 8, 7, 5, 2})
+      .output(0)
       .build(),
-    BestTimeToBuyAndSellStockInputAndOutput.builder()
-      .prices(new int[] {1,2,11,4,7})
-      .expectedProfit(10)
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {1, 2, 11, 4, 7})
+      .output(10)
       .build(),
-    BestTimeToBuyAndSellStockInputAndOutput.builder()
-      .prices(new int[] {3,2,6,5,0,3})
-      .expectedProfit(4)
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {3, 2, 6, 5, 0, 3})
+      .output(4)
       .build(),
-    BestTimeToBuyAndSellStockInputAndOutput.builder()
-      .prices(new int[] {10,2,16,1,3,4,5,6,7,1})
-      .expectedProfit(14)
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {10, 2, 16, 1, 3, 4, 5, 6, 7, 1})
+      .output(14)
       .build(),
-    BestTimeToBuyAndSellStockInputAndOutput.builder()
-      .prices(new int[] {10,3,4,5,6,7,9,-15,8})
-      .expectedProfit(23)
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {10, 3, 4, 5, 6, 7, 9, -15, 8})
+      .output(23)
       .build()
   );
 
-  static Stream<BestTimeToBuyAndSellStockTestConfig> testConfigs() {
-    Stream.Builder<BestTimeToBuyAndSellStockTestConfig> streamBuilder = Stream.builder();
+  static Stream<TestConfig<BestTimeToBuyAndSellStock>> testConfigs() {
+    Stream.Builder<TestConfig<BestTimeToBuyAndSellStock>> streamBuilder = Stream.builder();
     for (BestTimeToBuyAndSellStock bestTimeToBuyAndSellStock : bestTimeToBuyAndSellStockList) {
-      for (BestTimeToBuyAndSellStockInputAndOutput bestTimeToBuyAndSellStockInputAndOutput : bestTimeToBuyAndSellStockInputAndOutputList) {
-        streamBuilder.add(BestTimeToBuyAndSellStockTestConfig.builder()
-          .bestTimeToBuyAndSellStocks(bestTimeToBuyAndSellStock)
-          .inputAndOutput(bestTimeToBuyAndSellStockInputAndOutput).build());
+      for (InputAndOutput bestTimeToBuyAndSellStockInputAndOutput : bestTimeToBuyAndSellStockInputAndOutputList) {
+        streamBuilder.add(new TestConfigBuilder<BestTimeToBuyAndSellStock>()
+          .interfaceToTest(bestTimeToBuyAndSellStock)
+          .inputAndOutput(bestTimeToBuyAndSellStockInputAndOutput)
+          .build());
       }
     }
     return streamBuilder.build();
@@ -56,8 +57,9 @@ class BestTimeToBuyAndSellStockTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(BestTimeToBuyAndSellStockTestConfig testConfig) {
-    int result = testConfig.bestTimeToBuyAndSellStocks().maxProfit(testConfig.inputAndOutput().prices());
-    Assertions.assertEquals(testConfig.inputAndOutput().expectedProfit(), result);
+  void testExample(TestConfig<BestTimeToBuyAndSellStock> testConfig) {
+    SingleInputAndOutput<int[], Integer> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
+    int result = testConfig.interfaceToTest().maxProfit(inputAndOutput.input());
+    Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

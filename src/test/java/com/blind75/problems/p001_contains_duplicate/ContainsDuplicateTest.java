@@ -11,17 +11,19 @@ import java.util.stream.Stream;
 class ContainsDuplicateTest {
 
   private static final List<ContainsDuplicate> containsDuplicateList = List.of(
-      new ContainsDuplicateFirstTry());
+    new ContainsDuplicateFirstTry()
+  );
 
   private static final List<InputAndOutput> containsDuplicateInputAndOutputList = List.of(
-      new SingleInputAndOutputBuilder<>()
-          .input(new int[] { 1, 2, 3, 4 })
-          .output(false)
-          .build(),
-      new SingleInputAndOutputBuilder<>()
-          .input(new int[] { 1, 2, 3, 3 })
-          .output(true)
-          .build());
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {1, 2, 3, 4})
+      .output(false)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {1, 2, 3, 3})
+      .output(true)
+      .build()
+  );
 
   static Stream<TestConfig<ContainsDuplicate>> testConfigs() {
     Stream.Builder<TestConfig<ContainsDuplicate>> streamBuilder = Stream.builder();

@@ -11,19 +11,21 @@ import java.util.stream.Stream;
 class ValidAnagramTest {
 
   private static final List<ValidAnagram> validAnagramList = List.of(
-      new ValidAnagramFirstTry());
+    new ValidAnagramFirstTry()
+  );
 
   private static final List<InputAndOutput> validAnagramInputAndOutputList = List.of(
     new DoubleInputAndOutputBuilder<>()
-          .input1("racecar")
-          .input2("carrace")
-          .output(true)
-          .build(),
+      .input1("racecar")
+      .input2("carrace")
+      .output(true)
+      .build(),
     new DoubleInputAndOutputBuilder<>()
-          .input1("jar")
-          .input2("jam")
-          .output(false)
-          .build());
+      .input1("jar")
+      .input2("jam")
+      .output(false)
+      .build()
+  );
 
   static Stream<TestConfig<ValidAnagram>> testConfigs() {
     Stream.Builder<TestConfig<ValidAnagram>> streamBuilder = Stream.builder();

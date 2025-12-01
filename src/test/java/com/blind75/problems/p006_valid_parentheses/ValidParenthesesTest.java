@@ -1,5 +1,6 @@
 package com.blind75.problems.p006_valid_parentheses;
 
+import com.blind75.problems.common.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -10,34 +11,36 @@ import java.util.stream.Stream;
 public class ValidParenthesesTest {
 
   private static final List<ValidParentheses> validParenthesesList = List.of(
-    new ValidParenthesesFirstTry());
+    new ValidParenthesesFirstTry()
+  );
 
-  private static final List<ValidParenthesesInputAndOutput> validParenthesesInputAndOutputList = List.of(
-    ValidParenthesesInputAndOutput.builder()
-      .s("[]")
-      .expected(true)
+  private static final List<InputAndOutput> validParenthesesInputAndOutputList = List.of(
+    new SingleInputAndOutputBuilder<>()
+      .input("[]")
+      .output(true)
       .build(),
-    ValidParenthesesInputAndOutput.builder()
-      .s("([{}])")
-      .expected(true)
+    new SingleInputAndOutputBuilder<>()
+      .input("([{}])")
+      .output(true)
       .build(),
-    ValidParenthesesInputAndOutput.builder()
-      .s("[(])")
-      .expected(false)
+    new SingleInputAndOutputBuilder<>()
+      .input("[(])")
+      .output(false)
       .build(),
-    ValidParenthesesInputAndOutput.builder()
-      .s("[")
-      .expected(false)
+    new SingleInputAndOutputBuilder<>()
+      .input("[")
+      .output(false)
       .build()
   );
 
-  static Stream<ValidParenthesesTestConfig> testConfigs() {
-    Stream.Builder<ValidParenthesesTestConfig> streamBuilder = Stream.builder();
+  static Stream<TestConfig<ValidParentheses>> testConfigs() {
+    Stream.Builder<TestConfig<ValidParentheses>> streamBuilder = Stream.builder();
     for (ValidParentheses validParentheses : validParenthesesList) {
-      for (ValidParenthesesInputAndOutput validParenthesesInputAndOutput : validParenthesesInputAndOutputList) {
-        streamBuilder.add(ValidParenthesesTestConfig.builder()
-          .validParentheses(validParentheses)
-          .inputAndOutput(validParenthesesInputAndOutput).build());
+      for (InputAndOutput validParenthesesInputAndOutput : validParenthesesInputAndOutputList) {
+        streamBuilder.add(new TestConfigBuilder<ValidParentheses>()
+          .interfaceToTest(validParentheses)
+          .inputAndOutput(validParenthesesInputAndOutput)
+          .build());
       }
     }
     return streamBuilder.build();
@@ -45,8 +48,9 @@ public class ValidParenthesesTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(ValidParenthesesTestConfig testConfig) {
-    boolean result = testConfig.validParentheses().isValid(testConfig.inputAndOutput().s());
-    Assertions.assertEquals(testConfig.inputAndOutput().expected(), result);
+  void testExample(TestConfig<ValidParentheses> testConfig) {
+    SingleInputAndOutput<String, Boolean> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
+    boolean result = testConfig.interfaceToTest().isValid(inputAndOutput.input());
+    Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

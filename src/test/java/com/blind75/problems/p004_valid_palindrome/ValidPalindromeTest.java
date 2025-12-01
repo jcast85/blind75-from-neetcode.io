@@ -1,5 +1,6 @@
 package com.blind75.problems.p004_valid_palindrome;
 
+import com.blind75.problems.common.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -10,25 +11,28 @@ import java.util.stream.Stream;
 class ValidPalindromeTest {
 
   private static final List<ValidPalindrome> validPalindromeList = List.of(
-      new ValidPalindromeFirstTry());
+    new ValidPalindromeFirstTry()
+  );
 
-  private static final List<ValidPalindromeInputAndOutput> validPalindromeInputAndOutputList = List.of(
-      ValidPalindromeInputAndOutput.builder()
-          .s("Was it a car or a cat I saw?")
-          .expectedIsPalindrome(true)
-          .build(),
-      ValidPalindromeInputAndOutput.builder()
-          .s("tab a cat")
-          .expectedIsPalindrome(false)
-          .build());
+  private static final List<InputAndOutput> validPalindromeInputAndOutputList = List.of(
+    new SingleInputAndOutputBuilder<>()
+      .input("Was it a car or a cat I saw?")
+      .output(true)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input("tab a cat")
+      .output(false)
+      .build()
+  );
 
-  static Stream<ValidPalindromeTestConfig> testConfigs() {
-    Stream.Builder<ValidPalindromeTestConfig> streamBuilder = Stream.builder();
+  static Stream<TestConfig<ValidPalindrome>> testConfigs() {
+    Stream.Builder<TestConfig<ValidPalindrome>> streamBuilder = Stream.builder();
     for (ValidPalindrome validPalindrome : validPalindromeList) {
-      for (ValidPalindromeInputAndOutput validPalindromeInputAndOutput : validPalindromeInputAndOutputList) {
-        streamBuilder.add(ValidPalindromeTestConfig.builder()
-            .validPalindrome(validPalindrome)
-            .inputAndOutput(validPalindromeInputAndOutput).build());
+      for (InputAndOutput validPalindromeInputAndOutput : validPalindromeInputAndOutputList) {
+        streamBuilder.add(new TestConfigBuilder<ValidPalindrome>()
+          .interfaceToTest(validPalindrome)
+          .inputAndOutput(validPalindromeInputAndOutput)
+          .build());
       }
     }
     return streamBuilder.build();
@@ -36,8 +40,9 @@ class ValidPalindromeTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(ValidPalindromeTestConfig testConfig) {
-    boolean result = testConfig.validPalindrome().isPalindrome(testConfig.inputAndOutput().s());
-    Assertions.assertEquals(testConfig.inputAndOutput().expectedIsPalindrome(), result);
+  void testExample(TestConfig<ValidPalindrome> testConfig) {
+    SingleInputAndOutput<String, Boolean> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
+    boolean result = testConfig.interfaceToTest().isPalindrome(inputAndOutput.input());
+    Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

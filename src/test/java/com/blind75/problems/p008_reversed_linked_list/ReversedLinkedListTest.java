@@ -1,6 +1,6 @@
 package com.blind75.problems.p008_reversed_linked_list;
 
-import com.blind75.problems.common.ListNode;
+import com.blind75.problems.common.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -11,30 +11,32 @@ import java.util.stream.Stream;
 public class ReversedLinkedListTest {
 
   private static final List<ReversedLinkedList> reversedLinkedListList = List.of(
-    new ReversedLinkedListFirstTry());
+    new ReversedLinkedListFirstTry()
+  );
 
-  private static final List<ReversedLinkedListInputAndOutput> reversedLinkedListInputAndOutputList = List.of(
-    ReversedLinkedListInputAndOutput.builder()
-      .head(ListNode.of(0,1,2,3))
-      .expected(ListNode.of(3,2,1,0))
+  private static final List<InputAndOutput> reversedLinkedListInputAndOutputList = List.of(
+    new SingleInputAndOutputBuilder<>()
+      .input(ListNode.of(0, 1, 2, 3))
+      .output(ListNode.of(3, 2, 1, 0))
       .build(),
-    ReversedLinkedListInputAndOutput.builder()
-      .head(ListNode.of())
-      .expected(ListNode.of())
+    new SingleInputAndOutputBuilder<>()
+      .input(ListNode.of())
+      .output(ListNode.of())
       .build(),
-    ReversedLinkedListInputAndOutput.builder()
-      .head(null)
-      .expected(null)
+    new SingleInputAndOutputBuilder<>()
+      .input(null)
+      .output(null)
       .build()
   );
 
-  static Stream<ReversedLinkedListTestConfig> testConfigs() {
-    Stream.Builder<ReversedLinkedListTestConfig> streamBuilder = Stream.builder();
+  static Stream<TestConfig<ReversedLinkedList>> testConfigs() {
+    Stream.Builder<TestConfig<ReversedLinkedList>> streamBuilder = Stream.builder();
     for (ReversedLinkedList reversedLinkedList : reversedLinkedListList) {
-      for (ReversedLinkedListInputAndOutput reversedLinkedListInputAndOutput : reversedLinkedListInputAndOutputList) {
-        streamBuilder.add(ReversedLinkedListTestConfig.builder()
-          .reversedLinkedList(reversedLinkedList)
-          .inputAndOutput(reversedLinkedListInputAndOutput).build());
+      for (InputAndOutput reversedLinkedListInputAndOutput : reversedLinkedListInputAndOutputList) {
+        streamBuilder.add(new TestConfigBuilder<ReversedLinkedList>()
+          .interfaceToTest(reversedLinkedList)
+          .inputAndOutput(reversedLinkedListInputAndOutput)
+          .build());
       }
     }
     return streamBuilder.build();
@@ -42,8 +44,9 @@ public class ReversedLinkedListTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(ReversedLinkedListTestConfig testConfig) {
-    ListNode result = testConfig.reversedLinkedList().reverseList(testConfig.inputAndOutput().head());
-    Assertions.assertEquals(testConfig.inputAndOutput().expected(), result);
+  void testExample(TestConfig<ReversedLinkedList> testConfig) {
+    SingleInputAndOutput<ListNode, ListNode> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
+    ListNode result = testConfig.interfaceToTest().reverseList(inputAndOutput.input());
+    Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }
