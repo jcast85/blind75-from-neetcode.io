@@ -1,5 +1,6 @@
 package com.blind75.problems.p002_valid_anagram;
 
+import com.blind75.problems.common.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -12,25 +13,26 @@ class ValidAnagramTest {
   private static final List<ValidAnagram> validAnagramList = List.of(
       new ValidAnagramFirstTry());
 
-  private static final List<ValidAnagramInputAndOutput> validAnagramInputAndOutputList = List.of(
-      ValidAnagramInputAndOutput.builder()
-          .s("racecar")
-          .t("carrace")
-          .expectedIsAnagram(true)
+  private static final List<InputAndOutput> validAnagramInputAndOutputList = List.of(
+    new DoubleInputAndOutputBuilder<>()
+          .input1("racecar")
+          .input2("carrace")
+          .output(true)
           .build(),
-      ValidAnagramInputAndOutput.builder()
-          .s("jar")
-          .t("jam")
-          .expectedIsAnagram(false)
+    new DoubleInputAndOutputBuilder<>()
+          .input1("jar")
+          .input2("jam")
+          .output(false)
           .build());
 
-  static Stream<ValidAnagramTestConfig> testConfigs() {
-    Stream.Builder<ValidAnagramTestConfig> streamBuilder = Stream.builder();
+  static Stream<TestConfig<ValidAnagram>> testConfigs() {
+    Stream.Builder<TestConfig<ValidAnagram>> streamBuilder = Stream.builder();
     for (ValidAnagram validAnagram : validAnagramList) {
-      for (ValidAnagramInputAndOutput validAnagramInputAndOutput : validAnagramInputAndOutputList) {
-        streamBuilder.add(ValidAnagramTestConfig.builder()
-            .validAnagram(validAnagram)
-            .inputAndOutput(validAnagramInputAndOutput).build());
+      for (InputAndOutput validAnagramInputAndOutput : validAnagramInputAndOutputList) {
+        streamBuilder.add(new TestConfigBuilder<ValidAnagram>()
+          .interfaceToTest(validAnagram)
+          .inputAndOutput(validAnagramInputAndOutput)
+          .build());
       }
     }
     return streamBuilder.build();
@@ -38,9 +40,9 @@ class ValidAnagramTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(ValidAnagramTestConfig testConfig) {
-    boolean result = testConfig.validAnagram().isAnagram(testConfig.inputAndOutput().s(),
-        testConfig.inputAndOutput().t());
-    Assertions.assertEquals(testConfig.inputAndOutput().expectedIsAnagram(), result);
+  void testExample(TestConfig<ValidAnagram> testConfig) {
+    DoubleInputAndOutput<String, String, Boolean> inputAndOutput = (DoubleInputAndOutput) testConfig.inputAndOutput();
+    boolean result = testConfig.interfaceToTest().isAnagram(inputAndOutput.input1(), inputAndOutput.input2());
+    Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }
