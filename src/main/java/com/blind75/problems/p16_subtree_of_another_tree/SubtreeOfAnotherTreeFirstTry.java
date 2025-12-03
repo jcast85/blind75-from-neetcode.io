@@ -34,7 +34,7 @@ public class SubtreeOfAnotherTreeFirstTry implements SubtreeOfAnotherTree {
     return false;
   }
 
-  public boolean isSameTree(TreeNode p, TreeNode q) {
+  private boolean isSameTree(TreeNode p, TreeNode q) {
     SameBinaryTree sameBinaryTree = new SameBinaryTreeFirstTry();
     return sameBinaryTree.isSameTree(p, q);
   }
