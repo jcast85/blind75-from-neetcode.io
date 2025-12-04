@@ -1,10 +1,10 @@
 package com.blind75.problems.p17_kth_largest_element_in_a_stream;
 
-public class KthLargestFirstTry implements KthLargest {
+public class KthLargestArray implements KthLargest {
   private int k;
   private int[] nums;
 
-  public KthLargestFirstTry(int k, int[] nums) {
+  public KthLargestArray(int k, int[] nums) {
     this.k = k;
     this.nums = nums;
   }

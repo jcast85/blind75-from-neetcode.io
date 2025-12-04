@@ -2,7 +2,6 @@ package com.blind75.problems.p17_kth_largest_element_in_a_stream;
 
 import com.blind75.problems.common.*;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -14,8 +13,8 @@ import java.util.stream.Stream;
 public class KthLargestElementInAStreamTest {
 
   private static final List<Class<?>> kthLargestList = List.of(
-    KthLargestFirstTry.class,
-    KthLargestEfficient.class
+    KthLargestArray.class,
+    KthLargestList.class
   );
 
   private static final List<InputAndOutput> kthLargestConstructorInputAndOutputList = List.of(

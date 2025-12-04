@@ -3,11 +3,11 @@ package com.blind75.problems.p17_kth_largest_element_in_a_stream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KthLargestEfficient implements KthLargest {
+public class KthLargestList implements KthLargest {
   private final int k;
   private final List<Integer> nums;
 
-  public KthLargestEfficient(int k, int[] nums) {
+  public KthLargestList(int k, int[] nums) {
     this.k = k;
     this.nums = new ArrayList<>();
     for(int num : nums) {
