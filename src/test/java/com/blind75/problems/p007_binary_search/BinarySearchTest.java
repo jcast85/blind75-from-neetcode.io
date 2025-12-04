@@ -39,8 +39,8 @@ public class BinarySearchTest {
     Stream.Builder<SingleMethodTestConfig<BinarySearch>> streamBuilder = Stream.builder();
     for (BinarySearch binarySearch : binarySearchList) {
       for (InputAndOutput binarySearchInputAndOutput : binarySearchInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<BinarySearch>()
-          .interfaceToTest(binarySearch)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<BinarySearch>()
+          .implementationToTest(binarySearch)
           .inputAndOutput(binarySearchInputAndOutput)
           .build());
       }

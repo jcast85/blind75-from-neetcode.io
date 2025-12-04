@@ -33,8 +33,8 @@ public class ReversedLinkedListTest {
     Stream.Builder<SingleMethodTestConfig<ReversedLinkedList>> streamBuilder = Stream.builder();
     for (ReversedLinkedList reversedLinkedList : reversedLinkedListList) {
       for (InputAndOutput reversedLinkedListInputAndOutput : reversedLinkedListInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<ReversedLinkedList>()
-          .interfaceToTest(reversedLinkedList)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<ReversedLinkedList>()
+          .implementationToTest(reversedLinkedList)
           .inputAndOutput(reversedLinkedListInputAndOutput)
           .build());
       }

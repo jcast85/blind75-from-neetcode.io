@@ -29,8 +29,8 @@ class ValidPalindromeTest {
     Stream.Builder<SingleMethodTestConfig<ValidPalindrome>> streamBuilder = Stream.builder();
     for (ValidPalindrome validPalindrome : validPalindromeList) {
       for (InputAndOutput validPalindromeInputAndOutput : validPalindromeInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<ValidPalindrome>()
-          .interfaceToTest(validPalindrome)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<ValidPalindrome>()
+          .implementationToTest(validPalindrome)
           .inputAndOutput(validPalindromeInputAndOutput)
           .build());
       }

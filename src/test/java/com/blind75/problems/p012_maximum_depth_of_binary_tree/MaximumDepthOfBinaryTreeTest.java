@@ -29,8 +29,8 @@ public class MaximumDepthOfBinaryTreeTest {
     Stream.Builder<SingleMethodTestConfig<MaximumDepthOfBinaryTree>> streamBuilder = Stream.builder();
     for (MaximumDepthOfBinaryTree maximumDepthOfBinaryTree : maximumDepthOfBinaryTreeList) {
       for (InputAndOutput maximumDepthOfBinaryTreeInputAndOutput : maximumDepthOfBinaryTreeInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<MaximumDepthOfBinaryTree>()
-          .interfaceToTest(maximumDepthOfBinaryTree)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<MaximumDepthOfBinaryTree>()
+          .implementationToTest(maximumDepthOfBinaryTree)
           .inputAndOutput(maximumDepthOfBinaryTreeInputAndOutput)
           .build());
       }

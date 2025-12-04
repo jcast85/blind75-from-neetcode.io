@@ -37,8 +37,8 @@ public class ValidParenthesesTest {
     Stream.Builder<SingleMethodTestConfig<ValidParentheses>> streamBuilder = Stream.builder();
     for (ValidParentheses validParentheses : validParenthesesList) {
       for (InputAndOutput validParenthesesInputAndOutput : validParenthesesInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<ValidParentheses>()
-          .interfaceToTest(validParentheses)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<ValidParentheses>()
+          .implementationToTest(validParentheses)
           .inputAndOutput(validParenthesesInputAndOutput)
           .build());
       }

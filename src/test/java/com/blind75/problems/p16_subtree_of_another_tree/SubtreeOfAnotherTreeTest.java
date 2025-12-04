@@ -41,8 +41,8 @@ public class SubtreeOfAnotherTreeTest {
     Stream.Builder<SingleMethodTestConfig<SubtreeOfAnotherTree>> streamBuilder = Stream.builder();
     for (SubtreeOfAnotherTree subtreeOfAnotherTree : subtreeOfAnotherTreeList) {
       for (InputAndOutput subtreeOfAnotherTreeInputAndOutput : subtreeOfAnotherTreeInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<SubtreeOfAnotherTree>()
-          .interfaceToTest(subtreeOfAnotherTree)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<SubtreeOfAnotherTree>()
+          .implementationToTest(subtreeOfAnotherTree)
           .inputAndOutput(subtreeOfAnotherTreeInputAndOutput)
           .build());
       }

@@ -36,8 +36,8 @@ public class LinkedListCycleDetectionTest {
     Stream.Builder<SingleMethodTestConfig<LinkedListCycleDetection>> streamBuilder = Stream.builder();
     for (LinkedListCycleDetection linkedListCycleDetection : linkedListCycleDetectionList) {
       for (InputAndOutput linkedListCycleDetectionInputAndOutput : linkedListCycleDetectionInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<LinkedListCycleDetection>()
-          .interfaceToTest(linkedListCycleDetection)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<LinkedListCycleDetection>()
+          .implementationToTest(linkedListCycleDetection)
           .inputAndOutput(linkedListCycleDetectionInputAndOutput)
           .build());
       }

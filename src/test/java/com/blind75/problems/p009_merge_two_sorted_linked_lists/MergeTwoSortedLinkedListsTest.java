@@ -36,8 +36,8 @@ public class MergeTwoSortedLinkedListsTest {
     Stream.Builder<SingleMethodTestConfig<MergeTwoSortedLinkedLists>> streamBuilder = Stream.builder();
     for (MergeTwoSortedLinkedLists mergeTwoSortedLinkedLists : mergeTwoSortedLinkedListsList) {
       for (InputAndOutput mergeTwoSortedLinkedListsInputAndOutput : mergeTwoSortedLinkedListsInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<MergeTwoSortedLinkedLists>()
-          .interfaceToTest(mergeTwoSortedLinkedLists)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<MergeTwoSortedLinkedLists>()
+          .implementationToTest(mergeTwoSortedLinkedLists)
           .inputAndOutput(mergeTwoSortedLinkedListsInputAndOutput)
           .build());
       }

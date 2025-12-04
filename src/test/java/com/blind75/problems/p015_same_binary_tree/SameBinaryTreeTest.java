@@ -41,8 +41,8 @@ public class SameBinaryTreeTest {
     Stream.Builder<SingleMethodTestConfig<SameBinaryTree>> streamBuilder = Stream.builder();
     for (SameBinaryTree sameBinaryTree : sameBinaryTreeList) {
       for (InputAndOutput sameBinaryTreeInputAndOutput : sameBinaryTreeInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<SameBinaryTree>()
-          .interfaceToTest(sameBinaryTree)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<SameBinaryTree>()
+          .implementationToTest(sameBinaryTree)
           .inputAndOutput(sameBinaryTreeInputAndOutput)
           .build());
       }

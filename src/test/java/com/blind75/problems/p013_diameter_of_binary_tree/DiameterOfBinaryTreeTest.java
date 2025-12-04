@@ -50,8 +50,8 @@ public class DiameterOfBinaryTreeTest {
     Stream.Builder<SingleMethodTestConfig<DiameterOfBinaryTree>> streamBuilder = Stream.builder();
     for (DiameterOfBinaryTree diameterOfBinaryTree : diameterOfBinaryTreeList) {
       for (InputAndOutput diameterOfBinaryTreeInputAndOutput : diameterOfBinaryTreeInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<DiameterOfBinaryTree>()
-          .interfaceToTest(diameterOfBinaryTree)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<DiameterOfBinaryTree>()
+          .implementationToTest(diameterOfBinaryTree)
           .inputAndOutput(diameterOfBinaryTreeInputAndOutput)
           .build());
       }

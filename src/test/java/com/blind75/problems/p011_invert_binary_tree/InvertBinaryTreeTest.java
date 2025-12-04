@@ -37,8 +37,8 @@ public class InvertBinaryTreeTest {
     Stream.Builder<SingleMethodTestConfig<InvertBinaryTree>> streamBuilder = Stream.builder();
     for (InvertBinaryTree invertBinaryTree : invertBinaryTreeList) {
       for (InputAndOutput invertBinaryTreeInputAndOutput : invertBinaryTreeInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<InvertBinaryTree>()
-          .interfaceToTest(invertBinaryTree)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<InvertBinaryTree>()
+          .implementationToTest(invertBinaryTree)
           .inputAndOutput(invertBinaryTreeInputAndOutput)
           .build());
       }

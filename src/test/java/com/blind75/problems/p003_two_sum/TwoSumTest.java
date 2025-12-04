@@ -35,8 +35,8 @@ class TwoSumTest {
     Stream.Builder<SingleMethodTestConfig<TwoSum>> streamBuilder = Stream.builder();
     for (TwoSum twoSum : twoSumList) {
       for (InputAndOutput twoSumInputAndOutput : twoSumInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<TwoSum>()
-          .interfaceToTest(twoSum)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<TwoSum>()
+          .implementationToTest(twoSum)
           .inputAndOutput(twoSumInputAndOutput)
           .build());
       }

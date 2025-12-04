@@ -31,8 +31,8 @@ class ValidAnagramTest {
     Stream.Builder<SingleMethodTestConfig<ValidAnagram>> streamBuilder = Stream.builder();
     for (ValidAnagram validAnagram : validAnagramList) {
       for (InputAndOutput validAnagramInputAndOutput : validAnagramInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<ValidAnagram>()
-          .interfaceToTest(validAnagram)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<ValidAnagram>()
+          .implementationToTest(validAnagram)
           .inputAndOutput(validAnagramInputAndOutput)
           .build());
       }

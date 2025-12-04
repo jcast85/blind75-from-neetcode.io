@@ -29,8 +29,8 @@ class ContainsDuplicateTest {
     Stream.Builder<SingleMethodTestConfig<ContainsDuplicate>> streamBuilder = Stream.builder();
     for (ContainsDuplicate containsDuplicate : containsDuplicateList) {
       for (InputAndOutput inputAndOutput : containsDuplicateInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<ContainsDuplicate>()
-          .interfaceToTest(containsDuplicate)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<ContainsDuplicate>()
+          .implementationToTest(containsDuplicate)
           .inputAndOutput(inputAndOutput)
           .build());
       }

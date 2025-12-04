@@ -46,8 +46,8 @@ class BestTimeToBuyAndSellStockTest {
     Stream.Builder<SingleMethodTestConfig<BestTimeToBuyAndSellStock>> streamBuilder = Stream.builder();
     for (BestTimeToBuyAndSellStock bestTimeToBuyAndSellStock : bestTimeToBuyAndSellStockList) {
       for (InputAndOutput bestTimeToBuyAndSellStockInputAndOutput : bestTimeToBuyAndSellStockInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<BestTimeToBuyAndSellStock>()
-          .interfaceToTest(bestTimeToBuyAndSellStock)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<BestTimeToBuyAndSellStock>()
+          .implementationToTest(bestTimeToBuyAndSellStock)
           .inputAndOutput(bestTimeToBuyAndSellStockInputAndOutput)
           .build());
       }

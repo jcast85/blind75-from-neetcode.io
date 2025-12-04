@@ -45,8 +45,8 @@ public class BalancedBinaryTreeTest {
     Stream.Builder<SingleMethodTestConfig<BalancedBinaryTree>> streamBuilder = Stream.builder();
     for (BalancedBinaryTree balancedBinaryTree : balancedBinaryTreeList) {
       for (InputAndOutput balancedBinaryTreeInputAndOutput : balancedBinaryTreeInputAndOutputList) {
-        streamBuilder.add(new TestConfigBuilder<BalancedBinaryTree>()
-          .interfaceToTest(balancedBinaryTree)
+        streamBuilder.add(new SingleMethodTestConfigBuilder<BalancedBinaryTree>()
+          .implementationToTest(balancedBinaryTree)
           .inputAndOutput(balancedBinaryTreeInputAndOutput)
           .build());
       }
