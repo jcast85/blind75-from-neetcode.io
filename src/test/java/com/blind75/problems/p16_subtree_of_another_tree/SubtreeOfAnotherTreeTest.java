@@ -54,7 +54,7 @@ public class SubtreeOfAnotherTreeTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<SubtreeOfAnotherTree> testConfig) {
     DoubleInputAndOutput<TreeNode, TreeNode, Boolean> inputAndOutput = (DoubleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.interfaceToTest().isSubtree(inputAndOutput.input1(), inputAndOutput.input2());
+    boolean result = testConfig.implementationToTest().isSubtree(inputAndOutput.input1(), inputAndOutput.input2());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

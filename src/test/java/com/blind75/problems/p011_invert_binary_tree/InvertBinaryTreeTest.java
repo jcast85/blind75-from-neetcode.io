@@ -50,7 +50,7 @@ public class InvertBinaryTreeTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<InvertBinaryTree> testConfig) {
     SingleInputAndOutput<TreeNode, TreeNode> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    TreeNode result = testConfig.interfaceToTest().invertTree(inputAndOutput.input());
+    TreeNode result = testConfig.implementationToTest().invertTree(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

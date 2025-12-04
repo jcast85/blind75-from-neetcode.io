@@ -46,7 +46,7 @@ public class ReversedLinkedListTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<ReversedLinkedList> testConfig) {
     SingleInputAndOutput<ListNode, ListNode> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    ListNode result = testConfig.interfaceToTest().reverseList(inputAndOutput.input());
+    ListNode result = testConfig.implementationToTest().reverseList(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

@@ -59,7 +59,7 @@ class BestTimeToBuyAndSellStockTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<BestTimeToBuyAndSellStock> testConfig) {
     SingleInputAndOutput<int[], Integer> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    int result = testConfig.interfaceToTest().maxProfit(inputAndOutput.input());
+    int result = testConfig.implementationToTest().maxProfit(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

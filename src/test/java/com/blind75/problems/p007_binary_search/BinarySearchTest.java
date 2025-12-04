@@ -52,7 +52,7 @@ public class BinarySearchTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<BinarySearch> testConfig) {
     DoubleInputAndOutput<int[], Integer, Integer> inputAndOutput = (DoubleInputAndOutput) testConfig.inputAndOutput();
-    int result = testConfig.interfaceToTest().search(inputAndOutput.input1(), inputAndOutput.input2());
+    int result = testConfig.implementationToTest().search(inputAndOutput.input1(), inputAndOutput.input2());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

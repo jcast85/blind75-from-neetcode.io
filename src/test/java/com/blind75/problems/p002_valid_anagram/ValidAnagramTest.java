@@ -44,7 +44,7 @@ class ValidAnagramTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<ValidAnagram> testConfig) {
     DoubleInputAndOutput<String, String, Boolean> inputAndOutput = (DoubleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.interfaceToTest().isAnagram(inputAndOutput.input1(), inputAndOutput.input2());
+    boolean result = testConfig.implementationToTest().isAnagram(inputAndOutput.input1(), inputAndOutput.input2());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

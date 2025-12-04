@@ -49,7 +49,7 @@ public class MergeTwoSortedLinkedListsTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<MergeTwoSortedLinkedLists> testConfig) {
     DoubleInputAndOutput<ListNode, ListNode, ListNode> inputAndOutput = (DoubleInputAndOutput) testConfig.inputAndOutput();
-    ListNode result = testConfig.interfaceToTest().mergeTwoLists(inputAndOutput.input1(), inputAndOutput.input2());
+    ListNode result = testConfig.implementationToTest().mergeTwoLists(inputAndOutput.input1(), inputAndOutput.input2());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

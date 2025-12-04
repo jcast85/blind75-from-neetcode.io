@@ -54,7 +54,7 @@ public class SameBinaryTreeTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<SameBinaryTree> testConfig) {
     DoubleInputAndOutput<TreeNode, TreeNode, Boolean> inputAndOutput = (DoubleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.interfaceToTest().isSameTree(inputAndOutput.input1(), inputAndOutput.input2());
+    boolean result = testConfig.implementationToTest().isSameTree(inputAndOutput.input1(), inputAndOutput.input2());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

@@ -42,7 +42,7 @@ class ContainsDuplicateTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<ContainsDuplicate> testConfig) {
     SingleInputAndOutput<int[], Boolean> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.interfaceToTest().hasDuplicate(inputAndOutput.input());
+    boolean result = testConfig.implementationToTest().hasDuplicate(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

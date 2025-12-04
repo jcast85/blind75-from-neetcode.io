@@ -42,7 +42,7 @@ class ValidPalindromeTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<ValidPalindrome> testConfig) {
     SingleInputAndOutput<String, Boolean> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.interfaceToTest().isPalindrome(inputAndOutput.input());
+    boolean result = testConfig.implementationToTest().isPalindrome(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

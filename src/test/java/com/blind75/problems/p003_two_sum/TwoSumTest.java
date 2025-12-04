@@ -48,7 +48,7 @@ class TwoSumTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<TwoSum> testConfig) {
     DoubleInputAndOutput<int[], Integer, int[]> inputAndOutput = (DoubleInputAndOutput) testConfig.inputAndOutput();
-    int[] result = testConfig.interfaceToTest().twoSum(inputAndOutput.input1(), inputAndOutput.input2());
+    int[] result = testConfig.implementationToTest().twoSum(inputAndOutput.input1(), inputAndOutput.input2());
     Assertions.assertArrayEquals(inputAndOutput.output(), result);
   }
 }

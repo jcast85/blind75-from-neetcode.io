@@ -58,7 +58,7 @@ public class BalancedBinaryTreeTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<BalancedBinaryTree> testConfig) {
     SingleInputAndOutput<TreeNode, Boolean> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.interfaceToTest().isBalanced(inputAndOutput.input());
+    boolean result = testConfig.implementationToTest().isBalanced(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

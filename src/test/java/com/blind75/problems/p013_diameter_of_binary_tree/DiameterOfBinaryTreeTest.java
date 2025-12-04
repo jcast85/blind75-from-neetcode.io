@@ -63,7 +63,7 @@ public class DiameterOfBinaryTreeTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<DiameterOfBinaryTree> testConfig) {
     SingleInputAndOutput<TreeNode, Integer> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    int result = testConfig.interfaceToTest().diameterOfBinaryTree(inputAndOutput.input());
+    int result = testConfig.implementationToTest().diameterOfBinaryTree(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

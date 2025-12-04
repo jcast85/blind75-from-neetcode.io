@@ -49,7 +49,7 @@ public class LinkedListCycleDetectionTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<LinkedListCycleDetection> testConfig) {
     SingleInputAndOutput<ListNode, Boolean> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.interfaceToTest().hasCycle(inputAndOutput.input());
+    boolean result = testConfig.implementationToTest().hasCycle(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

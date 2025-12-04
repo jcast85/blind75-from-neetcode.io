@@ -1,8 +1,8 @@
 package com.blind75.problems.common;
 
-public record TestConfig<I>(I interfaceToTest, InputAndOutput inputAndOutput) {
+public record TestConfig<I>(I implementationToTest, InputAndOutput inputAndOutput) {
   @Override
   public String toString() {
-    return "InterfaceToTest: " + interfaceToTest + ", inputAndOutput: " + inputAndOutput;
+    return "InterfaceToTest: " + implementationToTest + ", inputAndOutput: " + inputAndOutput;
   }
 }

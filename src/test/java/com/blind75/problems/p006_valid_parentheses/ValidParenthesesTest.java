@@ -50,7 +50,7 @@ public class ValidParenthesesTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<ValidParentheses> testConfig) {
     SingleInputAndOutput<String, Boolean> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.interfaceToTest().isValid(inputAndOutput.input());
+    boolean result = testConfig.implementationToTest().isValid(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

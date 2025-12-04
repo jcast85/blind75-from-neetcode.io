@@ -42,7 +42,7 @@ public class MaximumDepthOfBinaryTreeTest {
   @MethodSource("testConfigs")
   void testExample(TestConfig<MaximumDepthOfBinaryTree> testConfig) {
     SingleInputAndOutput<TreeNode, Integer> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    int result = testConfig.interfaceToTest().maxDepth(inputAndOutput.input());
+    int result = testConfig.implementationToTest().maxDepth(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }
