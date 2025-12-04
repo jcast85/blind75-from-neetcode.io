@@ -25,8 +25,8 @@ class ValidPalindromeTest {
       .build()
   );
 
-  static Stream<TestConfig<ValidPalindrome>> testConfigs() {
-    Stream.Builder<TestConfig<ValidPalindrome>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<ValidPalindrome>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<ValidPalindrome>> streamBuilder = Stream.builder();
     for (ValidPalindrome validPalindrome : validPalindromeList) {
       for (InputAndOutput validPalindromeInputAndOutput : validPalindromeInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<ValidPalindrome>()
@@ -40,9 +40,9 @@ class ValidPalindromeTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<ValidPalindrome> testConfig) {
-    SingleInputAndOutput<String, Boolean> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.implementationToTest().isPalindrome(inputAndOutput.input());
+  void testExample(SingleMethodTestConfig<ValidPalindrome> singleMethodTestConfig) {
+    SingleInputAndOutput<String, Boolean> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    boolean result = singleMethodTestConfig.implementationToTest().isPalindrome(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

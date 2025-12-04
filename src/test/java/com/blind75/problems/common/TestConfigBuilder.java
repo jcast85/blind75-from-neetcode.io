@@ -17,7 +17,7 @@ public final class TestConfigBuilder<I> {
     return this;
   }
 
-  public TestConfig<I> build() {
-    return new TestConfig<>(interfaceToTest, inputAndOutput);
+  public SingleMethodTestConfig<I> build() {
+    return new SingleMethodTestConfig<>(interfaceToTest, inputAndOutput);
   }
 }

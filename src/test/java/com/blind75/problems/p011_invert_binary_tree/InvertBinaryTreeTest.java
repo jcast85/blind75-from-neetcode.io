@@ -33,8 +33,8 @@ public class InvertBinaryTreeTest {
       .build()
   );
 
-  static Stream<TestConfig<InvertBinaryTree>> testConfigs() {
-    Stream.Builder<TestConfig<InvertBinaryTree>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<InvertBinaryTree>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<InvertBinaryTree>> streamBuilder = Stream.builder();
     for (InvertBinaryTree invertBinaryTree : invertBinaryTreeList) {
       for (InputAndOutput invertBinaryTreeInputAndOutput : invertBinaryTreeInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<InvertBinaryTree>()
@@ -48,9 +48,9 @@ public class InvertBinaryTreeTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<InvertBinaryTree> testConfig) {
-    SingleInputAndOutput<TreeNode, TreeNode> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    TreeNode result = testConfig.implementationToTest().invertTree(inputAndOutput.input());
+  void testExample(SingleMethodTestConfig<InvertBinaryTree> singleMethodTestConfig) {
+    SingleInputAndOutput<TreeNode, TreeNode> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    TreeNode result = singleMethodTestConfig.implementationToTest().invertTree(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

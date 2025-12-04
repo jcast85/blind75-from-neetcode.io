@@ -25,8 +25,8 @@ public class MaximumDepthOfBinaryTreeTest {
       .build()
   );
 
-  static Stream<TestConfig<MaximumDepthOfBinaryTree>> testConfigs() {
-    Stream.Builder<TestConfig<MaximumDepthOfBinaryTree>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<MaximumDepthOfBinaryTree>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<MaximumDepthOfBinaryTree>> streamBuilder = Stream.builder();
     for (MaximumDepthOfBinaryTree maximumDepthOfBinaryTree : maximumDepthOfBinaryTreeList) {
       for (InputAndOutput maximumDepthOfBinaryTreeInputAndOutput : maximumDepthOfBinaryTreeInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<MaximumDepthOfBinaryTree>()
@@ -40,9 +40,9 @@ public class MaximumDepthOfBinaryTreeTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<MaximumDepthOfBinaryTree> testConfig) {
-    SingleInputAndOutput<TreeNode, Integer> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    int result = testConfig.implementationToTest().maxDepth(inputAndOutput.input());
+  void testExample(SingleMethodTestConfig<MaximumDepthOfBinaryTree> singleMethodTestConfig) {
+    SingleInputAndOutput<TreeNode, Integer> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    int result = singleMethodTestConfig.implementationToTest().maxDepth(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

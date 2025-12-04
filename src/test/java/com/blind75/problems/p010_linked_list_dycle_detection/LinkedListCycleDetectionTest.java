@@ -32,8 +32,8 @@ public class LinkedListCycleDetectionTest {
     );
   }
 
-  static Stream<TestConfig<LinkedListCycleDetection>> testConfigs() {
-    Stream.Builder<TestConfig<LinkedListCycleDetection>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<LinkedListCycleDetection>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<LinkedListCycleDetection>> streamBuilder = Stream.builder();
     for (LinkedListCycleDetection linkedListCycleDetection : linkedListCycleDetectionList) {
       for (InputAndOutput linkedListCycleDetectionInputAndOutput : linkedListCycleDetectionInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<LinkedListCycleDetection>()
@@ -47,9 +47,9 @@ public class LinkedListCycleDetectionTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<LinkedListCycleDetection> testConfig) {
-    SingleInputAndOutput<ListNode, Boolean> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.implementationToTest().hasCycle(inputAndOutput.input());
+  void testExample(SingleMethodTestConfig<LinkedListCycleDetection> singleMethodTestConfig) {
+    SingleInputAndOutput<ListNode, Boolean> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    boolean result = singleMethodTestConfig.implementationToTest().hasCycle(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

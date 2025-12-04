@@ -25,8 +25,8 @@ class ContainsDuplicateTest {
       .build()
   );
 
-  static Stream<TestConfig<ContainsDuplicate>> testConfigs() {
-    Stream.Builder<TestConfig<ContainsDuplicate>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<ContainsDuplicate>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<ContainsDuplicate>> streamBuilder = Stream.builder();
     for (ContainsDuplicate containsDuplicate : containsDuplicateList) {
       for (InputAndOutput inputAndOutput : containsDuplicateInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<ContainsDuplicate>()
@@ -40,9 +40,9 @@ class ContainsDuplicateTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<ContainsDuplicate> testConfig) {
-    SingleInputAndOutput<int[], Boolean> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.implementationToTest().hasDuplicate(inputAndOutput.input());
+  void testExample(SingleMethodTestConfig<ContainsDuplicate> singleMethodTestConfig) {
+    SingleInputAndOutput<int[], Boolean> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    boolean result = singleMethodTestConfig.implementationToTest().hasDuplicate(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

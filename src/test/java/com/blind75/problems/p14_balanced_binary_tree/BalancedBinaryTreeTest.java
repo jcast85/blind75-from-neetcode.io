@@ -41,8 +41,8 @@ public class BalancedBinaryTreeTest {
       .build()
   );
 
-  static Stream<TestConfig<BalancedBinaryTree>> testConfigs() {
-    Stream.Builder<TestConfig<BalancedBinaryTree>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<BalancedBinaryTree>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<BalancedBinaryTree>> streamBuilder = Stream.builder();
     for (BalancedBinaryTree balancedBinaryTree : balancedBinaryTreeList) {
       for (InputAndOutput balancedBinaryTreeInputAndOutput : balancedBinaryTreeInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<BalancedBinaryTree>()
@@ -56,9 +56,9 @@ public class BalancedBinaryTreeTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<BalancedBinaryTree> testConfig) {
-    SingleInputAndOutput<TreeNode, Boolean> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.implementationToTest().isBalanced(inputAndOutput.input());
+  void testExample(SingleMethodTestConfig<BalancedBinaryTree> singleMethodTestConfig) {
+    SingleInputAndOutput<TreeNode, Boolean> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    boolean result = singleMethodTestConfig.implementationToTest().isBalanced(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

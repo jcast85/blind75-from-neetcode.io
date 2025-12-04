@@ -37,8 +37,8 @@ public class SubtreeOfAnotherTreeTest {
       .build()
   );
 
-  static Stream<TestConfig<SubtreeOfAnotherTree>> testConfigs() {
-    Stream.Builder<TestConfig<SubtreeOfAnotherTree>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<SubtreeOfAnotherTree>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<SubtreeOfAnotherTree>> streamBuilder = Stream.builder();
     for (SubtreeOfAnotherTree subtreeOfAnotherTree : subtreeOfAnotherTreeList) {
       for (InputAndOutput subtreeOfAnotherTreeInputAndOutput : subtreeOfAnotherTreeInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<SubtreeOfAnotherTree>()
@@ -52,9 +52,9 @@ public class SubtreeOfAnotherTreeTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<SubtreeOfAnotherTree> testConfig) {
-    DoubleInputAndOutput<TreeNode, TreeNode, Boolean> inputAndOutput = (DoubleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.implementationToTest().isSubtree(inputAndOutput.input1(), inputAndOutput.input2());
+  void testExample(SingleMethodTestConfig<SubtreeOfAnotherTree> singleMethodTestConfig) {
+    DoubleInputAndOutput<TreeNode, TreeNode, Boolean> inputAndOutput = (DoubleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    boolean result = singleMethodTestConfig.implementationToTest().isSubtree(inputAndOutput.input1(), inputAndOutput.input2());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

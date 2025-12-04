@@ -42,8 +42,8 @@ class BestTimeToBuyAndSellStockTest {
       .build()
   );
 
-  static Stream<TestConfig<BestTimeToBuyAndSellStock>> testConfigs() {
-    Stream.Builder<TestConfig<BestTimeToBuyAndSellStock>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<BestTimeToBuyAndSellStock>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<BestTimeToBuyAndSellStock>> streamBuilder = Stream.builder();
     for (BestTimeToBuyAndSellStock bestTimeToBuyAndSellStock : bestTimeToBuyAndSellStockList) {
       for (InputAndOutput bestTimeToBuyAndSellStockInputAndOutput : bestTimeToBuyAndSellStockInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<BestTimeToBuyAndSellStock>()
@@ -57,9 +57,9 @@ class BestTimeToBuyAndSellStockTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<BestTimeToBuyAndSellStock> testConfig) {
-    SingleInputAndOutput<int[], Integer> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    int result = testConfig.implementationToTest().maxProfit(inputAndOutput.input());
+  void testExample(SingleMethodTestConfig<BestTimeToBuyAndSellStock> singleMethodTestConfig) {
+    SingleInputAndOutput<int[], Integer> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    int result = singleMethodTestConfig.implementationToTest().maxProfit(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

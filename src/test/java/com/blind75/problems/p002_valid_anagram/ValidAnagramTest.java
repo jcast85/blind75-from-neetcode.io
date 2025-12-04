@@ -27,8 +27,8 @@ class ValidAnagramTest {
       .build()
   );
 
-  static Stream<TestConfig<ValidAnagram>> testConfigs() {
-    Stream.Builder<TestConfig<ValidAnagram>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<ValidAnagram>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<ValidAnagram>> streamBuilder = Stream.builder();
     for (ValidAnagram validAnagram : validAnagramList) {
       for (InputAndOutput validAnagramInputAndOutput : validAnagramInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<ValidAnagram>()
@@ -42,9 +42,9 @@ class ValidAnagramTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<ValidAnagram> testConfig) {
-    DoubleInputAndOutput<String, String, Boolean> inputAndOutput = (DoubleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.implementationToTest().isAnagram(inputAndOutput.input1(), inputAndOutput.input2());
+  void testExample(SingleMethodTestConfig<ValidAnagram> singleMethodTestConfig) {
+    DoubleInputAndOutput<String, String, Boolean> inputAndOutput = (DoubleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    boolean result = singleMethodTestConfig.implementationToTest().isAnagram(inputAndOutput.input1(), inputAndOutput.input2());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

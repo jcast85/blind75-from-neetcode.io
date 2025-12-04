@@ -31,8 +31,8 @@ class TwoSumTest {
       .output(new int[] {0, 1})
       .build());
 
-  static Stream<TestConfig<TwoSum>> testConfigs() {
-    Stream.Builder<TestConfig<TwoSum>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<TwoSum>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<TwoSum>> streamBuilder = Stream.builder();
     for (TwoSum twoSum : twoSumList) {
       for (InputAndOutput twoSumInputAndOutput : twoSumInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<TwoSum>()
@@ -46,9 +46,9 @@ class TwoSumTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<TwoSum> testConfig) {
-    DoubleInputAndOutput<int[], Integer, int[]> inputAndOutput = (DoubleInputAndOutput) testConfig.inputAndOutput();
-    int[] result = testConfig.implementationToTest().twoSum(inputAndOutput.input1(), inputAndOutput.input2());
+  void testExample(SingleMethodTestConfig<TwoSum> singleMethodTestConfig) {
+    DoubleInputAndOutput<int[], Integer, int[]> inputAndOutput = (DoubleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    int[] result = singleMethodTestConfig.implementationToTest().twoSum(inputAndOutput.input1(), inputAndOutput.input2());
     Assertions.assertArrayEquals(inputAndOutput.output(), result);
   }
 }

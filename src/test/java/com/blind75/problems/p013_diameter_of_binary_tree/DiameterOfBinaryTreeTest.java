@@ -46,8 +46,8 @@ public class DiameterOfBinaryTreeTest {
       .build()
   );
 
-  static Stream<TestConfig<DiameterOfBinaryTree>> testConfigs() {
-    Stream.Builder<TestConfig<DiameterOfBinaryTree>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<DiameterOfBinaryTree>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<DiameterOfBinaryTree>> streamBuilder = Stream.builder();
     for (DiameterOfBinaryTree diameterOfBinaryTree : diameterOfBinaryTreeList) {
       for (InputAndOutput diameterOfBinaryTreeInputAndOutput : diameterOfBinaryTreeInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<DiameterOfBinaryTree>()
@@ -61,9 +61,9 @@ public class DiameterOfBinaryTreeTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<DiameterOfBinaryTree> testConfig) {
-    SingleInputAndOutput<TreeNode, Integer> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    int result = testConfig.implementationToTest().diameterOfBinaryTree(inputAndOutput.input());
+  void testExample(SingleMethodTestConfig<DiameterOfBinaryTree> singleMethodTestConfig) {
+    SingleInputAndOutput<TreeNode, Integer> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    int result = singleMethodTestConfig.implementationToTest().diameterOfBinaryTree(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

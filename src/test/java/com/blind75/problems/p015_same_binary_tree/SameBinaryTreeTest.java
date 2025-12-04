@@ -37,8 +37,8 @@ public class SameBinaryTreeTest {
       .build()
   );
 
-  static Stream<TestConfig<SameBinaryTree>> testConfigs() {
-    Stream.Builder<TestConfig<SameBinaryTree>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<SameBinaryTree>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<SameBinaryTree>> streamBuilder = Stream.builder();
     for (SameBinaryTree sameBinaryTree : sameBinaryTreeList) {
       for (InputAndOutput sameBinaryTreeInputAndOutput : sameBinaryTreeInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<SameBinaryTree>()
@@ -52,9 +52,9 @@ public class SameBinaryTreeTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<SameBinaryTree> testConfig) {
-    DoubleInputAndOutput<TreeNode, TreeNode, Boolean> inputAndOutput = (DoubleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.implementationToTest().isSameTree(inputAndOutput.input1(), inputAndOutput.input2());
+  void testExample(SingleMethodTestConfig<SameBinaryTree> singleMethodTestConfig) {
+    DoubleInputAndOutput<TreeNode, TreeNode, Boolean> inputAndOutput = (DoubleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    boolean result = singleMethodTestConfig.implementationToTest().isSameTree(inputAndOutput.input1(), inputAndOutput.input2());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

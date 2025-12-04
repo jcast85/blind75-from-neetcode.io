@@ -32,8 +32,8 @@ public class MergeTwoSortedLinkedListsTest {
       .build()
   );
 
-  static Stream<TestConfig<MergeTwoSortedLinkedLists>> testConfigs() {
-    Stream.Builder<TestConfig<MergeTwoSortedLinkedLists>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<MergeTwoSortedLinkedLists>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<MergeTwoSortedLinkedLists>> streamBuilder = Stream.builder();
     for (MergeTwoSortedLinkedLists mergeTwoSortedLinkedLists : mergeTwoSortedLinkedListsList) {
       for (InputAndOutput mergeTwoSortedLinkedListsInputAndOutput : mergeTwoSortedLinkedListsInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<MergeTwoSortedLinkedLists>()
@@ -47,9 +47,9 @@ public class MergeTwoSortedLinkedListsTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<MergeTwoSortedLinkedLists> testConfig) {
-    DoubleInputAndOutput<ListNode, ListNode, ListNode> inputAndOutput = (DoubleInputAndOutput) testConfig.inputAndOutput();
-    ListNode result = testConfig.implementationToTest().mergeTwoLists(inputAndOutput.input1(), inputAndOutput.input2());
+  void testExample(SingleMethodTestConfig<MergeTwoSortedLinkedLists> singleMethodTestConfig) {
+    DoubleInputAndOutput<ListNode, ListNode, ListNode> inputAndOutput = (DoubleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    ListNode result = singleMethodTestConfig.implementationToTest().mergeTwoLists(inputAndOutput.input1(), inputAndOutput.input2());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

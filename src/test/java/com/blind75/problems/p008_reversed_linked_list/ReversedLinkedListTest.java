@@ -29,8 +29,8 @@ public class ReversedLinkedListTest {
       .build()
   );
 
-  static Stream<TestConfig<ReversedLinkedList>> testConfigs() {
-    Stream.Builder<TestConfig<ReversedLinkedList>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<ReversedLinkedList>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<ReversedLinkedList>> streamBuilder = Stream.builder();
     for (ReversedLinkedList reversedLinkedList : reversedLinkedListList) {
       for (InputAndOutput reversedLinkedListInputAndOutput : reversedLinkedListInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<ReversedLinkedList>()
@@ -44,9 +44,9 @@ public class ReversedLinkedListTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<ReversedLinkedList> testConfig) {
-    SingleInputAndOutput<ListNode, ListNode> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    ListNode result = testConfig.implementationToTest().reverseList(inputAndOutput.input());
+  void testExample(SingleMethodTestConfig<ReversedLinkedList> singleMethodTestConfig) {
+    SingleInputAndOutput<ListNode, ListNode> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    ListNode result = singleMethodTestConfig.implementationToTest().reverseList(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

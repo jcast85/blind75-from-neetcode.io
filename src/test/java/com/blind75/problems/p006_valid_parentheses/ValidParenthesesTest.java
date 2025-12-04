@@ -33,8 +33,8 @@ public class ValidParenthesesTest {
       .build()
   );
 
-  static Stream<TestConfig<ValidParentheses>> testConfigs() {
-    Stream.Builder<TestConfig<ValidParentheses>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<ValidParentheses>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<ValidParentheses>> streamBuilder = Stream.builder();
     for (ValidParentheses validParentheses : validParenthesesList) {
       for (InputAndOutput validParenthesesInputAndOutput : validParenthesesInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<ValidParentheses>()
@@ -48,9 +48,9 @@ public class ValidParenthesesTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<ValidParentheses> testConfig) {
-    SingleInputAndOutput<String, Boolean> inputAndOutput = (SingleInputAndOutput) testConfig.inputAndOutput();
-    boolean result = testConfig.implementationToTest().isValid(inputAndOutput.input());
+  void testExample(SingleMethodTestConfig<ValidParentheses> singleMethodTestConfig) {
+    SingleInputAndOutput<String, Boolean> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    boolean result = singleMethodTestConfig.implementationToTest().isValid(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }

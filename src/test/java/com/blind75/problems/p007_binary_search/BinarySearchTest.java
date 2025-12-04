@@ -35,8 +35,8 @@ public class BinarySearchTest {
       .build()
   );
 
-  static Stream<TestConfig<BinarySearch>> testConfigs() {
-    Stream.Builder<TestConfig<BinarySearch>> streamBuilder = Stream.builder();
+  static Stream<SingleMethodTestConfig<BinarySearch>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<BinarySearch>> streamBuilder = Stream.builder();
     for (BinarySearch binarySearch : binarySearchList) {
       for (InputAndOutput binarySearchInputAndOutput : binarySearchInputAndOutputList) {
         streamBuilder.add(new TestConfigBuilder<BinarySearch>()
@@ -50,9 +50,9 @@ public class BinarySearchTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(TestConfig<BinarySearch> testConfig) {
-    DoubleInputAndOutput<int[], Integer, Integer> inputAndOutput = (DoubleInputAndOutput) testConfig.inputAndOutput();
-    int result = testConfig.implementationToTest().search(inputAndOutput.input1(), inputAndOutput.input2());
+  void testExample(SingleMethodTestConfig<BinarySearch> singleMethodTestConfig) {
+    DoubleInputAndOutput<int[], Integer, Integer> inputAndOutput = (DoubleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    int result = singleMethodTestConfig.implementationToTest().search(inputAndOutput.input1(), inputAndOutput.input2());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }
