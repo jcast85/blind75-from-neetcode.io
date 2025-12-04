@@ -14,7 +14,8 @@ import java.util.stream.Stream;
 public class KthLargestElementInAStreamTest {
 
   private static final List<Class<?>> kthLargestList = List.of(
-    KthLargestFirstTry.class
+    KthLargestFirstTry.class,
+    KthLargestEfficient.class
   );
 
   private static final List<InputAndOutput> kthLargestConstructorInputAndOutputList = List.of(
