@@ -14,7 +14,8 @@ public class KthLargestElementInAStreamTest {
 
   private static final List<Class<?>> kthLargestList = List.of(
     KthLargestArray.class,
-    KthLargestList.class
+    KthLargestList.class,
+    KthLargestPriorityQueue.class
   );
 
   private static final List<InputAndOutput> kthLargestConstructorInputAndOutputList = List.of(
