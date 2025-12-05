@@ -1,25 +1,42 @@
 package com.blind75.problems.p18_last_stone_weight;
 
-import java.util.TreeSet;
-import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.IntStream;
 
 public class LastStoneWeightTreeSet implements LastStoneWeight {
   @Override
   public int lastStoneWeight(int[] stones) {
-    TreeSet<Integer> stoneSet = IntStream.of(stones)
-      .boxed()
-      .collect(Collectors.toCollection(TreeSet::new));
-    while (stoneSet.size() > 1) {
-      int first = stoneSet.last();
-      stoneSet.remove(first);
-      int second = stoneSet.last();
-      stoneSet.remove(second);
+    TreeMap<Integer, Integer> stoneTreeMap = new TreeMap<>();
+    IntStream.of(stones).forEach(stone -> stoneTreeMap.put(stone, stoneTreeMap.getOrDefault(stone, 0) + 1));
+    int stoneCount = stones.length;
+    while (stoneCount > 1) {
+      Map.Entry<Integer, Integer> lastEntry;
+
+      lastEntry = stoneTreeMap.lastEntry();
+      int first = lastEntry.getKey();
+      if(lastEntry.getValue() == 1) {
+        stoneTreeMap.pollLastEntry();
+      } else {
+        stoneTreeMap.put(first, lastEntry.getValue() - 1);
+      }
+      stoneCount--;
+
+      lastEntry = stoneTreeMap.lastEntry();
+      int second = lastEntry.getKey();
+      if(lastEntry.getValue() == 1) {
+        stoneTreeMap.pollLastEntry();
+      } else {
+        stoneTreeMap.put(second, lastEntry.getValue() - 1);
+      }
+      stoneCount--;
+
       int diff = first - second;
       if (diff > 0) {
-        stoneSet.add(diff);
+        stoneTreeMap.put(diff, stoneTreeMap.getOrDefault(diff, 0) + 1);
+        stoneCount++;
       }
     }
-    return stoneSet.isEmpty() ? 0 : stoneSet.first();
+    return stoneTreeMap.isEmpty() ? 0 : stoneTreeMap.firstKey();
   }
 }

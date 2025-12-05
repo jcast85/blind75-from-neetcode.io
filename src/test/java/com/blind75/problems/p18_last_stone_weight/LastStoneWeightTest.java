@@ -22,6 +22,10 @@ public class LastStoneWeightTest {
     new SingleInputAndOutputBuilder<>()
       .input(new int[] {1,2})
       .output(1)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {2,2})
+      .output(0)
       .build()
   );
 
