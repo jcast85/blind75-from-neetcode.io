@@ -11,13 +11,15 @@ public class LastStoneWeightTreeSet implements LastStoneWeight {
       .boxed()
       .collect(Collectors.toCollection(TreeSet::new));
     while (stoneSet.size() > 1) {
-      int first = stoneSet.removeLast();
-      int second = stoneSet.removeLast();
+      int first = stoneSet.last();
+      stoneSet.remove(first);
+      int second = stoneSet.last();
+      stoneSet.remove(second);
       int diff = first - second;
       if (diff > 0) {
         stoneSet.add(diff);
       }
     }
-    return stoneSet.isEmpty() ? 0 : stoneSet.getFirst();
+    return stoneSet.isEmpty() ? 0 : stoneSet.first();
   }
 }
