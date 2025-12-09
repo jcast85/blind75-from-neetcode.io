@@ -1,8 +1,8 @@
 package com.blind75.problems.p19_climbing_stairs;
 
-public class BinomialCoefficientFirstTry implements ClimbingStairs {
+public class BinomialCoefficientFirstTry implements BinomialCoefficient {
   @Override
-  public int climbStairs(int n) {
+  public int binomialCoefficient(int n) {
     int count = 1;
     System.out.print(count);
     for(int k = 0; k < n; k++) {

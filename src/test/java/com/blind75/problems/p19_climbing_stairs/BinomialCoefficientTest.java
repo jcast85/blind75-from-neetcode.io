@@ -10,11 +10,11 @@ import java.util.stream.Stream;
 
 public class BinomialCoefficientTest {
 
-  private static final List<ClimbingStairs> climbingStairsList = List.of(
-    new ClimbingStairsFirstTry()
+  private static final List<BinomialCoefficient> binomialCoefficientList = List.of(
+    new BinomialCoefficientFirstTry()
   );
 
-  private static final List<InputAndOutput> climbingStairsInputAndOutputList = List.of(
+  private static final List<InputAndOutput> binomialCoefficientInputAndOutputList = List.of(
     new SingleInputAndOutputBuilder<>()
       .input(0)
       .output(1)
@@ -58,16 +58,20 @@ public class BinomialCoefficientTest {
     new SingleInputAndOutputBuilder<>()
       .input(10)
       .output(1+10+45+120+210+252+210+120+45+10+1)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(30)
+      .output(1+30+435+4060+27405+142506+593775+2035800+5852925+14307150+30045015+54627300+86493225+119759850+145422675+155117520+145422675+119759850+86493225+54627300+30045015+14307150+5852925+2035800+593775+142506+27405+4060+435+30+1)
       .build()
   );
 
-  static Stream<SingleMethodTestConfig<ClimbingStairs>> testConfigs() {
-    Stream.Builder<SingleMethodTestConfig<ClimbingStairs>> streamBuilder = Stream.builder();
-    for (ClimbingStairs climbingStairs : climbingStairsList) {
-      for (InputAndOutput climbingStairsInputAndOutput : climbingStairsInputAndOutputList) {
-        streamBuilder.add(new SingleMethodTestConfigBuilder<ClimbingStairs>()
-          .implementationToTest(climbingStairs)
-          .inputAndOutput(climbingStairsInputAndOutput)
+  static Stream<SingleMethodTestConfig<BinomialCoefficient>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<BinomialCoefficient>> streamBuilder = Stream.builder();
+    for (BinomialCoefficient binomialCoefficient : binomialCoefficientList) {
+      for (InputAndOutput binomialCoefficientInputAndOutput : binomialCoefficientInputAndOutputList) {
+        streamBuilder.add(new SingleMethodTestConfigBuilder<BinomialCoefficient>()
+          .implementationToTest(binomialCoefficient)
+          .inputAndOutput(binomialCoefficientInputAndOutput)
           .build());
       }
     }
@@ -76,9 +80,9 @@ public class BinomialCoefficientTest {
 
   @ParameterizedTest
   @MethodSource("testConfigs")
-  void testExample(SingleMethodTestConfig<ClimbingStairs> singleMethodTestConfig) {
+  void testExample(SingleMethodTestConfig<BinomialCoefficient> singleMethodTestConfig) {
     SingleInputAndOutput<Integer, Integer> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
-    int result = singleMethodTestConfig.implementationToTest().climbStairs(inputAndOutput.input());
+    int result = singleMethodTestConfig.implementationToTest().binomialCoefficient(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }
