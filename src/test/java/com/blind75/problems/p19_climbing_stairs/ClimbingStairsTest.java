@@ -13,7 +13,8 @@ public class ClimbingStairsTest {
   private static final List<ClimbingStairs> climbingStairsList = List.of(
     new ClimbingStairsManualReasoning(),
     new ClimbingStairsFromFormula(),
-    new ClimbingStairsRecursive()
+    new ClimbingStairsRecursive(),
+    new ClimbingStairsRecursiveWithCache()
   );
 
   private static final List<InputAndOutput> climbingStairsInputAndOutputList = List.of(
