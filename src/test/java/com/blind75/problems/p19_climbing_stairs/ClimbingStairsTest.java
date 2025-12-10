@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class ClimbingStairsTest {
 
   private static final List<ClimbingStairs> climbingStairsList = List.of(
-    new ClimbingStairsFirstTry()
+    new ClimbingStairsManualReasoning()
   );
 
   private static final List<InputAndOutput> climbingStairsInputAndOutputList = List.of(

@@ -2,7 +2,7 @@ package com.blind75.problems.p19_climbing_stairs;
 
 import java.math.BigInteger;
 
-public class ClimbingStairsFirstTry implements ClimbingStairs {
+public class ClimbingStairsManualReasoning implements ClimbingStairs {
   @Override
   public int climbStairs(int n) {
     int count = 1;
