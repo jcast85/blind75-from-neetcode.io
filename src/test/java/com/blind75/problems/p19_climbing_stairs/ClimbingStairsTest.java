@@ -58,6 +58,10 @@ public class ClimbingStairsTest {
     new SingleInputAndOutputBuilder<>()
       .input(10)
       .output(1+9+28+35+15+1)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(30)
+      .output(1346269)
       .build()
   );
 
