@@ -1,5 +1,7 @@
 package com.blind75.problems.p19_climbing_stairs;
 
+import java.math.BigInteger;
+
 public class ClimbingStairsFirstTry implements ClimbingStairs {
   @Override
   public int climbStairs(int n) {
@@ -8,25 +10,21 @@ public class ClimbingStairsFirstTry implements ClimbingStairs {
     int changeFactorFromBernoulli = 0;
     for(int k = 0; k < n-changeFactorFromBernoulli; k++) {
       changeFactorFromBernoulli = changeFactorFromBernoulli + 1;
-      java.math.BigInteger currentValue = java.math.BigInteger.ONE;
+      BigInteger currentValue = BigInteger.ONE;
       boolean isValueToAdd = false;
       for(int j = 0; j <= k; j++) {
         if(n-j-changeFactorFromBernoulli>0) {
-          currentValue = currentValue.multiply(java.math.BigInteger.valueOf(n-j-changeFactorFromBernoulli));
+          currentValue = currentValue.multiply(BigInteger.valueOf(n-j-changeFactorFromBernoulli));
           isValueToAdd = true;
         }
       }
       if(isValueToAdd) {
-        java.math.BigInteger value = currentValue.divide(getFattoriale(k+1));
+        BigInteger value = currentValue.divide(ClimbingStairsCommonStaticMethods.getFattoriale(k+1));
         System.out.print(" + " + value);
         count += value.intValue();
       }
     }
     System.out.println(" = " + count);
     return count;
-  }
-
-  static java.math.BigInteger getFattoriale(int n) {
-    return n == 0 ? java.math.BigInteger.ONE : java.math.BigInteger.valueOf(n).multiply(getFattoriale(n-1));
   }
 }
