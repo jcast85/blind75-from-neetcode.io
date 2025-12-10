@@ -11,7 +11,8 @@ import java.util.stream.Stream;
 public class BinomialCoefficientTest {
 
   private static final List<BinomialCoefficient> binomialCoefficientList = List.of(
-    new BinomialCoefficientFirstTry()
+    new BinomialCoefficientManualReasoning(),
+    new BinomialCoefficientFromFormula()
   );
 
   private static final List<InputAndOutput> binomialCoefficientInputAndOutputList = List.of(

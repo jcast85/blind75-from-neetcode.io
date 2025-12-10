@@ -1,6 +1,6 @@
 package com.blind75.problems.p19_climbing_stairs;
 
-public class BinomialCoefficientFirstTry implements BinomialCoefficient {
+public class BinomialCoefficientManualReasoning implements BinomialCoefficient {
   @Override
   public int binomialCoefficient(int n) {
     int count = 1;
@@ -27,4 +27,5 @@ public class BinomialCoefficientFirstTry implements BinomialCoefficient {
   private int getFattoriale(int n) {
     return n == 0 ? 1 : n * getFattoriale(n-1);
   }
+
 }
