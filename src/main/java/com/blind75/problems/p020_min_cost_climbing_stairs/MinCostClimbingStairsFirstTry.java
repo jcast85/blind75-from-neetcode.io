@@ -73,15 +73,26 @@ public class MinCostClimbingStairsFirstTry implements MinCostClimbingStairs {
     }
     secondToLastIndexArray = new java.util.ArrayList<>(cache.get(key2));
 
-    boolean isFirstToUse = secondToLastIndexArray.get(0) != 0;
-    boolean isLastToUse = firstToSecondLastIndexArray.get(firstToSecondLastIndexArray.size()-1) != cost.length - 2;
+    boolean isSecondToUse = secondToLastIndexArray.get(0) != 0
+      && cost[0]>secondToLastValueArray[0]
+      && secondToLastValueArray.length > 2;
+    boolean isFirstToUse = !isSecondToUse && secondToLastIndexArray.get(0) != 0;
+    boolean isSecondLastToUse = firstToSecondLastIndexArray.get(firstToSecondLastIndexArray.size()-1) != cost.length - 2
+      && firstToSecondLastValueArray[firstToSecondLastValueArray.length-1] < cost[cost.length-1]
+      && firstToSecondLastValueArray.length > 2;
+    boolean isLastToUse = !isSecondLastToUse && firstToSecondLastIndexArray.get(firstToSecondLastIndexArray.size()-1) != cost.length - 2;
     int firstToSecondLastCaseSum = getSumOfIndexedValues(cost, firstToSecondLastIndexArray, 0)
-      + (isLastToUse ? cost[cost.length - 1] : 0);
+      + (isLastToUse ? cost[cost.length - 1] : 0)
+      + (isSecondLastToUse ? cost[cost.length - 2] : 0);
     int secondToLastCaseSum = getSumOfIndexedValues(cost, secondToLastIndexArray, 1)
-      + (isFirstToUse ? cost[0] : 0);
+      + (isFirstToUse ? cost[0] : 0)
+      + (isSecondToUse ? cost[1] : 0);
     if(firstToSecondLastCaseSum <= secondToLastCaseSum) {
       if(isLastToUse) {
         firstToSecondLastIndexArray.add(cost.length - 1);
+      }
+      if(isSecondLastToUse) {
+        firstToSecondLastIndexArray.add(cost.length - 2);
       }
       return new java.util.ArrayList<>(firstToSecondLastIndexArray);
     } else {
@@ -90,6 +101,9 @@ public class MinCostClimbingStairsFirstTry implements MinCostClimbingStairs {
       }
       if(isFirstToUse) {
         secondToLastIndexArray.add(0, 0);
+      }
+      if(isSecondToUse) {
+        secondToLastIndexArray.add(0, 1);
       }
       return new java.util.ArrayList<>(secondToLastIndexArray);
     }

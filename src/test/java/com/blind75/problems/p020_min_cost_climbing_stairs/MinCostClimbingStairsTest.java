@@ -26,6 +26,26 @@ public class MinCostClimbingStairsTest {
     new SingleInputAndOutputBuilder<>()
       .input(new int[] {2,1,2,1,1})
       .output(2)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {1,100,1})
+      .output(2)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {1,1,100,1})
+      .output(2)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {1,1,1,100,1,1})
+      .output(3)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {100,1,1,1,100,1,1,100})
+      .output(4)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {1,100,1,1,1,100,1,1,100,1})
+      .output(6)
       .build()
   );
 
