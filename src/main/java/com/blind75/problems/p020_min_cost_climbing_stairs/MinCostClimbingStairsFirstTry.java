@@ -1,25 +1,30 @@
 package com.blind75.problems.p020_min_cost_climbing_stairs;
 
 public class MinCostClimbingStairsFirstTry implements MinCostClimbingStairs {
-  private record IntArrayKey(int[] a) {
+  private static final class IntArrayKey {
+    private final int[] a;
+
+    private IntArrayKey(int[] a) {
+      this.a = a;
+    }
 
     @Override
-      public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof IntArrayKey(int[] a1))) return false;
-        return java.util.Arrays.equals(this.a, a1);
-      }
-
-      @Override
-      public int hashCode() {
-        return java.util.Arrays.hashCode(a);
-      }
-
-      @Override
-      public String toString() {
-        return java.util.Arrays.toString(a);
-      }
+    public boolean equals(Object o) {
+      if (this == o) return true;
+      if (!(o instanceof IntArrayKey other)) return false;
+      return java.util.Arrays.equals(this.a, other.a);
     }
+
+    @Override
+    public int hashCode() {
+      return java.util.Arrays.hashCode(a);
+    }
+
+    @Override
+    public String toString() {
+      return java.util.Arrays.toString(a);
+    }
+  }
 
   @Override
   public int minCostClimbingStairs(int[] cost) {
@@ -68,8 +73,8 @@ public class MinCostClimbingStairsFirstTry implements MinCostClimbingStairs {
     }
     secondToLastIndexArray = new java.util.ArrayList<>(cache.get(key2));
 
-    boolean isFirstToUse = secondToLastIndexArray.getFirst() != 0;
-    boolean isLastToUse = firstToSecondLastIndexArray.getLast() != cost.length - 2;
+    boolean isFirstToUse = secondToLastIndexArray.get(0) != 0;
+    boolean isLastToUse = firstToSecondLastIndexArray.get(firstToSecondLastIndexArray.size()-1) != cost.length - 2;
     int firstToSecondLastCaseSum = getSumOfIndexedValues(cost, firstToSecondLastIndexArray, 0)
       + (isLastToUse ? cost[cost.length - 1] : 0);
     int secondToLastCaseSum = getSumOfIndexedValues(cost, secondToLastIndexArray, 1)
@@ -84,7 +89,7 @@ public class MinCostClimbingStairsFirstTry implements MinCostClimbingStairs {
         secondToLastIndexArray.set(i, secondToLastIndexArray.get(i) + 1);
       }
       if(isFirstToUse) {
-        secondToLastIndexArray.addFirst(0);
+        secondToLastIndexArray.add(0, 0);
       }
       return new java.util.ArrayList<>(secondToLastIndexArray);
     }
