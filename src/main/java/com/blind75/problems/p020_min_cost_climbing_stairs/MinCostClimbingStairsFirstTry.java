@@ -62,22 +62,18 @@ public class MinCostClimbingStairsFirstTry implements MinCostClimbingStairs {
     IntArrayKey key2 = new IntArrayKey(secondToLastValueArray);
 
     List<Integer> firstToSecondLastIndexArray;
-    if(cache.containsKey(key1)) {
-      firstToSecondLastIndexArray = new ArrayList<>(cache.get(key1));
-    } else {
+    if (!cache.containsKey(key1)) {
       firstToSecondLastIndexArray = minCostClimbingStairs(firstToSecondLastValueArray, cache);
       cache.put(key1, firstToSecondLastIndexArray);
-      firstToSecondLastIndexArray = new ArrayList<>(cache.get(key1));
     }
+    firstToSecondLastIndexArray = new ArrayList<>(cache.get(key1));
 
     List<Integer> secondToLastIndexArray;
-    if(cache.containsKey(key2)) {
-      secondToLastIndexArray = new ArrayList<>(cache.get(key2));
-    } else {
+    if (!cache.containsKey(key2)) {
       secondToLastIndexArray = minCostClimbingStairs(secondToLastValueArray, cache);
       cache.put(key2, secondToLastIndexArray);
-      secondToLastIndexArray = new ArrayList<>(cache.get(key2));
     }
+    secondToLastIndexArray = new ArrayList<>(cache.get(key2));
 
     boolean isFirstToUse = secondToLastIndexArray.getFirst() != 0;
     boolean isLastToUse = firstToSecondLastIndexArray.getLast() != cost.length - 2;
