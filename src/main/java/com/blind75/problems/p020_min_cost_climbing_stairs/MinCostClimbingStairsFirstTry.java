@@ -3,9 +3,6 @@ package com.blind75.problems.p020_min_cost_climbing_stairs;
 import java.util.*;
 
 public class MinCostClimbingStairsFirstTry implements MinCostClimbingStairs {
-  private static int count = 0;
-
-
   private record IntArrayKey(int[] a) {
 
     @Override
@@ -40,8 +37,6 @@ public class MinCostClimbingStairsFirstTry implements MinCostClimbingStairs {
   }
 
   private List<Integer> minCostClimbingStairs(int[] cost, Map<IntArrayKey, List<Integer>> cache) {
-    count++;
-    System.out.println(count);
     List<Integer> result = new ArrayList<>();
     if(cost.length == 1) {
       result.add(0);
