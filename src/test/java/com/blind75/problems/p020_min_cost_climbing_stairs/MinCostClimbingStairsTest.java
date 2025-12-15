@@ -11,7 +11,8 @@ import java.util.stream.Stream;
 public class MinCostClimbingStairsTest {
 
   private static final List<MinCostClimbingStairs> minCostClimbingStairsList = List.of(
-    new MinCostClimbingStairsFirstTry()
+    new MinCostClimbingStairsFirstTry(),
+    new MinCostClimbingStairsAvoidingUselessSum()
   );
 
   private static final List<InputAndOutput> minCostClimbingStairsInputAndOutputList = List.of(
