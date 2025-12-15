@@ -1,7 +1,5 @@
 package com.blind75.problems.p020_min_cost_climbing_stairs;
 
-import java.util.*;
-
 public class MinCostClimbingStairsFirstTry implements MinCostClimbingStairs {
   private record IntArrayKey(int[] a) {
 
@@ -9,35 +7,35 @@ public class MinCostClimbingStairsFirstTry implements MinCostClimbingStairs {
       public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof IntArrayKey(int[] a1))) return false;
-        return Arrays.equals(this.a, a1);
+        return java.util.Arrays.equals(this.a, a1);
       }
 
       @Override
       public int hashCode() {
-        return Arrays.hashCode(a);
+        return java.util.Arrays.hashCode(a);
       }
 
       @Override
       public String toString() {
-        return Arrays.toString(a);
+        return java.util.Arrays.toString(a);
       }
     }
 
   @Override
   public int minCostClimbingStairs(int[] cost) {
-    Map<IntArrayKey, List<Integer>> cache = new HashMap<>();
-    List<Integer> steps = minCostClimbingStairs(cost, cache);
+    java.util.Map<IntArrayKey, java.util.List<Integer>> cache = new java.util.HashMap<>();
+    java.util.List<Integer> steps = minCostClimbingStairs(cost, cache);
     return getSumOfIndexedValues(cost, steps, 0);
   }
 
-  private int getSumOfIndexedValues(int[] cost, List<Integer> steps, int offset) {
+  private int getSumOfIndexedValues(int[] cost, java.util.List<Integer> steps, int offset) {
     return steps.stream()
       .map(index -> cost[index + offset])
       .reduce(0, Integer::sum);
   }
 
-  private List<Integer> minCostClimbingStairs(int[] cost, Map<IntArrayKey, List<Integer>> cache) {
-    List<Integer> result = new ArrayList<>();
+  private java.util.List<Integer> minCostClimbingStairs(int[] cost, java.util.Map<IntArrayKey, java.util.List<Integer>> cache) {
+    java.util.List<Integer> result = new java.util.ArrayList<>();
     if(cost.length == 1) {
       result.add(0);
       return result;
@@ -50,25 +48,25 @@ public class MinCostClimbingStairsFirstTry implements MinCostClimbingStairs {
       }
       return result;
     }
-    int[] firstToSecondLastValueArray = Arrays.copyOfRange(cost, 0, cost.length - 1);
-    int[] secondToLastValueArray = Arrays.copyOfRange(cost, 1, cost.length);
+    int[] firstToSecondLastValueArray = java.util.Arrays.copyOfRange(cost, 0, cost.length - 1);
+    int[] secondToLastValueArray = java.util.Arrays.copyOfRange(cost, 1, cost.length);
 
     IntArrayKey key1 = new IntArrayKey(firstToSecondLastValueArray);
     IntArrayKey key2 = new IntArrayKey(secondToLastValueArray);
 
-    List<Integer> firstToSecondLastIndexArray;
+    java.util.List<Integer> firstToSecondLastIndexArray;
     if (!cache.containsKey(key1)) {
       firstToSecondLastIndexArray = minCostClimbingStairs(firstToSecondLastValueArray, cache);
       cache.put(key1, firstToSecondLastIndexArray);
     }
-    firstToSecondLastIndexArray = new ArrayList<>(cache.get(key1));
+    firstToSecondLastIndexArray = new java.util.ArrayList<>(cache.get(key1));
 
-    List<Integer> secondToLastIndexArray;
+    java.util.List<Integer> secondToLastIndexArray;
     if (!cache.containsKey(key2)) {
       secondToLastIndexArray = minCostClimbingStairs(secondToLastValueArray, cache);
       cache.put(key2, secondToLastIndexArray);
     }
-    secondToLastIndexArray = new ArrayList<>(cache.get(key2));
+    secondToLastIndexArray = new java.util.ArrayList<>(cache.get(key2));
 
     boolean isFirstToUse = secondToLastIndexArray.getFirst() != 0;
     boolean isLastToUse = firstToSecondLastIndexArray.getLast() != cost.length - 2;
@@ -80,7 +78,7 @@ public class MinCostClimbingStairsFirstTry implements MinCostClimbingStairs {
       if(isLastToUse) {
         firstToSecondLastIndexArray.add(cost.length - 1);
       }
-      return new ArrayList<>(firstToSecondLastIndexArray);
+      return new java.util.ArrayList<>(firstToSecondLastIndexArray);
     } else {
       for (int i=0; i<secondToLastIndexArray.size(); i++) {
         secondToLastIndexArray.set(i, secondToLastIndexArray.get(i) + 1);
@@ -88,7 +86,7 @@ public class MinCostClimbingStairsFirstTry implements MinCostClimbingStairs {
       if(isFirstToUse) {
         secondToLastIndexArray.addFirst(0);
       }
-      return new ArrayList<>(secondToLastIndexArray);
+      return new java.util.ArrayList<>(secondToLastIndexArray);
     }
   }
 }
