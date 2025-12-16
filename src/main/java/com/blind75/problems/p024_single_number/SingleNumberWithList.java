@@ -1,8 +1,6 @@
 package com.blind75.problems.p024_single_number;
 
-import java.util.Arrays;
-
-public class SingleNumberFirstTry implements SingleNumber {
+public class SingleNumberWithList implements SingleNumber {
   @Override
   public int singleNumber(int[] nums) {
     java.util.List<Integer> list = new java.util.ArrayList<>();

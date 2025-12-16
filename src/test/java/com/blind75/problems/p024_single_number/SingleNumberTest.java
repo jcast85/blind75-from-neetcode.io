@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class SingleNumberTest {
 
   private static final List<SingleNumber> singleNumberList = List.of(
-    new SingleNumberFirstTry()
+    new SingleNumberWithList()
   );
 
   private static final List<InputAndOutput> singleNumberInputAndOutputList = List.of(
