@@ -1,0 +1,48 @@
+package com.blind75.problems.p023_plus_one;
+
+import com.blind75.problems.common.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.List;
+import java.util.stream.Stream;
+
+public class PlusOneTest {
+
+  private static final List<PlusOne> plusOneList = List.of(
+    new PlusOneFirstTry()
+  );
+
+  private static final List<InputAndOutput> plusOneInputAndOutputList = List.of(
+    new SingleInputAndOutputBuilder<>()
+      .input(100)
+      .output(true)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(101)
+      .output(false)
+      .build()
+  );
+
+  static Stream<SingleMethodTestConfig<PlusOne>> testConfigs() {
+    Stream.Builder<SingleMethodTestConfig<PlusOne>> streamBuilder = Stream.builder();
+    for (PlusOne plusOne : plusOneList) {
+      for (InputAndOutput plusOneInputAndOutput : plusOneInputAndOutputList) {
+        streamBuilder.add(new SingleMethodTestConfigBuilder<PlusOne>()
+          .implementationToTest(plusOne)
+          .inputAndOutput(plusOneInputAndOutput)
+          .build());
+      }
+    }
+    return streamBuilder.build();
+  }
+
+  @ParameterizedTest
+  @MethodSource("testConfigs")
+  void testExample(SingleMethodTestConfig<PlusOne> singleMethodTestConfig) {
+    SingleInputAndOutput<Integer, Boolean> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    boolean result = singleMethodTestConfig.implementationToTest().isHappy(inputAndOutput.input());
+    Assertions.assertEquals(inputAndOutput.output(), result);
+  }
+}
