@@ -10,7 +10,6 @@ public class MinCostClimbingStairsAvoidingUselessSumAndCopyOfRange implements Mi
       this.valueSum = valueSum;
     }
 
-
     @Override
     public boolean equals(Object o) {
       if (this == o) return true;
@@ -33,96 +32,69 @@ public class MinCostClimbingStairsAvoidingUselessSumAndCopyOfRange implements Mi
     }
   }
 
-  private static final class IntArrayKey {
-    private final int[] a;
-
-    private IntArrayKey(int[] a) {
-      this.a = a;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-      if (this == o) return true;
-      if (!(o instanceof IntArrayKey other)) return false;
-      return java.util.Arrays.equals(this.a, other.a);
-    }
-
-    @Override
-    public int hashCode() {
-      return java.util.Arrays.hashCode(a);
-    }
-
-    @Override
-    public String toString() {
-      return java.util.Arrays.toString(a);
-    }
-  }
-
   @Override
   public int minCostClimbingStairs(int[] cost) {
-    java.util.Map<IntArrayKey, IndexListAndValueSum> cache = new java.util.HashMap<>();
-    IndexListAndValueSum steps = minCostClimbingStairs(cost, cache);
+    java.util.Map<java.util.List<Integer>, IndexListAndValueSum> cache = new java.util.HashMap<>();
+    java.util.List<Integer> costAsList = java.util.Arrays.stream(cost).boxed().toList();
+    IndexListAndValueSum steps = minCostClimbingStairs(costAsList, cache);
     return steps.valueSum;
   }
 
-  private IndexListAndValueSum minCostClimbingStairs(int[] cost, java.util.Map<IntArrayKey, IndexListAndValueSum> cache) {
+  private IndexListAndValueSum minCostClimbingStairs(java.util.List<Integer> costAsList, java.util.Map<java.util.List<Integer>, IndexListAndValueSum> cache) {
     java.util.List<Integer> result = new java.util.ArrayList<>();
-    if(cost.length == 1) {
+    if(costAsList.size() == 1) {
       result.add(0);
-      return new IndexListAndValueSum(result, cost[0]);
+      return new IndexListAndValueSum(result, costAsList.get(0));
     }
-    if(cost.length == 2) {
-      int min = Math.min(cost[0], cost[1]);
-      if(cost[0] <= cost[1]) {
+    if(costAsList.size() == 2) {
+      int min = Math.min(costAsList.get(0), costAsList.get(1));
+      if(costAsList.get(0) <= costAsList.get(1)) {
         result.add(0);
       } else {
         result.add(1);
       }
       return new IndexListAndValueSum(result, min);
     }
-    int[] firstToSecondLastValueArray = java.util.Arrays.copyOfRange(cost, 0, cost.length - 1);
-    int[] secondToLastValueArray = java.util.Arrays.copyOfRange(cost, 1, cost.length);
-
-    IntArrayKey key1 = new IntArrayKey(firstToSecondLastValueArray);
-    IntArrayKey key2 = new IntArrayKey(secondToLastValueArray);
+    java.util.List<Integer> firstToSecondLastValueArray = costAsList.subList(0, costAsList.size() - 1);
+    java.util.List<Integer> secondToLastValueArray = costAsList.subList(1, costAsList.size());
 
     IndexListAndValueSum firstToSecondLastIndexArray;
-    if (!cache.containsKey(key1)) {
+    if (!cache.containsKey(firstToSecondLastValueArray)) {
       firstToSecondLastIndexArray = minCostClimbingStairs(firstToSecondLastValueArray, cache);
-      cache.put(key1, firstToSecondLastIndexArray);
+      cache.put(firstToSecondLastValueArray, firstToSecondLastIndexArray);
     }
-    firstToSecondLastIndexArray = new IndexListAndValueSum(new java.util.ArrayList<>(cache.get(key1).indexes), cache.get(key1).valueSum);
+    firstToSecondLastIndexArray = new IndexListAndValueSum(new java.util.ArrayList<>(cache.get(firstToSecondLastValueArray).indexes), cache.get(firstToSecondLastValueArray).valueSum);
 
     IndexListAndValueSum secondToLastIndexArray;
-    if (!cache.containsKey(key2)) {
+    if (!cache.containsKey(secondToLastValueArray)) {
       secondToLastIndexArray = minCostClimbingStairs(secondToLastValueArray, cache);
-      cache.put(key2, secondToLastIndexArray);
+      cache.put(secondToLastValueArray, secondToLastIndexArray);
     }
-    secondToLastIndexArray = new IndexListAndValueSum(new java.util.ArrayList<>(cache.get(key2).indexes), cache.get(key2).valueSum);
+    secondToLastIndexArray = new IndexListAndValueSum(new java.util.ArrayList<>(cache.get(secondToLastValueArray).indexes), cache.get(secondToLastValueArray).valueSum);
 
     boolean isSecondToUse = secondToLastIndexArray.indexes.get(0) != 0
-      && cost[0]>secondToLastValueArray[0]
-      && secondToLastValueArray.length > 2;
+      && costAsList.get(0)>secondToLastValueArray.get(0)
+      && secondToLastValueArray.size() > 2;
     boolean isFirstToUse = !isSecondToUse && secondToLastIndexArray.indexes.get(0) != 0;
-    boolean isSecondLastToUse = firstToSecondLastIndexArray.indexes.get(firstToSecondLastIndexArray.indexes.size()-1) != cost.length - 2
-      && firstToSecondLastValueArray[firstToSecondLastValueArray.length-1] < cost[cost.length-1]
-      && firstToSecondLastValueArray.length > 2;
-    boolean isLastToUse = !isSecondLastToUse && firstToSecondLastIndexArray.indexes.get(firstToSecondLastIndexArray.indexes.size()-1) != cost.length - 2;
+    boolean isSecondLastToUse = firstToSecondLastIndexArray.indexes.get(firstToSecondLastIndexArray.indexes.size()-1) != costAsList.size() - 2
+      && firstToSecondLastValueArray.get(firstToSecondLastValueArray.size()-1) < costAsList.get(costAsList.size()-1)
+      && firstToSecondLastValueArray.size() > 2;
+    boolean isLastToUse = !isSecondLastToUse && firstToSecondLastIndexArray.indexes.get(firstToSecondLastIndexArray.indexes.size()-1) != costAsList.size() - 2;
     int firstToSecondLastCaseSum = firstToSecondLastIndexArray.valueSum
-      + (isLastToUse ? cost[cost.length - 1] : 0)
-      + (isSecondLastToUse ? cost[cost.length - 2] : 0);
+      + (isLastToUse ? costAsList.get(costAsList.size() - 1) : 0)
+      + (isSecondLastToUse ? costAsList.get(costAsList.size() - 2) : 0);
     int secondToLastCaseSum = secondToLastIndexArray.valueSum
-      + (isFirstToUse ? cost[0] : 0)
-      + (isSecondToUse ? cost[1] : 0);
+      + (isFirstToUse ? costAsList.get(0) : 0)
+      + (isSecondToUse ? costAsList.get(1) : 0);
     if(firstToSecondLastCaseSum <= secondToLastCaseSum) {
       int newSum = firstToSecondLastIndexArray.valueSum;
       if(isLastToUse) {
-        firstToSecondLastIndexArray.indexes.add(cost.length - 1);
-        newSum += cost[cost.length - 1];
+        firstToSecondLastIndexArray.indexes.add(costAsList.size() - 1);
+        newSum += costAsList.get(costAsList.size() - 1);
       }
       if(isSecondLastToUse) {
-        firstToSecondLastIndexArray.indexes.add(cost.length - 2);
-        newSum += cost[cost.length - 2];
+        firstToSecondLastIndexArray.indexes.add(costAsList.size() - 2);
+        newSum += costAsList.get(costAsList.size() - 2);
       }
       return new IndexListAndValueSum(new java.util.ArrayList<>(firstToSecondLastIndexArray.indexes), newSum);
     } else {
@@ -132,11 +104,11 @@ public class MinCostClimbingStairsAvoidingUselessSumAndCopyOfRange implements Mi
       int newSum = secondToLastIndexArray.valueSum;
       if(isFirstToUse) {
         secondToLastIndexArray.indexes.add(0, 0);
-        newSum += cost[0];
+        newSum += costAsList.get(0);
       }
       if(isSecondToUse) {
         secondToLastIndexArray.indexes.add(0, 1);
-        newSum += cost[1];
+        newSum += costAsList.get(1);
       }
       return new IndexListAndValueSum(new java.util.ArrayList<>(secondToLastIndexArray.indexes), newSum);
     }
