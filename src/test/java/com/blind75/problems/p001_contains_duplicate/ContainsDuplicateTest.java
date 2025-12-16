@@ -43,6 +43,6 @@ class ContainsDuplicateTest {
   void testExample(SingleMethodTestConfig<ContainsDuplicate> singleMethodTestConfig) {
     SingleInputAndOutput<int[], Boolean> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     boolean result = singleMethodTestConfig.implementationToTest().hasDuplicate(inputAndOutput.input());
-    Assertions.assertEquals(inputAndOutput.output(), result);
+    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
   }
 }

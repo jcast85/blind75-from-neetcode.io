@@ -60,6 +60,6 @@ class BestTimeToBuyAndSellStockTest {
   void testExample(SingleMethodTestConfig<BestTimeToBuyAndSellStock> singleMethodTestConfig) {
     SingleInputAndOutput<int[], Integer> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     int result = singleMethodTestConfig.implementationToTest().maxProfit(inputAndOutput.input());
-    Assertions.assertEquals(inputAndOutput.output(), result);
+    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
   }
 }

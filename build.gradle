@@ -18,6 +18,8 @@ dependencies {
 
     testCompileOnly 'org.projectlombok:lombok:1.18.30'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    testImplementation 'org.hamcrest:hamcrest:2.2'
 }
 
 test {

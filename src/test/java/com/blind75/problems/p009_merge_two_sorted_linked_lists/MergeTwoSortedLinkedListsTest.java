@@ -50,6 +50,6 @@ public class MergeTwoSortedLinkedListsTest {
   void testExample(SingleMethodTestConfig<MergeTwoSortedLinkedLists> singleMethodTestConfig) {
     DoubleInputAndOutput<ListNode, ListNode, ListNode> inputAndOutput = (DoubleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     ListNode result = singleMethodTestConfig.implementationToTest().mergeTwoLists(inputAndOutput.input1(), inputAndOutput.input2());
-    Assertions.assertEquals(inputAndOutput.output(), result);
+    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
   }
 }

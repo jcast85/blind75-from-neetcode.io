@@ -86,6 +86,6 @@ public class ClimbingStairsTest {
   void testExample(SingleMethodTestConfig<ClimbingStairs> singleMethodTestConfig) {
     SingleInputAndOutput<Integer, Integer> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     int result = singleMethodTestConfig.implementationToTest().climbStairs(inputAndOutput.input());
-    Assertions.assertEquals(inputAndOutput.output(), result);
+    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
   }
 }

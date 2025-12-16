@@ -51,6 +51,6 @@ public class InvertBinaryTreeTest {
   void testExample(SingleMethodTestConfig<InvertBinaryTree> singleMethodTestConfig) {
     SingleInputAndOutput<TreeNode, TreeNode> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     TreeNode result = singleMethodTestConfig.implementationToTest().invertTree(inputAndOutput.input());
-    Assertions.assertEquals(inputAndOutput.output(), result);
+    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
   }
 }

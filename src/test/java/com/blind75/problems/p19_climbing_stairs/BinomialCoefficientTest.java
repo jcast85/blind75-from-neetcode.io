@@ -84,6 +84,6 @@ public class BinomialCoefficientTest {
   void testExample(SingleMethodTestConfig<BinomialCoefficient> singleMethodTestConfig) {
     SingleInputAndOutput<Integer, Integer> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     int result = singleMethodTestConfig.implementationToTest().binomialCoefficient(inputAndOutput.input());
-    Assertions.assertEquals(inputAndOutput.output(), result);
+    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
   }
 }

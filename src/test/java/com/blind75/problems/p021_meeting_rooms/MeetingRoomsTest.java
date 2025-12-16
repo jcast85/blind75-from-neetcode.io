@@ -91,6 +91,6 @@ public class MeetingRoomsTest {
   void testExample(SingleMethodTestConfig<MeetingRooms> singleMethodTestConfig) {
     SingleInputAndOutput<List<Interval>, Boolean> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     boolean result = singleMethodTestConfig.implementationToTest().canAttendMeetings(inputAndOutput.input());
-    Assertions.assertEquals(inputAndOutput.output(), result);
+    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
   }
 }

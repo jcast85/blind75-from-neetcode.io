@@ -43,6 +43,6 @@ public class MaximumDepthOfBinaryTreeTest {
   void testExample(SingleMethodTestConfig<MaximumDepthOfBinaryTree> singleMethodTestConfig) {
     SingleInputAndOutput<TreeNode, Integer> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     int result = singleMethodTestConfig.implementationToTest().maxDepth(inputAndOutput.input());
-    Assertions.assertEquals(inputAndOutput.output(), result);
+    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
   }
 }

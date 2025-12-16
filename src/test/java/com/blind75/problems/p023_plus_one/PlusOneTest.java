@@ -43,6 +43,6 @@ public class PlusOneTest {
   void testExample(SingleMethodTestConfig<PlusOne> singleMethodTestConfig) {
     SingleInputAndOutput<int[], int[]> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     int[] result = singleMethodTestConfig.implementationToTest().plusOne(inputAndOutput.input());
-    Assertions.assertEquals(inputAndOutput.output(), result);
+    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
   }
 }

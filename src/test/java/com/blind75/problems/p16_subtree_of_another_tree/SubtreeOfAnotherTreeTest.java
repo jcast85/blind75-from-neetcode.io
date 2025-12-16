@@ -55,6 +55,6 @@ public class SubtreeOfAnotherTreeTest {
   void testExample(SingleMethodTestConfig<SubtreeOfAnotherTree> singleMethodTestConfig) {
     DoubleInputAndOutput<TreeNode, TreeNode, Boolean> inputAndOutput = (DoubleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     boolean result = singleMethodTestConfig.implementationToTest().isSubtree(inputAndOutput.input1(), inputAndOutput.input2());
-    Assertions.assertEquals(inputAndOutput.output(), result);
+    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
   }
 }
