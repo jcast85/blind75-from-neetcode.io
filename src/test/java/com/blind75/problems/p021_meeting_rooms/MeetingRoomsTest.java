@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 public class MeetingRoomsTest {
 
   private static final List<MeetingRooms> meetingRoomsList = List.of(
-    new MeetingRoomsFirstTry()
+    new MeetingRoomsSortingIntervals()
   );
 
   private static final List<InputAndOutput> meetingRoomsInputAndOutputList = List.of(
@@ -41,6 +41,32 @@ public class MeetingRoomsTest {
         Interval.builder()
           .start(9)
           .end(15)
+          .build()
+      ))
+      .output(true)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(List.of(
+        Interval.builder()
+          .start(1)
+          .end(5)
+          .build(),
+        Interval.builder()
+          .start(1)
+          .end(3)
+          .build()
+      ))
+      .output(false)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(List.of(
+        Interval.builder()
+          .start(5)
+          .end(10)
+          .build(),
+        Interval.builder()
+          .start(0)
+          .end(4)
           .build()
       ))
       .output(true)
