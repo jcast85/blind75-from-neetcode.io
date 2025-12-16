@@ -1,6 +1,6 @@
 package com.blind75.problems.p020_min_cost_climbing_stairs;
 
-public class MinCostClimbingStairsAvoidingUselessSumAndCopyOfRange implements MinCostClimbingStairs {
+public class MinCostClimbingStairsAvoidingUselessSumAndCachingOfSubList implements MinCostClimbingStairs {
   private static final class IndexListAndValueSum {
     private final java.util.List<Integer> indexes;
     private final int valueSum;

@@ -13,7 +13,7 @@ public class MinCostClimbingStairsTest {
   private static final List<MinCostClimbingStairs> minCostClimbingStairsList = List.of(
     new MinCostClimbingStairsFirstTry(),
     new MinCostClimbingStairsAvoidingUselessSum(),
-    new MinCostClimbingStairsAvoidingUselessSumAndCopyOfRange()
+    new MinCostClimbingStairsAvoidingUselessSumAndCachingOfSubList()
   );
 
   private static final List<InputAndOutput> minCostClimbingStairsInputAndOutputList = List.of(
