@@ -16,12 +16,12 @@ public class PlusOneTest {
 
   private static final List<InputAndOutput> plusOneInputAndOutputList = List.of(
     new SingleInputAndOutputBuilder<>()
-      .input(100)
-      .output(true)
+      .input(new int[] {1, 2, 3, 4})
+      .output(new int[] {1,2,3,5})
       .build(),
     new SingleInputAndOutputBuilder<>()
-      .input(101)
-      .output(false)
+      .input(new int[] {9,9,9})
+      .output(new int[] {1,0,0,0})
       .build()
   );
 
@@ -41,8 +41,8 @@ public class PlusOneTest {
   @ParameterizedTest
   @MethodSource("testConfigs")
   void testExample(SingleMethodTestConfig<PlusOne> singleMethodTestConfig) {
-    SingleInputAndOutput<Integer, Boolean> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
-    boolean result = singleMethodTestConfig.implementationToTest().isHappy(inputAndOutput.input());
+    SingleInputAndOutput<int[], int[]> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
+    int[] result = singleMethodTestConfig.implementationToTest().plusOne(inputAndOutput.input());
     Assertions.assertEquals(inputAndOutput.output(), result);
   }
 }
