@@ -1,7 +1,6 @@
 package com.blind75.problems.p022_non_cyclical_number;
 
 import com.blind75.problems.common.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
