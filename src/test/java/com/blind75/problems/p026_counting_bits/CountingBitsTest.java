@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class CountingBitsTest {
 
   private static final List<CountingBits> countingBitsList = List.of(
-    new CountingBitsFirstTry()
+    new CountingBitsNaive()
   );
 
   private static final List<InputAndOutput> countingBitsInputAndOutputList = List.of(
