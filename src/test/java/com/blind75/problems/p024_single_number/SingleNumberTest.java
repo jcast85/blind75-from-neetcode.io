@@ -11,7 +11,8 @@ public class SingleNumberTest {
 
   private static final List<SingleNumber> singleNumberList = List.of(
     new SingleNumberWithList(),
-    new SingleNumberWithSet()
+    new SingleNumberWithSet(),
+    new SingleNumberWithXor()
   );
 
   private static final List<InputAndOutput> singleNumberInputAndOutputList = List.of(
