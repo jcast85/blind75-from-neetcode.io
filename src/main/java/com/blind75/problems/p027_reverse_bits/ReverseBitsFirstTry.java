@@ -13,6 +13,6 @@ public class ReverseBitsFirstTry implements ReverseBits {
       }
       n = n >> 1;
     }
-    return -1*Integer.MAX_VALUE + Integer.MIN_VALUE + 1 + sign * reverseBits;
+    return sign * reverseBits;
   }
 }
