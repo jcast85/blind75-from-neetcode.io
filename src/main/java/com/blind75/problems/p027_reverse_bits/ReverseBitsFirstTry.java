@@ -4,7 +4,7 @@ public class ReverseBitsFirstTry implements ReverseBits {
   @Override
   public int reverseBits(int n) {
     int reverseBits = 0;
-    int sign = -1 * (n % 2);
+    int sign = (n % 2 == 1) ? -1 : 1;
     n = n >> 1;
     for (int i = 0; i < 31; i++) {
       reverseBits = reverseBits + n % 2;
