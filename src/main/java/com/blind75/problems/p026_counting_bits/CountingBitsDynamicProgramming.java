@@ -1,6 +1,6 @@
 package com.blind75.problems.p026_counting_bits;
 
-public class CountingDynamicProgramming implements CountingBits {
+public class CountingBitsDynamicProgramming implements CountingBits {
   @Override
   public int[] countBits(int n) {
     int[] result = new int[n+1];

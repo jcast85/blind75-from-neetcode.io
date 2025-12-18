@@ -11,7 +11,7 @@ public class CountingBitsTest {
 
   private static final List<CountingBits> countingBitsList = List.of(
     //new CountingBitsNaive(),
-    new CountingDynamicProgramming()
+    new CountingBitsDynamicProgramming()
   );
 
   private static final List<InputAndOutput> countingBitsInputAndOutputList = List.of(
