@@ -22,6 +22,10 @@ public class ReverseBitsTest {
     new SingleInputAndOutputBuilder<>()
       .input(43261596)
       .output(964176192)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(2147483644)
+      .output(1073741822)
       .build()
   );
 
