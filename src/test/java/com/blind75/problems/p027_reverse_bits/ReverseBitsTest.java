@@ -10,13 +10,18 @@ import java.util.stream.Stream;
 public class ReverseBitsTest {
 
   private static final List<ReverseBits> reverseBitsList = List.of(
-    new ReverseBitsFirstTry()
+    new ReverseBitsFirstTry(),
+    new ReverseBitsWithShift()
   );
 
   private static final List<InputAndOutput> reverseBitsInputAndOutputList = List.of(
     new SingleInputAndOutputBuilder<>()
       .input(21)
       .output(-1* (int) (2818572288L - Integer.MIN_VALUE))
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(43261596)
+      .output(964176192)
       .build()
   );
 
