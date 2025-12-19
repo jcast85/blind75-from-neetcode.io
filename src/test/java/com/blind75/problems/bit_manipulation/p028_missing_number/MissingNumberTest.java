@@ -1,7 +1,5 @@
 package com.blind75.problems.bit_manipulation.p028_missing_number;
 
-import com.blind75.problems.bit_manipulation.p028_missing_number.MissingNumber;
-import com.blind75.problems.bit_manipulation.p028_missing_number.MissingNumberWithSumEvaluation;
 import com.blind75.problems.common.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;

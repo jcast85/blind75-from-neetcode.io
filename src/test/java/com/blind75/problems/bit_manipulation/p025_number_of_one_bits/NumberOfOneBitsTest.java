@@ -1,7 +1,5 @@
 package com.blind75.problems.bit_manipulation.p025_number_of_one_bits;
 
-import com.blind75.problems.bit_manipulation.p025_number_of_one_bits.NumberOfOneBits;
-import com.blind75.problems.bit_manipulation.p025_number_of_one_bits.NumberOfOneBitsWithMod;
 import com.blind75.problems.common.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;

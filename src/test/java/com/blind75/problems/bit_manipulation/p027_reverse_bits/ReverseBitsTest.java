@@ -1,8 +1,5 @@
 package com.blind75.problems.bit_manipulation.p027_reverse_bits;
 
-import com.blind75.problems.bit_manipulation.p027_reverse_bits.ReverseBits;
-import com.blind75.problems.bit_manipulation.p027_reverse_bits.ReverseBitsFirstTry;
-import com.blind75.problems.bit_manipulation.p027_reverse_bits.ReverseBitsWithShift;
 import com.blind75.problems.common.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;

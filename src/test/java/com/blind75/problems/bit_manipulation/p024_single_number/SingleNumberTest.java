@@ -1,9 +1,5 @@
 package com.blind75.problems.bit_manipulation.p024_single_number;
 
-import com.blind75.problems.bit_manipulation.p024_single_number.SingleNumber;
-import com.blind75.problems.bit_manipulation.p024_single_number.SingleNumberWithList;
-import com.blind75.problems.bit_manipulation.p024_single_number.SingleNumberWithSet;
-import com.blind75.problems.bit_manipulation.p024_single_number.SingleNumberWithXor;
 import com.blind75.problems.common.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;

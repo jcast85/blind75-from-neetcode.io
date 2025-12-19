@@ -1,8 +1,6 @@
 package com.blind75.problems.math_geometry.p023_plus_one;
 
 import com.blind75.problems.common.*;
-import com.blind75.problems.math_geometry.p023_plus_one.PlusOne;
-import com.blind75.problems.math_geometry.p023_plus_one.PlusOneFirstTry;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
