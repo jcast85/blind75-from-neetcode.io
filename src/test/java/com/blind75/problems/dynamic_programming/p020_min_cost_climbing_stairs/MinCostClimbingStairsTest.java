@@ -1,6 +1,10 @@
-package com.blind75.problems.p020_min_cost_climbing_stairs;
+package com.blind75.problems.dynamic_programming.p020_min_cost_climbing_stairs;
 
 import com.blind75.problems.common.*;
+import com.blind75.problems.dynamic_programming.p020_min_cost_climbing_stairs.MinCostClimbingStairs;
+import com.blind75.problems.dynamic_programming.p020_min_cost_climbing_stairs.MinCostClimbingStairsAvoidingUselessSum;
+import com.blind75.problems.dynamic_programming.p020_min_cost_climbing_stairs.MinCostClimbingStairsCalculateCostToReachEachStep;
+import com.blind75.problems.dynamic_programming.p020_min_cost_climbing_stairs.MinCostClimbingStairsFirstTry;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 

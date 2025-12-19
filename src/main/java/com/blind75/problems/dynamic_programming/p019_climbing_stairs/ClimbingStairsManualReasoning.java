@@ -1,18 +1,20 @@
-package com.blind75.problems.p19_climbing_stairs;
+package com.blind75.problems.dynamic_programming.p019_climbing_stairs;
 
 import java.math.BigInteger;
 
-public class BinomialCoefficientManualReasoning implements BinomialCoefficient {
+public class ClimbingStairsManualReasoning implements ClimbingStairs {
   @Override
-  public int binomialCoefficient(int n) {
+  public int climbStairs(int n) {
     int count = 1;
     System.out.print(count);
-    for(int k = 0; k < n; k++) {
+    int changeFactorFromBernoulli = 0;
+    for(int k = 0; k < n-changeFactorFromBernoulli; k++) {
+      changeFactorFromBernoulli = changeFactorFromBernoulli + 1;
       BigInteger currentValue = BigInteger.ONE;
       boolean isValueToAdd = false;
       for(int j = 0; j <= k; j++) {
-        if(n-j>0) {
-          currentValue = currentValue.multiply(BigInteger.valueOf(n-j));
+        if(n-j-changeFactorFromBernoulli>0) {
+          currentValue = currentValue.multiply(BigInteger.valueOf(n-j-changeFactorFromBernoulli));
           isValueToAdd = true;
         }
       }
