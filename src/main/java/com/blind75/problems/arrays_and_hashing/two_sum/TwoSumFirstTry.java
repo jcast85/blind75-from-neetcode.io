@@ -1,4 +1,4 @@
-package com.blind75.problems.arrays_and_hashing.p003_two_sum;
+package com.blind75.problems.arrays_and_hashing.two_sum;
 
 import java.util.HashMap;
 import java.util.Map;

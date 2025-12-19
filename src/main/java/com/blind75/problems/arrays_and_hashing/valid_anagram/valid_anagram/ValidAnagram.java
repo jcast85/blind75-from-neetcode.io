@@ -1,4 +1,4 @@
-package com.blind75.problems.arrays_and_hashing.p002_valid_anagram.p002_valid_anagram;
+package com.blind75.problems.arrays_and_hashing.valid_anagram.valid_anagram;
 
 import com.blind75.problems.common.Blind75Problem;
 
