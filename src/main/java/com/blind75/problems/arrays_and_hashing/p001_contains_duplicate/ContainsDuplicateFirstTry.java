@@ -1,4 +1,4 @@
-package com.blind75.problems.p001_contains_duplicate;
+package com.blind75.problems.arrays_and_hashing.p001_contains_duplicate;
 
 import java.util.HashSet;
 import java.util.Set;

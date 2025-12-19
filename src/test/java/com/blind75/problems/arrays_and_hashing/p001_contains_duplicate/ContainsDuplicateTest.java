@@ -1,5 +1,7 @@
-package com.blind75.problems.p001_contains_duplicate;
+package com.blind75.problems.arrays_and_hashing.p001_contains_duplicate;
 
+import com.blind75.problems.arrays_and_hashing.p001_contains_duplicate.ContainsDuplicate;
+import com.blind75.problems.arrays_and_hashing.p001_contains_duplicate.ContainsDuplicateFirstTry;
 import com.blind75.problems.common.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
