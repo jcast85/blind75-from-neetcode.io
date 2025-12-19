@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class GroupAnagramsTest {
 
   private static final List<GroupAnagrams> groupAnagramsList = List.of(
-    new GroupAnagramsFirstTry()
+    new GroupAnagramsNaive()
   );
 
   private static final List<InputAndOutput> groupAnagramsInputAndOutputList = List.of(

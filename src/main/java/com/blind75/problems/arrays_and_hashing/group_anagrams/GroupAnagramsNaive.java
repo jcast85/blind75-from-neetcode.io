@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GroupAnagramsFirstTry implements GroupAnagrams {
+public class GroupAnagramsNaive implements GroupAnagrams {
   @Override
   public List<List<String>> groupAnagrams(String[] strs) {
     Map<String, List<String>> anagramMap = new HashMap<>();
