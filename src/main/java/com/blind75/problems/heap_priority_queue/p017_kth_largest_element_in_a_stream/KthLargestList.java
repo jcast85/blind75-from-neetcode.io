@@ -1,4 +1,4 @@
-package com.blind75.problems.p17_kth_largest_element_in_a_stream;
+package com.blind75.problems.heap_priority_queue.p017_kth_largest_element_in_a_stream;
 
 import java.util.ArrayList;
 import java.util.List;

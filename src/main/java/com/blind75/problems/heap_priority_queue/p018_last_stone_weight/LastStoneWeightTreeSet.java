@@ -1,4 +1,4 @@
-package com.blind75.problems.p18_last_stone_weight;
+package com.blind75.problems.heap_priority_queue.p018_last_stone_weight;
 
 import java.util.Map;
 import java.util.TreeMap;
