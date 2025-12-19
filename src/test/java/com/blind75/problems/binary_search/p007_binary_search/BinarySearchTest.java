@@ -1,4 +1,4 @@
-package com.blind75.problems.p007_binary_search;
+package com.blind75.problems.binary_search.p007_binary_search;
 
 import com.blind75.problems.common.*;
 import org.junit.jupiter.params.ParameterizedTest;
