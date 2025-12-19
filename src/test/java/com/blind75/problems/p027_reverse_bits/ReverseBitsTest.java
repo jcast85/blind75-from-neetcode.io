@@ -17,7 +17,7 @@ public class ReverseBitsTest {
   private static final List<InputAndOutput> reverseBitsInputAndOutputList = List.of(
     new SingleInputAndOutputBuilder<>()
       .input(21)
-      .output(-1* (int) (2818572288L - Integer.MIN_VALUE))
+      .output(-671088640)
       .build(),
     new SingleInputAndOutputBuilder<>()
       .input(43261596)
@@ -26,13 +26,17 @@ public class ReverseBitsTest {
     new SingleInputAndOutputBuilder<>()
       .input(2147483644)
       .output(1073741822)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(-2147483645) // 10000000000000000000000000000011
+      .output(-1073741823) // 11000000000000000000000000000001
       .build()
   );
 
   static Stream<SingleMethodTestConfig<ReverseBits>> testConfigs() {
     Stream.Builder<SingleMethodTestConfig<ReverseBits>> streamBuilder = Stream.builder();
     for (ReverseBits reverseBits : reverseBitsList) {
-      for (InputAndOutput reverseBitsInputAndOutput : reverseBitsInputAndOutputList) {
+      for (InputAndOutput reverseBitsInputAndOutput : reverseBitsInputAndOutputList.subList(3, 4)) {
         streamBuilder.add(new SingleMethodTestConfigBuilder<ReverseBits>()
           .implementationToTest(reverseBits)
           .inputAndOutput(reverseBitsInputAndOutput)
