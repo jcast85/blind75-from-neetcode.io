@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class MissingNumberTest {
 
   private static final List<MissingNumber> missingNumberList = List.of(
-    new MissingNumberFirstTry()
+    new MissingNumberWithSumEvaluation()
   );
 
   private static final List<InputAndOutput> missingNumberInputAndOutputList = List.of(
@@ -21,6 +21,10 @@ public class MissingNumberTest {
     new SingleInputAndOutputBuilder<>()
       .input(new int[] {0,2})
       .output(1)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {3,0,1})
+      .output(2)
       .build()
   );
 
