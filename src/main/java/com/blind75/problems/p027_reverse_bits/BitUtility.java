@@ -4,7 +4,11 @@ public class BitUtility {
   private BitUtility() {}
 
   public static String getBitRepresentation(int n, int maxBitNumber) {
-    return padLeftZeros(Integer.toBinaryString(n), maxBitNumber);
+    if(n>=0) {
+      return padLeftZeros(Integer.toBinaryString(n), maxBitNumber);
+    } else {
+      return padLeftZeros("1" + Integer.toBinaryString(-1*n), maxBitNumber);
+    }
   }
 
   private static String padLeftZeros(String inputString, int length) {
