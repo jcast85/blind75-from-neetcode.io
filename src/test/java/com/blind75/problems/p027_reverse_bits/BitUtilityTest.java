@@ -5,18 +5,6 @@ import org.junit.jupiter.api.Test;
 
 class BitUtilityTest {
   @Test
-  void getBitRepresentation1Test2() {
-    int n = 10;
-    int maxBitNumber = 5;
-    String expected = "01010";
-    String actual = BitUtility.getBitRepresentation(n, maxBitNumber);
-    Assertions.assertEquals(expected, actual);
-
-    int reversedActual = BitUtility.fromBitRepresentation(expected);
-    Assertions.assertEquals(n, reversedActual);
-  }
-
-  @Test
   void getBitRepresentation1Test() {
     int n = 10;
     int maxBitNumber = 5;
