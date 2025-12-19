@@ -1,6 +1,8 @@
-package com.blind75.problems.p022_non_cyclical_number;
+package com.blind75.problems.math_geometry.p022_non_cyclical_number;
 
 import com.blind75.problems.common.*;
+import com.blind75.problems.math_geometry.p022_non_cyclical_number.NonCyclicalNumber;
+import com.blind75.problems.math_geometry.p022_non_cyclical_number.NonCyclicalNumberFirstTry;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 

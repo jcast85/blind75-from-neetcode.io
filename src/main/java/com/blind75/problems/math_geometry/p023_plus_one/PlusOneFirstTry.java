@@ -1,4 +1,4 @@
-package com.blind75.problems.p023_plus_one;
+package com.blind75.problems.math_geometry.p023_plus_one;
 
 public class PlusOneFirstTry implements PlusOne {
   @Override
