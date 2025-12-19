@@ -1,4 +1,4 @@
-package com.blind75.problems.p009_merge_two_sorted_linked_lists;
+package com.blind75.problems.linked_list.p009_merge_two_sorted_linked_lists;
 
 import com.blind75.problems.common.*;
 import org.junit.jupiter.params.ParameterizedTest;
