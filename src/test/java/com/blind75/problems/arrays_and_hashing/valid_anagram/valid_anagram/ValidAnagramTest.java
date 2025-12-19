@@ -44,6 +44,6 @@ class ValidAnagramTest {
   void testExample(SingleMethodTestConfig<ValidAnagram> singleMethodTestConfig) {
     DoubleInputAndOutput<String, String, Boolean> inputAndOutput = (DoubleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     boolean result = singleMethodTestConfig.implementationToTest().isAnagram(inputAndOutput.input1(), inputAndOutput.input2());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }

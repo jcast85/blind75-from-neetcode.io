@@ -46,6 +46,6 @@ public class ReversedLinkedListTest {
   void testExample(SingleMethodTestConfig<ReversedLinkedList> singleMethodTestConfig) {
     SingleInputAndOutput<ListNode, ListNode> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     ListNode result = singleMethodTestConfig.implementationToTest().reverseList(inputAndOutput.input());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }

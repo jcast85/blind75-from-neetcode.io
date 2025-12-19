@@ -50,6 +50,6 @@ public class GroupAnagramsTest {
   void testExample(SingleMethodTestConfig<GroupAnagrams> singleMethodTestConfig) {
     SingleInputAndOutput<String[], List<List<String>>> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     List<List<String>> result = singleMethodTestConfig.implementationToTest().groupAnagrams(inputAndOutput.input());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }

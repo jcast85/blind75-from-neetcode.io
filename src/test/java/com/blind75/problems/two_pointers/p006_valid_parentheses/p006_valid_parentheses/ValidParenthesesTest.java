@@ -50,6 +50,6 @@ public class ValidParenthesesTest {
   void testExample(SingleMethodTestConfig<ValidParentheses> singleMethodTestConfig) {
     SingleInputAndOutput<String, Boolean> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     boolean result = singleMethodTestConfig.implementationToTest().isValid(inputAndOutput.input());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }

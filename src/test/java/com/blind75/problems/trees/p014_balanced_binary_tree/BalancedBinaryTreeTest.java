@@ -58,6 +58,6 @@ public class BalancedBinaryTreeTest {
   void testExample(SingleMethodTestConfig<BalancedBinaryTree> singleMethodTestConfig) {
     SingleInputAndOutput<TreeNode, Boolean> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     boolean result = singleMethodTestConfig.implementationToTest().isBalanced(inputAndOutput.input());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }

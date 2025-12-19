@@ -103,6 +103,6 @@ public class CountingBitsTest {
   void testExample(SingleMethodTestConfig<CountingBits> singleMethodTestConfig) {
     SingleInputAndOutput<Integer, int[]> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     int[] result = singleMethodTestConfig.implementationToTest().countBits(inputAndOutput.input());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }

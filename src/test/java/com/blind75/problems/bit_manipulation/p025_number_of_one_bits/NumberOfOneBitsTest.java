@@ -42,6 +42,6 @@ public class NumberOfOneBitsTest {
   void testExample(SingleMethodTestConfig<NumberOfOneBits> singleMethodTestConfig) {
     SingleInputAndOutput<Integer, Integer> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     Integer result = singleMethodTestConfig.implementationToTest().hammingWeight(inputAndOutput.input());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }

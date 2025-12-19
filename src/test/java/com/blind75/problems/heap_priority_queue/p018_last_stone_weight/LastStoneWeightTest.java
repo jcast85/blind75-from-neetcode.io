@@ -46,6 +46,6 @@ public class LastStoneWeightTest {
   void testExample(SingleMethodTestConfig<LastStoneWeight> singleMethodTestConfig) {
     SingleInputAndOutput<int[], Integer> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     int result = singleMethodTestConfig.implementationToTest().lastStoneWeight(inputAndOutput.input());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }

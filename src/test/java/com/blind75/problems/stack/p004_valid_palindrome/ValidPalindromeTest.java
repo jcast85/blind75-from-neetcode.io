@@ -42,6 +42,6 @@ class ValidPalindromeTest {
   void testExample(SingleMethodTestConfig<ValidPalindrome> singleMethodTestConfig) {
     SingleInputAndOutput<String, Boolean> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     boolean result = singleMethodTestConfig.implementationToTest().isPalindrome(inputAndOutput.input());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }

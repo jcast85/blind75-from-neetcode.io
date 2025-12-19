@@ -46,6 +46,6 @@ public class MissingNumberTest {
   void testExample(SingleMethodTestConfig<MissingNumber> singleMethodTestConfig) {
     SingleInputAndOutput<int[], Integer> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     Integer result = singleMethodTestConfig.implementationToTest().missingNumber(inputAndOutput.input());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }

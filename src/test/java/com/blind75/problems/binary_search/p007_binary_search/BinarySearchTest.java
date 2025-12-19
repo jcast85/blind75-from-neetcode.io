@@ -52,6 +52,6 @@ public class BinarySearchTest {
   void testExample(SingleMethodTestConfig<BinarySearch> singleMethodTestConfig) {
     DoubleInputAndOutput<int[], Integer, Integer> inputAndOutput = (DoubleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     int result = singleMethodTestConfig.implementationToTest().search(inputAndOutput.input1(), inputAndOutput.input2());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }

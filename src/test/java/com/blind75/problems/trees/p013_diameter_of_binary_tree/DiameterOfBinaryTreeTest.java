@@ -63,6 +63,6 @@ public class DiameterOfBinaryTreeTest {
   void testExample(SingleMethodTestConfig<DiameterOfBinaryTree> singleMethodTestConfig) {
     SingleInputAndOutput<TreeNode, Integer> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     int result = singleMethodTestConfig.implementationToTest().diameterOfBinaryTree(inputAndOutput.input());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }

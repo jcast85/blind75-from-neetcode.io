@@ -51,6 +51,6 @@ public class ReverseBitsTest {
   void testExample(SingleMethodTestConfig<ReverseBits> singleMethodTestConfig) {
     SingleInputAndOutput<Integer, Integer> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     Integer result = singleMethodTestConfig.implementationToTest().reverseBits(inputAndOutput.input());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }

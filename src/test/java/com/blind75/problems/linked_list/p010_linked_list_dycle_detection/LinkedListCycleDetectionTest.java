@@ -49,6 +49,6 @@ public class LinkedListCycleDetectionTest {
   void testExample(SingleMethodTestConfig<LinkedListCycleDetection> singleMethodTestConfig) {
     SingleInputAndOutput<ListNode, Boolean> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     boolean result = singleMethodTestConfig.implementationToTest().hasCycle(inputAndOutput.input());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }

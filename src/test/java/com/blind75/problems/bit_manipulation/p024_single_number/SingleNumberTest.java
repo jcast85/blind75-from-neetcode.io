@@ -44,6 +44,6 @@ public class SingleNumberTest {
   void testExample(SingleMethodTestConfig<SingleNumber> singleMethodTestConfig) {
     SingleInputAndOutput<int[], Integer> inputAndOutput = (SingleInputAndOutput) singleMethodTestConfig.inputAndOutput();
     Integer result = singleMethodTestConfig.implementationToTest().singleNumber(inputAndOutput.input());
-    org.hamcrest.MatcherAssert.assertThat(result, org.hamcrest.Matchers.equalTo(inputAndOutput.output()));
+    CommonStaticTestMethods.assertions(result, inputAndOutput.output());
   }
 }
