@@ -1,4 +1,4 @@
-package com.blind75.problems.p021_meeting_rooms;
+package com.blind75.problems.intervals.p021_meeting_rooms;
 
 import com.blind75.problems.common.*;
 import org.junit.jupiter.params.ParameterizedTest;
