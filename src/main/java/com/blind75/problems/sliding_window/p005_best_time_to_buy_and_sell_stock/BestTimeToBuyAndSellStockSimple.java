@@ -1,4 +1,4 @@
-package com.blind75.problems.p005_best_time_to_buy_and_sell_stock;
+package com.blind75.problems.sliding_window.p005_best_time_to_buy_and_sell_stock;
 
 public class BestTimeToBuyAndSellStockSimple implements BestTimeToBuyAndSellStock {
   @Override
