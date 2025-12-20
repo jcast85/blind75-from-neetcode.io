@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class DiameterOfBinaryTreeTest {
 
   private static final List<DiameterOfBinaryTree> diameterOfBinaryTreeList = List.of(
-    new DiameterOfBinaryTreeFirstTry(),
+    new DiameterOfBinaryTreeNaive(),
     new DiameterOfBinaryTreeNoIOParam()
   );
 

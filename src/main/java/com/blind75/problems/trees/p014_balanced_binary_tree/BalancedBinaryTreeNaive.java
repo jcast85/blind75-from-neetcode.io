@@ -2,7 +2,7 @@ package com.blind75.problems.trees.p014_balanced_binary_tree;
 
 import com.blind75.problems.common.TreeNode;
 
-public class BalancedBinaryTreeFirstTry implements BalancedBinaryTree {
+public class BalancedBinaryTreeNaive implements BalancedBinaryTree {
   @Override
   public boolean isBalanced(TreeNode root) {
     if(root == null) {

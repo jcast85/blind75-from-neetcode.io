@@ -2,7 +2,7 @@ package com.blind75.problems.trees.p015_same_binary_tree;
 
 import com.blind75.problems.common.TreeNode;
 
-public class SameBinaryTreeFirstTry implements SameBinaryTree {
+public class SameBinaryTreeNaive implements SameBinaryTree {
   @Override
   public boolean isSameTree(TreeNode p, TreeNode q) {
     if(p == null && q == null) {

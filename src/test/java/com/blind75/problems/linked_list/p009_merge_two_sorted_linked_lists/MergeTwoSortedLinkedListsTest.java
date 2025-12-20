@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class MergeTwoSortedLinkedListsTest {
 
   private static final List<MergeTwoSortedLinkedLists> mergeTwoSortedLinkedListsList = List.of(
-    new MergeTwoSortedLinkedListsFirstTry()
+    new MergeTwoSortedLinkedListsNaive()
   );
 
   private static final List<InputAndOutput> mergeTwoSortedLinkedListsInputAndOutputList = List.of(

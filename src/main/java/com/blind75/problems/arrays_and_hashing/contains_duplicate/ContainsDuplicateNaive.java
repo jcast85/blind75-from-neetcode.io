@@ -3,7 +3,7 @@ package com.blind75.problems.arrays_and_hashing.contains_duplicate;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ContainsDuplicateFirstTry implements ContainsDuplicate {
+public class ContainsDuplicateNaive implements ContainsDuplicate {
     @Override
     public boolean hasDuplicate(int[] nums) {
         Set<Integer> numSet = new HashSet<>();

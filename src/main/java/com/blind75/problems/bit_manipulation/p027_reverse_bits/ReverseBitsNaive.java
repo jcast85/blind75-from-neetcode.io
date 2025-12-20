@@ -1,6 +1,6 @@
 package com.blind75.problems.bit_manipulation.p027_reverse_bits;
 
-public class ReverseBitsFirstTry implements ReverseBits {
+public class ReverseBitsNaive implements ReverseBits {
   @Override
   public int reverseBits(int n) {
     boolean isNegative = n < 0;

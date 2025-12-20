@@ -3,7 +3,7 @@ package com.blind75.problems.arrays_and_hashing.two_sum;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TwoSumFirstTry implements TwoSum {
+public class TwoSumNaive implements TwoSum {
     @Override
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> diffByIndex = new HashMap<>();

@@ -2,7 +2,7 @@ package com.blind75.problems.linked_list.p008_reversed_linked_list;
 
 import com.blind75.problems.common.ListNode;
 
-public class ReversedLinkedListFirstTry implements ReversedLinkedList {
+public class ReversedLinkedListNaive implements ReversedLinkedList {
   @Override
   public ListNode reverseList(ListNode head) {
     if(head == null) {

@@ -1,6 +1,6 @@
 package com.blind75.problems.dynamic_programming.p020_min_cost_climbing_stairs;
 
-public class MinCostClimbingStairsFirstTry implements MinCostClimbingStairs {
+public class MinCostClimbingStairsNaive implements MinCostClimbingStairs {
   private static final class IntArrayKey {
     private final int[] a;
 

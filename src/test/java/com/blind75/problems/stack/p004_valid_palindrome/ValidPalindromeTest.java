@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 class ValidPalindromeTest {
 
   private static final List<ValidPalindrome> validPalindromeList = List.of(
-    new ValidPalindromeFirstTry()
+    new ValidPalindromeNaive()
   );
 
   private static final List<InputAndOutput> validPalindromeInputAndOutputList = List.of(

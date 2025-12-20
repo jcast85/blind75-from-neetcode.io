@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 class ContainsDuplicateTest {
 
   private static final List<ContainsDuplicate> containsDuplicateList = List.of(
-    new ContainsDuplicateFirstTry()
+    new ContainsDuplicateNaive()
   );
 
   private static final List<InputAndOutput> containsDuplicateInputAndOutputList = List.of(

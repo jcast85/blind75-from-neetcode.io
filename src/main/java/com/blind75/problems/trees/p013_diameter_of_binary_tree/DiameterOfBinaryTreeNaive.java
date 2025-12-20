@@ -2,7 +2,7 @@ package com.blind75.problems.trees.p013_diameter_of_binary_tree;
 
 import com.blind75.problems.common.TreeNode;
 
-public class DiameterOfBinaryTreeFirstTry implements DiameterOfBinaryTree {
+public class DiameterOfBinaryTreeNaive implements DiameterOfBinaryTree {
 
   @Override
   public int diameterOfBinaryTree(TreeNode root) {
@@ -24,6 +24,6 @@ public class DiameterOfBinaryTreeFirstTry implements DiameterOfBinaryTree {
 
   @Override
   public String toString() {
-    return "DiameterOfBinaryTreeFirstTry";
+    return "DiameterOfBinaryTreeNaive";
   }
 }

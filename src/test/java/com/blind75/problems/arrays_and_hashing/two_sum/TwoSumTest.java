@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 class TwoSumTest {
 
   private static final List<TwoSum> twoSumList = List.of(
-    new TwoSumFirstTry()
+    new TwoSumNaive()
   );
 
   private static final List<InputAndOutput> twoSumInputAndOutputList = List.of(

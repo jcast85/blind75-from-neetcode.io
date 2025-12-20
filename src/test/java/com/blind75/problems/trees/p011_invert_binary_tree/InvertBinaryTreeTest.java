@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class InvertBinaryTreeTest {
 
   private static final List<InvertBinaryTree> invertBinaryTreeList = List.of(
-    new InvertBinaryTreeFirstTry()
+    new InvertBinaryTreeNaive()
   );
 
   private static final List<InputAndOutput> invertBinaryTreeInputAndOutputList = List.of(

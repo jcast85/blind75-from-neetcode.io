@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class BalancedBinaryTreeTest {
 
   private static final List<BalancedBinaryTree> balancedBinaryTreeList = List.of(
-    new BalancedBinaryTreeFirstTry()
+    new BalancedBinaryTreeNaive()
   );
 
   private static final List<InputAndOutput> balancedBinaryTreeInputAndOutputList = List.of(

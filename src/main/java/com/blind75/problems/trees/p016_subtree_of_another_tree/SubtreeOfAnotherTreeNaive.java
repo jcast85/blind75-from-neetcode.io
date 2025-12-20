@@ -2,9 +2,9 @@ package com.blind75.problems.trees.p016_subtree_of_another_tree;
 
 import com.blind75.problems.common.TreeNode;
 import com.blind75.problems.trees.p015_same_binary_tree.SameBinaryTree;
-import com.blind75.problems.trees.p015_same_binary_tree.SameBinaryTreeFirstTry;
+import com.blind75.problems.trees.p015_same_binary_tree.SameBinaryTreeNaive;
 
-public class SubtreeOfAnotherTreeFirstTry implements SubtreeOfAnotherTree {
+public class SubtreeOfAnotherTreeNaive implements SubtreeOfAnotherTree {
   @Override
   public boolean isSubtree(TreeNode root, TreeNode subRoot) {
     if(root == null && subRoot == null) {
@@ -35,7 +35,7 @@ public class SubtreeOfAnotherTreeFirstTry implements SubtreeOfAnotherTree {
   }
 
   private boolean isSameTree(TreeNode p, TreeNode q) {
-    SameBinaryTree sameBinaryTree = new SameBinaryTreeFirstTry();
+    SameBinaryTree sameBinaryTree = new SameBinaryTreeNaive();
     return sameBinaryTree.isSameTree(p, q);
   }
 }

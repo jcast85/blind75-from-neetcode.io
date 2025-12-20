@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ValidParenthesesFirstTry implements ValidParentheses {
+public class ValidParenthesesNaive implements ValidParentheses {
   private static final Map<Character, Character> BRACKET_PAIRS = Map.of('(', ')', '[', ']', '{', '}');
   private static final Map<Character, Character> BRACKET_PAIRS_REVERSED = Map.of(')', '(', ']','[', '}', '{');
 

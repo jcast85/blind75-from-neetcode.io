@@ -3,7 +3,7 @@ package com.blind75.problems.math_geometry.p022_non_cyclical_number;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NonCyclicalNumberFirstTry implements NonCyclicalNumber {
+public class NonCyclicalNumberNaive implements NonCyclicalNumber {
   @Override
   public boolean isHappy(int n) {
     java.util.Set<Integer> seen = new java.util.HashSet<>();

@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class ValidParenthesesTest {
 
   private static final List<ValidParentheses> validParenthesesList = List.of(
-    new ValidParenthesesFirstTry()
+    new ValidParenthesesNaive()
   );
 
   private static final List<InputAndOutput> validParenthesesInputAndOutputList = List.of(

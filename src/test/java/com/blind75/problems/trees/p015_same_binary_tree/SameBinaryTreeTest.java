@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class SameBinaryTreeTest {
 
   private static final List<SameBinaryTree> sameBinaryTreeList = List.of(
-    new SameBinaryTreeFirstTry()
+    new SameBinaryTreeNaive()
   );
 
   private static final List<InputAndOutput> sameBinaryTreeInputAndOutputList = List.of(

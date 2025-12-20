@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class PlusOneTest {
 
   private static final List<PlusOne> plusOneList = List.of(
-    new PlusOneFirstTry()
+    new PlusOneNaive()
   );
 
   private static final List<InputAndOutput> plusOneInputAndOutputList = List.of(

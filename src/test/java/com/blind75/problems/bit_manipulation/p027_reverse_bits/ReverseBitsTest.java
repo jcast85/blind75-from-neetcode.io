@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class ReverseBitsTest {
 
   private static final List<ReverseBits> reverseBitsList = List.of(
-    new ReverseBitsFirstTry(),
+    new ReverseBitsNaive(),
     new ReverseBitsWithShift()
   );
 

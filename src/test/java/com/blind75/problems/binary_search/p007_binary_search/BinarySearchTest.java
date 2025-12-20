@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class BinarySearchTest {
 
-  private static final List<BinarySearch> binarySearchList = List.of(new BinarySearchFirstTry());
+  private static final List<BinarySearch> binarySearchList = List.of(new BinarySearchNaive());
 
   private static final List<InputAndOutput> binarySearchInputAndOutputList = List.of(
     new DoubleInputAndOutputBuilder<>()

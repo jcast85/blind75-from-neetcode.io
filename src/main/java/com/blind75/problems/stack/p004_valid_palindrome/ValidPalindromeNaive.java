@@ -1,6 +1,6 @@
 package com.blind75.problems.stack.p004_valid_palindrome;
 
-public class ValidPalindromeFirstTry implements ValidPalindrome {
+public class ValidPalindromeNaive implements ValidPalindrome {
     @Override
     public boolean isPalindrome(String s) {
         int indexFromStart = 0;

@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class NonCyclicalNumberTest {
 
   private static final List<NonCyclicalNumber> nonCyclicalNumberList = List.of(
-    new NonCyclicalNumberFirstTry()
+    new NonCyclicalNumberNaive()
   );
 
   private static final List<InputAndOutput> nonCyclicalNumberInputAndOutputList = List.of(

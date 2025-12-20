@@ -2,7 +2,7 @@ package com.blind75.problems.linked_list.p009_merge_two_sorted_linked_lists;
 
 import com.blind75.problems.common.ListNode;
 
-public class MergeTwoSortedLinkedListsFirstTry implements MergeTwoSortedLinkedLists {
+public class MergeTwoSortedLinkedListsNaive implements MergeTwoSortedLinkedLists {
   @Override
   public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
     if(list1 == null || (list1.val == 0 && list1.next == null)) {

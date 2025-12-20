@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class MaximumDepthOfBinaryTreeTest {
 
   private static final List<MaximumDepthOfBinaryTree> maximumDepthOfBinaryTreeList = List.of(
-    new MaximumDepthOfBinaryTreeFirstTry()
+    new MaximumDepthOfBinaryTreeNaive()
   );
 
   private static final List<InputAndOutput> maximumDepthOfBinaryTreeInputAndOutputList = List.of(

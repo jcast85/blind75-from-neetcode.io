@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class SubtreeOfAnotherTreeTest {
 
   private static final List<SubtreeOfAnotherTree> subtreeOfAnotherTreeList = List.of(
-    new SubtreeOfAnotherTreeFirstTry()
+    new SubtreeOfAnotherTreeNaive()
   );
 
   private static final List<InputAndOutput> subtreeOfAnotherTreeInputAndOutputList = List.of(

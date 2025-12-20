@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 class ValidAnagramTest {
 
   private static final List<ValidAnagram> validAnagramList = List.of(
-    new ValidAnagramFirstTry()
+    new ValidAnagramNaive()
   );
 
   private static final List<InputAndOutput> validAnagramInputAndOutputList = List.of(

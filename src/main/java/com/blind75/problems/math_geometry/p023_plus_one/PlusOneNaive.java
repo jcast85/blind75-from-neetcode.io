@@ -1,6 +1,6 @@
 package com.blind75.problems.math_geometry.p023_plus_one;
 
-public class PlusOneFirstTry implements PlusOne {
+public class PlusOneNaive implements PlusOne {
   @Override
   public int[] plusOne(int[] digits) {
     for(int i = digits.length - 1; i >= 0; i--) {

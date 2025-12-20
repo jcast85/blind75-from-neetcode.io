@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 public class ReversedLinkedListTest {
 
   private static final List<ReversedLinkedList> reversedLinkedListList = List.of(
-    new ReversedLinkedListFirstTry()
+    new ReversedLinkedListNaive()
   );
 
   private static final List<InputAndOutput> reversedLinkedListInputAndOutputList = List.of(
