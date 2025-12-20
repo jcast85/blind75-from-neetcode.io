@@ -12,8 +12,7 @@ public class TopKFrequentElementsNaive implements TopKFrequentElements {
     }
     return frequencyByNumber.entrySet().stream()
       .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue()))
-      .toList()
-      .subList(0, k).stream()
+      .limit(k)
       .map(Map.Entry::getKey)
       .mapToInt(Integer::intValue)
       .toArray();
