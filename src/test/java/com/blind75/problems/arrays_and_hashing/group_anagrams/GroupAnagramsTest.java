@@ -11,7 +11,8 @@ public class GroupAnagramsTest {
 
   private static final List<GroupAnagrams> groupAnagramsList = List.of(
     new GroupAnagramsNaive(),
-    new GroupAnagramsUsingStrDigestAsMapKey()
+    new GroupAnagramsUsingStrDigestAsMapKey(),
+    new GroupAnagramsWithHashStringAsMapKey()
   );
 
   private static final List<InputAndOutput> groupAnagramsInputAndOutputList = List.of(
