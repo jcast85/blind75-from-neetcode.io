@@ -1,6 +1,5 @@
 package com.blind75.problems.arrays_and_hashing.top_k_frequent_elements;
 
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
