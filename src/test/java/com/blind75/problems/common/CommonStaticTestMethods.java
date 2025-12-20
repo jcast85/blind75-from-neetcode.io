@@ -1,6 +1,8 @@
 package com.blind75.problems.common;
 
+import java.lang.reflect.Array;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CommonStaticTestMethods {
   private CommonStaticTestMethods() {}
@@ -33,6 +35,13 @@ public class CommonStaticTestMethods {
   }
 
   public static void assertions(Object actual, Object expected) {
+    if(actual == null && expected == null) {
+      return;
+    }
+    if(actual == null || expected == null) {
+      org.hamcrest.MatcherAssert.assertThat(actual, org.hamcrest.Matchers.equalTo(expected));
+      return;
+    }
     if (actual instanceof List<?> actualList
       && expected instanceof List<?> expectedList
       && isListOfLists(actualList)
@@ -53,6 +62,25 @@ public class CommonStaticTestMethods {
       org.hamcrest.MatcherAssert.assertThat(sameElements, org.hamcrest.Matchers.equalTo(true));
       return;
     }
-    org.hamcrest.MatcherAssert.assertThat(actual, org.hamcrest.Matchers.equalTo(expected));
+    if (actual.getClass().isArray()
+      && expected.getClass().isArray()) {
+      List<Object> actualList = toList(actual);
+      List<Object> expectedList = toList(expected);
+      org.hamcrest.MatcherAssert.assertThat(actualList,
+        org.hamcrest.Matchers.containsInAnyOrder(expectedList.toArray()));
+      return;
+    }
+
+      org.hamcrest.MatcherAssert.assertThat(actual, org.hamcrest.Matchers.equalTo(expected));
+  }
+
+  private static List<Object> toList(Object actual) {
+    int length = Array.getLength(actual);
+    List<Object> list = new ArrayList<>(length);
+
+    for (int i = 0; i < length; i++) {
+      list.add(Array.get(actual, i));
+    }
+    return list;
   }
 }

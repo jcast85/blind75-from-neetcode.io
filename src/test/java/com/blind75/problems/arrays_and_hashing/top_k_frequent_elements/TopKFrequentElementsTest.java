@@ -9,7 +9,9 @@ import java.util.stream.Stream;
 
 public class TopKFrequentElementsTest {
 
-  private static final List<TopKFrequentElements> topKFrequentElementsList = List.of(new TopKFrequentElementsNaive());
+  private static final List<TopKFrequentElements> topKFrequentElementsList = List.of(
+    new TopKFrequentElementsNaive()
+  );
 
   private static final List<InputAndOutput> topKFrequentElementsInputAndOutputList = List.of(
     new DoubleInputAndOutputBuilder<>()
@@ -21,16 +23,6 @@ public class TopKFrequentElementsTest {
       .input1(new int[] {7,7})
       .input2(1)
       .output(new int[] {7})
-      .build(),
-    new DoubleInputAndOutputBuilder<>()
-      .input1(new int[] {-1, 0, 3, 5, 9, 12})
-      .input2(13)
-      .output(-1)
-      .build(),
-    new DoubleInputAndOutputBuilder<>()
-      .input1(new int[] {-1, 0, 3, 5, 9, 12})
-      .input2(9)
-      .output(4)
       .build()
   );
 
