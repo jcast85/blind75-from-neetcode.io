@@ -10,7 +10,8 @@ import java.util.stream.Stream;
 public class TopKFrequentElementsTest {
 
   private static final List<TopKFrequentElements> topKFrequentElementsList = List.of(
-    new TopKFrequentElementsNaive()
+    new TopKFrequentElementsNaive(),
+    new TopKFrequentElementsTreeMap()
   );
 
   private static final List<InputAndOutput> topKFrequentElementsInputAndOutputList = List.of(
