@@ -11,7 +11,8 @@ public class TopKFrequentElementsTest {
 
   private static final List<TopKFrequentElements> topKFrequentElementsList = List.of(
     new TopKFrequentElementsNaive(),
-    new TopKFrequentElementsTreeMap()
+    new TopKFrequentElementsTreeMap(),
+    new TopKFrequentElementsMapAndReverseMap()
   );
 
   private static final List<InputAndOutput> topKFrequentElementsInputAndOutputList = List.of(
