@@ -16,32 +16,29 @@ public class LongestConsecutiveSequenceNaive implements LongestConsecutiveSequen
         hasNext.put(num-1, true);
       }
     }
-    Map<Integer, Set<Integer>> longestConsecutiveSequenceByElement = new HashMap<>();
+    Set<Integer> alreadyUsed = new HashSet<>();
+    int maxLengthSequence = 0;
     for (Integer key : hasNext.keySet()) {
-      Set<Integer> longestConsecutiveSequenceForElement;
-      if(longestConsecutiveSequenceByElement.containsKey(key)) {
-        longestConsecutiveSequenceForElement = longestConsecutiveSequenceByElement.get(key);
-      } else {
-        longestConsecutiveSequenceForElement = new HashSet<>();
-        if(hasNext.get(key) == true) {
-          if(longestConsecutiveSequenceByElement.containsKey(key + 1)) {
-            longestConsecutiveSequenceForElement = longestConsecutiveSequenceByElement.get(key + 1);
-          }
-        }
+      if(alreadyUsed.contains(key)) {
+        continue;
       }
-      longestConsecutiveSequenceForElement.add(key);
-      longestConsecutiveSequenceByElement.put(key, longestConsecutiveSequenceForElement);
-      if(hasNext.get(key) == true) {
-        longestConsecutiveSequenceByElement.put(key + 1, longestConsecutiveSequenceForElement);
+      int currentLengthSequence = 1;
+      int i=1;
+      while(Boolean.TRUE.equals(hasNext.get(key - i))) {
+        currentLengthSequence++;
+        alreadyUsed.add(key - i);
+        i++;
       }
-    }
-
-    int longestConsecutiveSequence = 0;
-    for (Set<Integer> longestConsecutiveSequenceForElement : longestConsecutiveSequenceByElement.values()) {
-      if(longestConsecutiveSequenceForElement.size() > longestConsecutiveSequence) {
-        longestConsecutiveSequence = longestConsecutiveSequenceForElement.size();
+      i=0;
+      while(Boolean.TRUE.equals(hasNext.get(key + i))) {
+        currentLengthSequence++;
+        alreadyUsed.add(key + i);
+        i++;
+      }
+      if(currentLengthSequence > maxLengthSequence) {
+        maxLengthSequence = currentLengthSequence;
       }
     }
-    return longestConsecutiveSequence;
+    return maxLengthSequence;
   }
 }
