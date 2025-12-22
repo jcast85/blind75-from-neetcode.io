@@ -10,7 +10,8 @@ import java.util.stream.Stream;
 class LongestConsecutiveSequenceTest {
 
   private static final List<LongestConsecutiveSequence> longestConsecutiveSequenceList = List.of(
-    new LongestConsecutiveSequenceNaive()
+    new LongestConsecutiveSequenceNaive(),
+    new LongestConsecutiveSequenceOptimized()
   );
 
   private static final List<InputAndOutput> longestConsecutiveSequenceInputAndOutputList = List.of(
