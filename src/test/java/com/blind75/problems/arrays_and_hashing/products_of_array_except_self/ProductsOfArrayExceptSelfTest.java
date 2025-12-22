@@ -12,7 +12,8 @@ class ProductsOfArrayExceptSelfTest {
 
   private static final List<ProductsOfArrayExceptSelf> productsOfArrayExceptSelfList = List.of(
     new ProductsOfArrayExceptSelfNaive(),
-    new ProductsOfArrayExceptSelfWithoutDivision()
+    new ProductsOfArrayExceptSelfWithoutDivision(),
+    new ProductsOfArrayExceptSelfWithoutDivisionLessSpace()
   );
 
   private static final List<InputAndOutput> productsOfArrayExceptSelfInputAndOutputList = List.of(
