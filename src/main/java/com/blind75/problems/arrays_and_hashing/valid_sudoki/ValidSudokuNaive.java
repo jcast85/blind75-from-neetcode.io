@@ -16,8 +16,8 @@ public class ValidSudokuNaive implements ValidSudoku {
         return false;
       }
     }
-    for(int i=0; i<board.length/3; i++) {
-      for(int j=0; j<board[i].length/3; j++) {
+    for(int i=0; i<Math.sqrt(board.length); i++) {
+      for(int j=0; j<Math.sqrt(board[i].length); j++) {
         char[] sudokuSubBox = getSubBox(board, i, j);
         boolean validSudokuSubBox = isValidSudokuBlock(sudokuSubBox);
         if(!validSudokuSubBox) {
@@ -54,8 +54,8 @@ public class ValidSudokuNaive implements ValidSudoku {
 
   private char[] getSubBox(char[][] board, int verticalIndex, int horizontalIndex) {
     char[] sudokuSubBox = new char[board.length];
-    for(int i=0; i<board.length/3; i++) {
-      for(int j=0; j<board.length/3; j++) {
+    for(int i=0; i<Math.sqrt(board.length); i++) {
+      for(int j=0; j<Math.sqrt(board.length); j++) {
         sudokuSubBox[i+j] = board[3*horizontalIndex+i][3*verticalIndex+j];
       }
     }
