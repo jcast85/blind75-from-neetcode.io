@@ -1,4 +1,4 @@
-package com.blind75.problems.two_pointers.p006_valid_parentheses.p006_valid_parentheses;
+package com.blind75.problems.two_pointers.valid_parentheses;
 
 import java.util.ArrayList;
 import java.util.List;
