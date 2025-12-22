@@ -22,6 +22,14 @@ class ProductsOfArrayExceptSelfTest {
     new SingleInputAndOutputBuilder<>()
       .input(new int[] {-1,0,1,2,3})
       .output(new int[] {0,-6,0,0,0})
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {0,0})
+      .output(new int[] {0,0})
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {0,8,0})
+      .output(new int[] {0,0,0})
       .build());
 
   static Stream<SingleMethodTestConfig<ProductsOfArrayExceptSelf>> testConfigs() {
