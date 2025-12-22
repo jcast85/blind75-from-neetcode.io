@@ -10,23 +10,15 @@ public class LongestConsecutiveSequenceOptimized implements LongestConsecutiveSe
     for (int num : nums) {
       numSet.add(num);
     }
-    Set<Integer> alreadyUsed = new HashSet<>();
     int maxLengthSequence = 0;
     for (Integer key : numSet) {
-      if(alreadyUsed.contains(key)) {
+      if(numSet.contains(key-1)) {
         continue;
       }
       int currentLengthSequence = 0;
-      int i=1;
-      while(numSet.contains(key - i)) {
-        currentLengthSequence++;
-        alreadyUsed.add(key - i);
-        i++;
-      }
-      i=0;
+      int i=0;
       while(numSet.contains(key + i)) {
         currentLengthSequence++;
-        alreadyUsed.add(key + i);
         i++;
       }
       if(currentLengthSequence > maxLengthSequence) {
