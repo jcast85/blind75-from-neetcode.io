@@ -25,6 +25,10 @@ class LongestConsecutiveSequenceTest {
     new SingleInputAndOutputBuilder<>()
       .input(new int[] {0,3,2,5,4,6,1,1})
       .output(7)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {1,0,-1})
+      .output(3)
       .build()
   );
 
