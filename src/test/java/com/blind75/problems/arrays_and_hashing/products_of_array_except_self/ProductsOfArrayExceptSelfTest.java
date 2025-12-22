@@ -11,7 +11,8 @@ import java.util.stream.Stream;
 class ProductsOfArrayExceptSelfTest {
 
   private static final List<ProductsOfArrayExceptSelf> productsOfArrayExceptSelfList = List.of(
-    new ProductsOfArrayExceptSelfNaive()
+    new ProductsOfArrayExceptSelfNaive(),
+    new ProductsOfArrayExceptSelfWithoutDivision()
   );
 
   private static final List<InputAndOutput> productsOfArrayExceptSelfInputAndOutputList = List.of(
