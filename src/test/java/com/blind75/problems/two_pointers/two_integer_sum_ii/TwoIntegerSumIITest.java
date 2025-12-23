@@ -17,18 +17,18 @@ class TwoIntegerSumIITest {
   private static final List<InputAndOutput> twoIntegerSumIIInputAndOutputList = List.of(
     new DoubleInputAndOutputBuilder<>()
       .input1(new int[] {1,2,3,4})
-      .input2(37)
+      .input2(3)
       .output(new int[] {1,2})
       .build(),
     new DoubleInputAndOutputBuilder<>()
-      .input1(new int[] {4, 5, 6})
-      .input2(10)
-      .output(new int[] {0, 2})
+      .input1(new int[] {2,3,4})
+      .input2(6)
+      .output(new int[] {1,3})
       .build(),
     new DoubleInputAndOutputBuilder<>()
-      .input1(new int[] {5, 5})
-      .input2(10)
-      .output(new int[] {0, 1})
+      .input1(new int[] {-4,-1,1,2,5,6})
+      .input2(2)
+      .output(new int[] {1,6})
       .build());
 
   static Stream<SingleMethodTestConfig<TwoIntegerSumII>> testConfigs() {
