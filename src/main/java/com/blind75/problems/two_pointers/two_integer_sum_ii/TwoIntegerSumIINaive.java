@@ -14,16 +14,12 @@ public class TwoIntegerSumIINaive implements TwoIntegerSumII {
     }
     for (Map.Entry<Integer, Integer> integerIntegerEntry : missingAddendumMap.entrySet()) {
       if(missingAddendumMap.containsKey(integerIntegerEntry.getValue())) {
-        int index1 = indexByNumber.get(integerIntegerEntry.getValue()) + 1;
-        int index2 = indexByNumber.get(integerIntegerEntry.getKey()) + 1;
+        int index1 = indexByNumber.get(integerIntegerEntry.getValue());
+        int index2 = indexByNumber.get(integerIntegerEntry.getKey());
         if(index1 == index2) {
           continue;
         }
-        if(index1 < index2) {
-          return new int[] {index1, index2};
-        } else {
-          return new int[] {index2, index1};
-        }
+        return TwoIntegerSumIICommonStaticMethods.returnIndex(index1, index2);
       }
     }
     return new int[0];
