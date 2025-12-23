@@ -11,7 +11,8 @@ import java.util.stream.Stream;
 class TwoIntegerSumIITest {
 
   private static final List<TwoIntegerSumII> twoIntegerSumIIList = List.of(
-    new TwoIntegerSumIINaive()
+    new TwoIntegerSumIINaive(),
+    new TwoIntegerSumIINoAuxiliarySpace()
   );
 
   private static final List<InputAndOutput> twoIntegerSumIIInputAndOutputList = List.of(
