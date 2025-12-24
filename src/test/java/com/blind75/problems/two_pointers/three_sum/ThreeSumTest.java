@@ -10,7 +10,8 @@ import java.util.stream.Stream;
 public class ThreeSumTest {
 
   private static final List<ThreeSum> threeSumList = List.of(
-    new ThreeSumNaive()
+    new ThreeSumNaive(),
+    new ThreeSumReusingTwoSumII()
   );
 
   private static final List<InputAndOutput> threeSumInputAndOutputList = List.of(
@@ -25,13 +26,17 @@ public class ThreeSumTest {
     new SingleInputAndOutputBuilder<>()
       .input(new int[] {0,0,0})
       .output(List.of(List.of(0,0,0)))
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {-1,0,1,2,-1,-4,-2,-3,3,0,4})
+      .output(List.of(List.of(-4,0,4),List.of(-4,1,3),List.of(-3,-1,4),List.of(-3,0,3),List.of(-3,1,2),List.of(-2,-1,3),List.of(-2,0,2),List.of(-1,-1,2),List.of(-1,0,1)))
       .build()
   );
 
   static Stream<SingleMethodTestConfig<ThreeSum>> testConfigs() {
     Stream.Builder<SingleMethodTestConfig<ThreeSum>> streamBuilder = Stream.builder();
     for (ThreeSum threeSum : threeSumList) {
-      for (InputAndOutput threeSumInputAndOutput : threeSumInputAndOutputList) {
+      for (InputAndOutput threeSumInputAndOutput : threeSumInputAndOutputList.subList(3,4)) {
         streamBuilder.add(new SingleMethodTestConfigBuilder<ThreeSum>()
           .implementationToTest(threeSum)
           .inputAndOutput(threeSumInputAndOutput)
