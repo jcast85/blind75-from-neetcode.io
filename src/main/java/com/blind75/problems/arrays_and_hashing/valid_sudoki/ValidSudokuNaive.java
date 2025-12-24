@@ -58,7 +58,7 @@ public class ValidSudokuNaive implements ValidSudoku {
     for(int i = 0; i< hSqrt; i++) {
       int sVqrt = (int) Math.sqrt(board[i].length);
       for(int j = 0; j< sVqrt; j++) {
-        sudokuSubBox[i+j] = board[hSqrt*horizontalIndex+i][sVqrt*verticalIndex+j];
+        sudokuSubBox[i*hSqrt+j] = board[hSqrt*horizontalIndex+i][sVqrt*verticalIndex+j];
       }
     }
     return sudokuSubBox;
