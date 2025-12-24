@@ -24,7 +24,7 @@ public class ThreeSumTest {
       .build(),
     new SingleInputAndOutputBuilder<>()
       .input(new int[] {0,0,0})
-      .output(List.of(0,0,0))
+      .output(List.of(List.of(0,0,0)))
       .build()
   );
 
