@@ -11,7 +11,8 @@ public class ThreeSumTest {
 
   private static final List<ThreeSum> threeSumList = List.of(
     new ThreeSumNaive(),
-    new ThreeSumReusingTwoSumII()
+    new ThreeSumReusingTwoSumII(),
+    new ThreeSumOptimized()
   );
 
   private static final List<InputAndOutput> threeSumInputAndOutputList = List.of(
@@ -36,7 +37,7 @@ public class ThreeSumTest {
   static Stream<SingleMethodTestConfig<ThreeSum>> testConfigs() {
     Stream.Builder<SingleMethodTestConfig<ThreeSum>> streamBuilder = Stream.builder();
     for (ThreeSum threeSum : threeSumList) {
-      for (InputAndOutput threeSumInputAndOutput : threeSumInputAndOutputList.subList(3,4)) {
+      for (InputAndOutput threeSumInputAndOutput : threeSumInputAndOutputList) {
         streamBuilder.add(new SingleMethodTestConfigBuilder<ThreeSum>()
           .implementationToTest(threeSum)
           .inputAndOutput(threeSumInputAndOutput)
