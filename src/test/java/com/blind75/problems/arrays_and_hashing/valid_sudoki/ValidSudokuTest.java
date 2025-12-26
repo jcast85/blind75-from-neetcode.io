@@ -10,7 +10,8 @@ import java.util.stream.Stream;
 class ValidSudokuTest {
 
   private static final List<ValidSudoku> validSudokuList = List.of(
-    new ValidSudokuNaive()
+    new ValidSudokuNaive(),
+    new ValidSudokuOptimized()
   );
 
   private static final List<InputAndOutput> validSudokuInputAndOutputList = List.of(
