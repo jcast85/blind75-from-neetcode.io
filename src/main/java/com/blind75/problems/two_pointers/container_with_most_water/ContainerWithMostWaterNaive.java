@@ -12,10 +12,10 @@ public class ContainerWithMostWaterNaive implements ContainerWithMostWater {
       if(currentArea > maxArea) {
         maxArea = currentArea;
       }
-      while(heights[indexFromBegin] == currentHeight) {
+      while(indexFromBegin < heights.length && heights[indexFromBegin] == currentHeight) {
         indexFromBegin++;
       }
-      while(heights[indexFromEnd] == currentHeight) {
+      while(indexFromEnd >=0 && heights[indexFromEnd] == currentHeight) {
         indexFromEnd--;
       }
 

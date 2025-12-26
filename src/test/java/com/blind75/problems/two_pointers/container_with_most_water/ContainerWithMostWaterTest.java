@@ -31,7 +31,7 @@ class ContainerWithMostWaterTest {
   static Stream<SingleMethodTestConfig<ContainerWithMostWater>> testConfigs() {
     Stream.Builder<SingleMethodTestConfig<ContainerWithMostWater>> streamBuilder = Stream.builder();
     for (ContainerWithMostWater containerWithMostWater : containerWithMostWaterList) {
-      for (InputAndOutput inputAndOutput : containerWithMostWaterInputAndOutputList.subList(2,3)) {
+      for (InputAndOutput inputAndOutput : containerWithMostWaterInputAndOutputList) {
         streamBuilder.add(new SingleMethodTestConfigBuilder<ContainerWithMostWater>()
           .implementationToTest(containerWithMostWater)
           .inputAndOutput(inputAndOutput)
