@@ -7,57 +7,60 @@ public class TrappingRainWaterNaive implements TrappingRainWater {
   public int trap(int[] height) {
     List<Integer[]> openWaterAreaTail = new ArrayList<>();
     int waterArea = 0;
-    int index = 0;
-    int index2 = index + 1;
-    while(index2<height.length) {
-      while(height[index+1] >= height[index] && index2<height.length) {
-        index++;
-        index2 = index + 1;
+    for(int index=0; index<height.length-1; index++) {
+      if(height[index]>height[index+1]) {
+        openWaterAreaTail.add(new Integer[] {index, height[index], height[index+1], index+1});
       }
-      if(index2==height.length-1) {
-        break;
+      if(height[index]==height[index+1]) {
+        openWaterAreaTail.get(openWaterAreaTail.size()-1)[3] = index+1;
       }
-      while(!openWaterAreaTail.isEmpty()) {
-        if(openWaterAreaTail.getLast()[0] > height[index2-1]) {
-          break;
+      if(height[index]<height[index+1]) {
+        //remove,add and update new last
+        if(!openWaterAreaTail.isEmpty()) {
+          waterArea += getWaterAreaToAdd(height, openWaterAreaTail, index+1);
         }
-        waterArea += getWaterAreaToAdd(height, openWaterAreaTail, index2);
       }
-      openWaterAreaTail.add(new Integer[] {index, height[index], height[index+1], index+1});
-      while(height[index2+1] <= height[index2] && index2<height.length-2) {
-        if(height[index2+1] == height[index2]) {
-          openWaterAreaTail.getLast()[3] = index2+1;
-        }
-        if(height[index2+1] < height[index2]) {
-          openWaterAreaTail.getLast()[3] = index2+1;
-          openWaterAreaTail.add(new Integer[] {index2, height[index2], height[index2+1], index2+1});
-        }
-        index2++;
-      }
-      if(height[index2+1] <= height[index2] || index2==height.length-1) {
-        break;
-      }
-      waterArea += getWaterAreaToAdd(height, openWaterAreaTail, index2);
-      index = index2 + 1;
-      index2 = index + 1;
     }
+    if(!openWaterAreaTail.isEmpty()) {
+      if(height[height.length-1]>=openWaterAreaTail.get(openWaterAreaTail.size()-1)[1]) {
+      //remove,add and update new last
+        waterArea += getWaterAreaToAdd(height, openWaterAreaTail, height.length-1);
+      }
+    }
+
 
     return waterArea;
   }
 
-  private static int getWaterAreaToAdd(int[] height, List<Integer[]> openWaterAreaTail, int index2) {
-    int beginIndex = openWaterAreaTail.getLast()[0];
-    int beginValue = openWaterAreaTail.getLast()[1];
-    int minValue = openWaterAreaTail.getLast()[2];
-    int endIndex = openWaterAreaTail.getLast()[3];
+  private static int getWaterAreaToAdd(int[] height, List<Integer[]> openWaterAreaTail, int index) {
+    int beginIndex = openWaterAreaTail.get(openWaterAreaTail.size()-1)[0];
+    int beginValue = openWaterAreaTail.get(openWaterAreaTail.size()-1)[1];
+    int minValue = openWaterAreaTail.get(openWaterAreaTail.size()-1)[2];
+    int endIndex = openWaterAreaTail.get(openWaterAreaTail.size()-1)[3];
     int endValue = height[endIndex+1];
     int waterAreaToAdd = (Math.min(beginValue, endValue) - minValue) * (endIndex - beginIndex);
-    openWaterAreaTail.removeLast();
+    height[endIndex] = Math.min(beginValue, endValue);
+    openWaterAreaTail.remove(openWaterAreaTail.size()-1);
     if(!openWaterAreaTail.isEmpty()) {
-      openWaterAreaTail.getLast()[3] = index2+1;
+      if(endValue<openWaterAreaTail.get(openWaterAreaTail.size()-1)[1]) {
+        if(endValue>openWaterAreaTail.get(openWaterAreaTail.size()-1)[2]) {
+          waterAreaToAdd +=(endValue - openWaterAreaTail.get(openWaterAreaTail.size()-1)[2]) * (endIndex - openWaterAreaTail.get(openWaterAreaTail.size()-1)[0]);
+          Integer[] newValue = {
+            openWaterAreaTail.get(openWaterAreaTail.size()-1)[0],
+            openWaterAreaTail.get(openWaterAreaTail.size()-1)[1],
+            endValue,
+            index + 1};
+          openWaterAreaTail.remove(openWaterAreaTail.size()-1);
+          openWaterAreaTail.add(newValue);
+        } else {
+          openWaterAreaTail.get(openWaterAreaTail.size()-1)[3] = index;
+        }
+      } else {
+//        return waterAreaToAdd + getWaterAreaToAdd(height, openWaterAreaTail, index);
+      }
     }
     if(beginValue > endValue) {
-      openWaterAreaTail.add(new Integer[]{beginIndex, beginValue, endValue, index2+1});
+      openWaterAreaTail.add(new Integer[]{beginIndex, beginValue, endValue, index+1});
     }
     return waterAreaToAdd;
   }
