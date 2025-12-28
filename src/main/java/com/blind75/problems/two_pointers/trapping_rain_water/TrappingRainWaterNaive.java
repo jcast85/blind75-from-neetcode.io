@@ -10,7 +10,6 @@ public class TrappingRainWaterNaive implements TrappingRainWater {
     int index = 0;
     int index2 = index + 1;
     while(index2<height.length) {
-      boolean isWaterAreaStarted = false;
       while(height[index+1] >= height[index] && index2<height.length) {
         index++;
         index2 = index + 1;
@@ -25,7 +24,6 @@ public class TrappingRainWaterNaive implements TrappingRainWater {
         waterArea += getWaterAreaToAdd(height, openWaterAreaTail, index2);
       }
       openWaterAreaTail.add(new Integer[] {index, height[index], height[index+1], index+1});
-      isWaterAreaStarted = true;
       while(height[index2+1] <= height[index2] && index2<height.length-2) {
         if(height[index2+1] == height[index2]) {
           openWaterAreaTail.getLast()[3] = index2+1;
