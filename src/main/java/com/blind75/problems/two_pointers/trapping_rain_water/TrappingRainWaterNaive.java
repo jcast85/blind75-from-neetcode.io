@@ -9,13 +9,15 @@ public class TrappingRainWaterNaive implements TrappingRainWater {
     int waterArea = 0;
     for(int index=0; index<height.length-1; index++) {
       if(height[index]>height[index+1]) {
-        if(!openWaterAreaTail.isEmpty()) {
+        if(!openWaterAreaTail.isEmpty()
+          && height[index]<(openWaterAreaTail.get(openWaterAreaTail.size()-1)[1])) {
           openWaterAreaTail.get(openWaterAreaTail.size() - 1)[3] = index + 1;
         }
         openWaterAreaTail.add(new Integer[] {index, height[index], height[index+1], index+1});
       }
       if(height[index]==height[index+1]) {
-        if(!openWaterAreaTail.isEmpty()) {
+        if(!openWaterAreaTail.isEmpty()
+          && height[index]<(openWaterAreaTail.get(openWaterAreaTail.size()-1)[1])) {
           openWaterAreaTail.get(openWaterAreaTail.size() - 1)[3] = index + 1;
         }
       }
