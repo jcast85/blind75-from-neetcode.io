@@ -69,8 +69,6 @@ public class TrappingRainWaterNaive implements TrappingRainWater {
         } else {
           openWaterAreaTail.get(openWaterAreaTail.size()-1)[3] = index;
         }
-      } else {
-//        return waterAreaToAdd + getWaterAreaToAdd(height, openWaterAreaTail, index);
       }
     }
     if(beginValue > endValue) {
