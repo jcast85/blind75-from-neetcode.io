@@ -25,6 +25,13 @@ public class TrappingRainWaterNaive implements TrappingRainWater {
         //remove,add and update new last
         if(!openWaterAreaTail.isEmpty()) {
           waterArea += getWaterAreaToAdd(height, openWaterAreaTail, index+1);
+          for(int i=0; i<openWaterAreaTail.size();) {
+            if(height[index+1]>=openWaterAreaTail.get(0)[1]) {
+              waterArea += getWaterAreaToAdd(height, openWaterAreaTail, index+1);
+            } else {
+              i++;
+            }
+          }
         }
       }
     }

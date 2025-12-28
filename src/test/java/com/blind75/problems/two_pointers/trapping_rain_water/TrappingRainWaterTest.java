@@ -37,13 +37,17 @@ class TrappingRainWaterTest {
     new SingleInputAndOutputBuilder<>()
       .input(new int[] {4,2,0,3,2,4,3,4})
       .output(10)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {5,5,1,7,1,1,5,2,7,6})
+      .output(23)
       .build()
   );
 
   static Stream<SingleMethodTestConfig<TrappingRainWater>> testConfigs() {
     Stream.Builder<SingleMethodTestConfig<TrappingRainWater>> streamBuilder = Stream.builder();
     for (TrappingRainWater trappingRainWater : trappingRainWaterList) {
-      for (InputAndOutput inputAndOutput : trappingRainWaterInputAndOutputList.subList(0,6)) {
+      for (InputAndOutput inputAndOutput : trappingRainWaterInputAndOutputList.subList(0,7)) {
         streamBuilder.add(new SingleMethodTestConfigBuilder<TrappingRainWater>()
           .implementationToTest(trappingRainWater)
           .inputAndOutput(inputAndOutput)
