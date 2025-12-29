@@ -11,7 +11,8 @@ class TrappingRainWaterTest {
 
   private static final List<TrappingRainWater> trappingRainWaterList = List.of(
 //    new TrappingRainWaterNaive(),
-    new TrappingRainWaterIncreasingHeightEachTime()
+    new TrappingRainWaterIncreasingHeightEachTime(),
+    new TrappingRainWaterOptimized()
   );
 
   private static final List<InputAndOutput> trappingRainWaterInputAndOutputList = List.of(
