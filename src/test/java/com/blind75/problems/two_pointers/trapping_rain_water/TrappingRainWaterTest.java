@@ -10,7 +10,8 @@ import java.util.stream.Stream;
 class TrappingRainWaterTest {
 
   private static final List<TrappingRainWater> trappingRainWaterList = List.of(
-    new TrappingRainWaterNaive()
+//    new TrappingRainWaterNaive(),
+    new TrappingRainWaterIncreasingHeightEachTime()
   );
 
   private static final List<InputAndOutput> trappingRainWaterInputAndOutputList = List.of(
@@ -41,13 +42,35 @@ class TrappingRainWaterTest {
     new SingleInputAndOutputBuilder<>()
       .input(new int[] {5,5,1,7,1,1,5,2,7,6})
       .output(23)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {5,5,1,7})
+      .output(4)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {7,1,1,5,2,7,6})
+      .output(19)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {6,4,2,0,3,2,0,3,1,4,5,3,2,7})
+      .output(43)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {7,5,3,0,1,2,1,3,4,6,8,1,3})
+      .output(40)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new int[] {6,4,2,0,3,2,0,3,1,4,5,3,2,7,5,3,0,1,2,1,3,4,6,8,1,3})
+      .output(83)
       .build()
   );
 
   static Stream<SingleMethodTestConfig<TrappingRainWater>> testConfigs() {
     Stream.Builder<SingleMethodTestConfig<TrappingRainWater>> streamBuilder = Stream.builder();
     for (TrappingRainWater trappingRainWater : trappingRainWaterList) {
-      for (InputAndOutput inputAndOutput : trappingRainWaterInputAndOutputList.subList(0,7)) {
+      for (InputAndOutput inputAndOutput : trappingRainWaterInputAndOutputList
+        .subList(0, trappingRainWaterInputAndOutputList.size())
+      ) {
         streamBuilder.add(new SingleMethodTestConfigBuilder<TrappingRainWater>()
           .implementationToTest(trappingRainWater)
           .inputAndOutput(inputAndOutput)
