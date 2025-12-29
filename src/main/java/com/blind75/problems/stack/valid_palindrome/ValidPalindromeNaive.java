@@ -1,4 +1,4 @@
-package com.blind75.problems.stack.p004_valid_palindrome;
+package com.blind75.problems.stack.valid_palindrome;
 
 public class ValidPalindromeNaive implements ValidPalindrome {
     @Override

@@ -1,4 +1,4 @@
-package com.blind75.problems.math_geometry.p023_plus_one;
+package com.blind75.problems.math_geometry.plus_one;
 
 import com.blind75.problems.common.*;
 import org.junit.jupiter.params.ParameterizedTest;
