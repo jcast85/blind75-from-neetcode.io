@@ -39,7 +39,7 @@ public class TrappingRainWaterIncreasingHeightEachTime implements TrappingRainWa
     }
     for (int index=height.length-1; index>0; index--) {
       if(height[index-1] < height[index]) {
-        if(relativeMaxIndexList.isEmpty() || relativeMaxIndexList.get(relativeMaxIndexList.size()-1) != index) {
+        if(relativeMaxIndexList.isEmpty() || relativeMaxIndexList.getLast() != index) {
           relativeMaxIndexList.add((long) index);
         }
         break;
@@ -54,10 +54,10 @@ public class TrappingRainWaterIncreasingHeightEachTime implements TrappingRainWa
       List<Integer> indexList = indexListByHeight.get(h);
       if(indexList != null) {
         for (Integer index : indexList) {
-          if(index<relativeMaxIndexList.get(0)) {
+          if(index<relativeMaxIndexList.getFirst()) {
             continue;
           }
-          if(index>relativeMaxIndexList.get(relativeMaxIndexList.size()-1)) {
+          if(index>relativeMaxIndexList.getLast()) {
             continue;
           }
           if(isLowerThanAtLeastANextRelativeMaxHeight(height, index, relativeMaxIndexList)
