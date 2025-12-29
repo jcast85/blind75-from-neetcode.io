@@ -2,6 +2,9 @@ package com.blind75.problems.two_pointers.trapping_rain_water;
 
 import java.util.*;
 
+/**
+ * N.B. this naive solution doesn't cover all cases, so it is wrong!
+ */
 public class TrappingRainWaterNaive implements TrappingRainWater {
   @Override
   public int trap(int[] height) {
