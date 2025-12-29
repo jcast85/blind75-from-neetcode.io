@@ -5,40 +5,41 @@ import java.util.*;
 public class TrappingRainWaterIncreasingHeightEachTime implements TrappingRainWater {
   @Override
   public int trap(int[] height) {
+    int[] copyHeight = Arrays.copyOf(height, height.length);
     int maxHeight = 0;
     Map<Integer, List<Integer>> indexListByHeight = new HashMap<>();
     List<Long> relativeMaxIndexList = new ArrayList<>();
     boolean isDirectionChanged = false;
-    for (int index=0; index<height.length; index++) {
-      if(height[index]>maxHeight) {
-        maxHeight = height[index];
+    for (int index=0; index<copyHeight.length; index++) {
+      if(copyHeight[index]>maxHeight) {
+        maxHeight = copyHeight[index];
       }
       List<Integer> indexList;
-      if(indexListByHeight.containsKey(height[index])) {
-        indexList = indexListByHeight.get(height[index]);
+      if(indexListByHeight.containsKey(copyHeight[index])) {
+        indexList = indexListByHeight.get(copyHeight[index]);
       } else {
         indexList = new ArrayList<>();
       }
       indexList.add(index);
-      indexListByHeight.put(height[index], indexList);
-      if(index<height.length-1) {
+      indexListByHeight.put(copyHeight[index], indexList);
+      if(index<copyHeight.length-1) {
         if(relativeMaxIndexList.isEmpty()) {
-          if(height[index] > height[index+1]) {
+          if(copyHeight[index] > copyHeight[index+1]) {
             relativeMaxIndexList.add((long) index);
           }
         } else {
-          if(height[index] < height[index+1]) {
+          if(copyHeight[index] < copyHeight[index+1]) {
             isDirectionChanged = true;
           }
-          if(isDirectionChanged && height[index] > height[index+1]) {
+          if(isDirectionChanged && copyHeight[index] > copyHeight[index+1]) {
             relativeMaxIndexList.add((long) index);
             isDirectionChanged = false;
           }
         }
       }
     }
-    for (int index=height.length-1; index>0; index--) {
-      if(height[index-1] < height[index]) {
+    for (int index=copyHeight.length-1; index>0; index--) {
+      if(copyHeight[index-1] < copyHeight[index]) {
         if(relativeMaxIndexList.isEmpty() || relativeMaxIndexList.getLast() != index) {
           relativeMaxIndexList.add((long) index);
         }
@@ -60,11 +61,11 @@ public class TrappingRainWaterIncreasingHeightEachTime implements TrappingRainWa
           if(index>relativeMaxIndexList.getLast()) {
             continue;
           }
-          if(isLowerThanAtLeastANextRelativeMaxHeight(height, index, relativeMaxIndexList)
-            && isLowerThanAtLeastAPreviousRelativeMaxHeight(height, index, relativeMaxIndexList)
+          if(isLowerThanAtLeastANextRelativeMaxHeight(copyHeight, index, relativeMaxIndexList)
+            && isLowerThanAtLeastAPreviousRelativeMaxHeight(copyHeight, index, relativeMaxIndexList)
           ) {
             waterArea++;
-            height[index]++;
+            copyHeight[index]++;
             List<Integer> nextHeightIndexList = indexListByHeight.get(h + 1);
             if(nextHeightIndexList == null) {
               nextHeightIndexList = new ArrayList<>();
