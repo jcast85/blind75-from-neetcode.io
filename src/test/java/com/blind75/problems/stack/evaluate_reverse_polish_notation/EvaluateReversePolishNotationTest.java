@@ -17,6 +17,14 @@ public class EvaluateReversePolishNotationTest {
     new SingleInputAndOutputBuilder<>()
       .input(new String[] {"1","2","+","3","*","4","-"})
       .output(5)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new String[] {"4","13","5","/","+"})
+      .output(6)
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new String[] {"4","3","*","13","5","/","+"})
+      .output(14)
       .build()
   );
 

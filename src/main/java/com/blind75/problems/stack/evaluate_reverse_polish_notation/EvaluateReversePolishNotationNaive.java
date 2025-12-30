@@ -3,54 +3,54 @@ package com.blind75.problems.stack.evaluate_reverse_polish_notation;
 public class EvaluateReversePolishNotationNaive implements EvaluateReversePolishNotation {
   @Override
   public int evalRPN(String[] tokens) {
-    Integer result = null;
-    int i = 0;
-    Integer operand1 = null;
-    Integer operand2 = null;
-    String operator = null;
-    while(i<tokens.length) {
-      if(operand1 == null) {
-        operand1 = Integer.parseInt(tokens[i]);
-        i++;
-        continue;
-      }
-      if(operand2 == null) {
-        operand2 = Integer.parseInt(tokens[i]);
-        i++;
-        continue;
-      }
-      if(operator == null) {
-        operator = tokens[i];
-        i++;
-      }
-      if(operand1 != null && operand2 != null && operator != null) {
-        switch (operator) {
-          case "+": {
-            result = operand1 + operand2;
-            break;
-          }
-          case "-": {
-            result = operand1 - operand2;
-            break;
-          }
-          case "*": {
-            result = operand1 * operand2;
-            break;
-          }
-          case "/": {
-            result = operand1 / operand2;
-            break;
-          }
-        }
-        operand1 = result;
-        operand2 = null;
-        operator = null;
-      }
-    }
+    return evalRPN(tokens, 0, tokens.length-1).result;
+  }
 
-    if(result == null) {
+  private InnerCalculationOutput evalRPN(String[] tokens, int from, int to) {
+    if (from == to) {
+      return new InnerCalculationOutput(Integer.parseInt(tokens[from]), -1);
+    }
+    try {
+      return new InnerCalculationOutput(Integer.parseInt(tokens[to]), to-1);
+    } catch (Exception ignored) {}
+
+    String operator = tokens[to];
+    InnerCalculationOutput operand2innerCalculationOutput = evalRPN(tokens, from, to - 1);
+    Integer operand2 = operand2innerCalculationOutput.result;
+    InnerCalculationOutput operand1innerCalculationOutput = evalRPN(tokens, from, operand2innerCalculationOutput.lastUnusedIndex);
+    Integer operand1 = operand1innerCalculationOutput.result;
+    int calculate = calculate(operand1, operand2, operator);
+    return new InnerCalculationOutput(calculate, operand1innerCalculationOutput.lastUnusedIndex);
+  }
+
+  private int calculate(Integer operand1, Integer operand2, String operator) {
+    if (operand1 != null && operand2 != null && operator != null) {
+      switch (operator) {
+        case "+": {
+          return operand1 + operand2;
+        }
+        case "-": {
+          return operand1 - operand2;
+        }
+        case "*": {
+          return operand1 * operand2;
+        }
+        case "/": {
+          return operand1 / operand2;
+        }
+      }
       return 0;
     }
-    return result;
+    return 0;
+  }
+
+  private static class InnerCalculationOutput {
+    final int result;
+    final int lastUnusedIndex;
+
+    private InnerCalculationOutput(int result, int lastUnusedIndex) {
+      this.result = result;
+      this.lastUnusedIndex = lastUnusedIndex;
+    }
   }
 }
