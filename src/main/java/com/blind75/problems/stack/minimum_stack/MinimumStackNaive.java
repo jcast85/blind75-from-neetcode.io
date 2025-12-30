@@ -1,6 +1,7 @@
 package com.blind75.problems.stack.minimum_stack;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class MinimumStackNaive implements MinimumStack {
   private final List<Integer> minValueIndexList;
@@ -44,5 +45,17 @@ public class MinimumStackNaive implements MinimumStack {
       return 0;
     }
     return stack.get(minValueIndexList.getLast());
+  }
+
+  @Override
+  public String toString() {
+    return "MinimumStackNaive{" +
+      "minValueIndexList=" + minValueIndexList.stream()
+        .map(Object::toString)
+        .collect(Collectors.joining(", ")) +
+      ", stack=" + stack.entrySet().stream()
+        .map(e -> e.getKey() + ":" + e.getValue())
+        .collect(Collectors.joining(", ")) +
+      '}';
   }
 }
