@@ -52,7 +52,7 @@ public class KthLargestElementInAStreamTest {
 
   static Stream<ConstructorAndMethodTestConfig> testConfigs() {
     Stream.Builder<ConstructorAndMethodTestConfig> streamBuilder = Stream.builder();
-    for (Class kthLargestClass : kthLargestList) {
+    for (Class<?> kthLargestClass : kthLargestList) {
       for(int i = 0; i < kthLargestConstructorInputAndOutputList.size(); i++) {
         streamBuilder.add(ConstructorAndMethodTestConfigBuilder.builder()
           .implementationToTest(kthLargestClass)
