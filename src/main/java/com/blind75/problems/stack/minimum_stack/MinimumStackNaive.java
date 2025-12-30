@@ -39,6 +39,9 @@ public class MinimumStackNaive implements MinimumStack {
 
   @Override
   public int getMin() {
+    if(minValueIndexList.isEmpty()) {
+      return 0;
+    }
     return stack.get(minValueIndexList.getLast());
   }
 }
