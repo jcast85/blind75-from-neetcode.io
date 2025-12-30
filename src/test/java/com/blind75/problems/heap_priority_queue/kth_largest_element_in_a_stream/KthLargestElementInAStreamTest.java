@@ -68,7 +68,7 @@ public class KthLargestElementInAStreamTest {
   @MethodSource("testConfigs")
   void testExample(ConstructorAndMethodTestConfig testConfig)
     throws InvocationTargetException, InstantiationException, IllegalAccessException {
-    DoubleInputAndOutput<TreeNode, TreeNode, Boolean> constructorInputAndOutput = (DoubleInputAndOutput) testConfig.constructorInputAndOutput();
+    DoubleInputAndOutput<TreeNode, TreeNode, Boolean> constructorInputAndOutput = (DoubleInputAndOutput<TreeNode, TreeNode, Boolean>) testConfig.constructorInputAndOutput();
     Class<?> klazz = testConfig.implementationToTest();
     Constructor<?> constructor = klazz.getConstructors()[0];
     constructor.setAccessible(true);
