@@ -13,12 +13,13 @@ public class MinimumStackNaive implements MinimumStack {
 
   @Override
   public void push(int val) {
-    stack.put(stack.size(), val);
+    int key = stack.size();
+    stack.put(key, val);
     if(minValueIndexList.isEmpty()) {
-      minValueIndexList.add(stack.size()-1);
+      minValueIndexList.add(key);
     } else {
       if(val < stack.get(minValueIndexList.getLast())) {
-        minValueIndexList.add(stack.size()-1);
+        minValueIndexList.add(key);
       }
     }
   }
