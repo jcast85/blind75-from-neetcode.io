@@ -15,10 +15,10 @@ public class DailyTemperaturesNaive implements DailyTemperatures {
         }
       }
       for(int j=temperatureDataList.size()-1; j>=0; j--) {
-        if(temperatureDataList.get(j).value>temperatures[i]
-          && temperatureDataList.get(j).index > i
+        if(temperatureDataList.get(j).value() >temperatures[i]
+          && temperatureDataList.get(j).index() > i
         ) {
-          result[i] = temperatureDataList.get(j).index - i;
+          result[i] = temperatureDataList.get(j).index() - i;
           break;
         }
       }
@@ -27,13 +27,4 @@ public class DailyTemperaturesNaive implements DailyTemperatures {
     return result;
   }
 
-  private static class TemperatureData {
-    final int index;
-    final int value;
-
-    private TemperatureData(int index, int value) {
-      this.index = index;
-      this.value = value;
-    }
-  }
 }
