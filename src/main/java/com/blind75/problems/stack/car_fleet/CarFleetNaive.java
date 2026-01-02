@@ -19,13 +19,19 @@ public class CarFleetNaive implements CarFleet {
     while (Arrays.stream(carDataArray).anyMatch(carData -> !carData.arrived)) {
       for(int i=carDataArray.length-1; i>=0; i--) {
         int speedToUse = Math.max(carDataArray[i].speed, carDataArray[i].nextSpeed);
-        if(i<carDataArray.length-1 && (carDataArray[i].position + speedToUse - carDataArray[i+1].position >= 0)) {
-          if(carDataArray[i].position + speedToUse == target ||
-            (carDataArray[i].position + speedToUse - carDataArray[i+1].position == 0
-              && speedToUse == carDataArray[i+1].speed) ||
-            (carDataArray[i].position + speedToUse - carDataArray[i+1].position > 0
-              && carDataArray[i+1].position == target) ||
-            (1.0*(carDataArray[i+1].speed - carDataArray[i+1].position + target)/carDataArray[i+1].speed * carDataArray[i].speed + carDataArray[i].position > target)
+        boolean isCarReachingOrOvertakingPreviousCar = i < carDataArray.length - 1 && carDataArray[i].position + speedToUse - carDataArray[i + 1].position >= 0;
+        if(isCarReachingOrOvertakingPreviousCar) {
+          boolean isCarReachingTarget = carDataArray[i].position + speedToUse == target;
+          boolean hadCarAlreadyReachedPreviousCar = carDataArray[i].position + speedToUse - carDataArray[i + 1].position == 0
+            && speedToUse == carDataArray[i + 1].speed;
+          boolean didPreviousCarReachTarget = carDataArray[i + 1].position == target;
+          boolean isCarOvertakingPreviousCar = carDataArray[i].position + speedToUse - carDataArray[i + 1].position > 0;
+          boolean isCarReachingPreviousCarBeforeReachingTarget = 1.0 * (carDataArray[i + 1].speed - carDataArray[i + 1].position + target)
+            / carDataArray[i + 1].speed * carDataArray[i].speed + carDataArray[i].position > target;
+          if(isCarReachingTarget ||
+            hadCarAlreadyReachedPreviousCar ||
+            (isCarOvertakingPreviousCar && didPreviousCarReachTarget) ||
+            isCarReachingPreviousCarBeforeReachingTarget
           ) {
             carDataArray[i] = new CarData(carDataArray[i+1].position, carDataArray[i+1].speed, carDataArray[i+1].nextSpeed, carDataArray[i+1].arrived);
           } else {
@@ -34,7 +40,8 @@ public class CarFleetNaive implements CarFleet {
         } else {
           carDataArray[i] = new CarData(carDataArray[i].position + speedToUse, speedToUse, carDataArray[i].arrived);
         }
-        if(!carDataArray[i].arrived && carDataArray[i].position >= target) {
+        boolean hasCarJustReachedTarget = !carDataArray[i].arrived && carDataArray[i].position >= target;
+        if(hasCarJustReachedTarget) {
           carDataArray[i].arrived = true;
           carDataArray[i].nextSpeed = maxSpeed;
           result++;
