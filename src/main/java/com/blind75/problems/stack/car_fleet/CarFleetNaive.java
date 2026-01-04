@@ -74,5 +74,14 @@ public class CarFleetNaive implements CarFleet {
       this.nextSpeed = nextSpeed;
       this.arrived = arrived;
     }
+
+    @Override
+    public String toString() {
+      return "CarData{" +
+        "position=" + position +
+        ", speed=" + speed +
+        ", arrived=" + arrived +
+        '}';
+    }
   }
 }

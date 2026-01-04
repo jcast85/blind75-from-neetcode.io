@@ -10,7 +10,8 @@ import java.util.stream.Stream;
 public class CarFleetTest {
 
   private static final List<CarFleet> carFleetList = List.of(
-    new CarFleetNaive()
+    new CarFleetNaive(),
+    new CarFleetStack()
   );
 
   private static final List<InputAndOutput> carFleetInputAndOutputList = List.of(
