@@ -31,7 +31,8 @@ public class CarFleetStack implements CarFleet {
     }
     return Math.toIntExact(Arrays.stream(carDataArray)
       .filter(carData -> !carData.isToSkip)
-      .count());  }
+      .count());
+  }
 
   private boolean isToSkip(CarData carData, CarData peek, int target) {
     boolean isCarReachingPreviousCarBeforeReachingTarget = 1.0 * (peek.speed - peek.position + target)

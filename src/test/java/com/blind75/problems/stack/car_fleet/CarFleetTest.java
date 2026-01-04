@@ -11,7 +11,8 @@ public class CarFleetTest {
 
   private static final List<CarFleet> carFleetList = List.of(
     new CarFleetNaive(),
-    new CarFleetStack()
+    new CarFleetStack(),
+    new CarFleetStackOptimized()
   );
 
   private static final List<InputAndOutput> carFleetInputAndOutputList = List.of(
