@@ -19,21 +19,8 @@ public class EvaluateReversePolishNotationNaive implements EvaluateReversePolish
     Integer operand2 = operand2innerCalculationOutput.result;
     InnerCalculationOutput operand1innerCalculationOutput = evalRPN(tokens, from, operand2innerCalculationOutput.lastUnusedIndex);
     Integer operand1 = operand1innerCalculationOutput.result;
-    int calculate = calculate(operand1, operand2, operator);
+    int calculate = EvaluateReversePolishNotationCommonStaticMethods.calculate(operand1, operand2, operator);
     return new InnerCalculationOutput(calculate, operand1innerCalculationOutput.lastUnusedIndex);
-  }
-
-  private int calculate(Integer operand1, Integer operand2, String operator) {
-    if (operand1 != null && operand2 != null && operator != null) {
-      return switch (operator) {
-        case "+" -> operand1 + operand2;
-        case "-" -> operand1 - operand2;
-        case "*" -> operand1 * operand2;
-        case "/" -> operand1 / operand2;
-        default -> 0;
-      };
-    }
-    return 0;
   }
 
   private record InnerCalculationOutput(int result, int lastUnusedIndex) {

@@ -10,7 +10,8 @@ import java.util.stream.Stream;
 public class EvaluateReversePolishNotationTest {
 
   private static final List<EvaluateReversePolishNotation> evaluateReversePolishNotationList = List.of(
-    new EvaluateReversePolishNotationNaive()
+    new EvaluateReversePolishNotationNaive(),
+    new EvaluateReversePolishNotationStack()
   );
 
   private static final List<InputAndOutput> evaluateReversePolishNotationInputAndOutputList = List.of(
