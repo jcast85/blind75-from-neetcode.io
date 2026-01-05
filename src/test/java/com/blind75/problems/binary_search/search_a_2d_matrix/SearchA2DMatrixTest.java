@@ -10,7 +10,8 @@ import java.util.stream.Stream;
 public class SearchA2DMatrixTest {
 
   private static final List<SearchA2DMatrix> searchA2DMatrixList = List.of(
-    new SearchA2DMatrixDichotomicSearch()
+    new SearchA2DMatrixDichotomicSearch(),
+    new SearchA2DMatrixNoSpaceOverhead()
   );
 
   private static final List<InputAndOutput> searchA2DMatrixInputAndOutputList = List.of(
