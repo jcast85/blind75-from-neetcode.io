@@ -1,4 +1,4 @@
-package com.blind75.problems.binary_search.p007_binary_search;
+package com.blind75.problems.binary_search.binary_search;
 
 public class BinarySearchNaive implements BinarySearch {
   @Override
