@@ -1,12 +1,13 @@
 package com.blind75.problems.binary_search.koko_eating_bananas;
 
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 public class KokoEatingBananasNaive implements KokoEatingBananas {
   @Override
   public int minEatingSpeed(int[] piles, int h) {
-    Map<Integer, Integer> countByPileNumber = new TreeMap<>();
+    Map<Integer, Integer> countByPileNumber = new HashMap<>();
     countByPileNumber.put(piles[0], 1);
     int maxValue = piles[0];
     long sumValues = piles[0];
@@ -27,9 +28,11 @@ public class KokoEatingBananasNaive implements KokoEatingBananas {
     if(h == maxValue) {
       return maxValue;
     }
+    Integer[] pileNumberKeySortedArray = countByPileNumber.keySet().toArray(new Integer[0]);
+    Arrays.sort(pileNumberKeySortedArray);
     for(int i=2; i<=maxValue; i++) {
       long currentH = 0;
-      for (Integer key : countByPileNumber.keySet()) {
+      for (Integer key : pileNumberKeySortedArray) {
         currentH += (long) countByPileNumber.get(key) * Math.ceilDiv(key, i);
       }
       if(currentH <= h) {
