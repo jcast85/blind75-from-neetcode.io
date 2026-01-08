@@ -5,10 +5,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class KokoEatingBananasBinarySearchTooManyResources implements KokoEatingBananas {
-  private final HashMap<Integer, Integer> cache = new HashMap<>();
+  private HashMap<Integer, Integer> cache = new HashMap<>();
 
   @Override
   public int minEatingSpeed(int[] piles, int h) {
+    cache = new HashMap<>();
     Arrays.sort(piles);
     PileInfo[] pileInfoArray = new PileInfo[piles.length];
     pileInfoArray[piles.length-1] = new PileInfo();
