@@ -9,7 +9,10 @@ import java.util.stream.Stream;
 
 public class KokoEatingBananasTest {
 
-  private static final List<KokoEatingBananas> kokoEatingBananasList = List.of(new KokoEatingBananasNaive());
+  private static final List<KokoEatingBananas> kokoEatingBananasList = List.of(
+    new KokoEatingBananasNaive(),
+    new KokoEatingBananasBinarySearchTooManyResources()
+  );
 
   private static final List<InputAndOutput> kokoEatingBananasInputAndOutputList = List.of(
     new DoubleInputAndOutputBuilder<>()
@@ -82,7 +85,9 @@ public class KokoEatingBananasTest {
   static Stream<SingleMethodTestConfig<KokoEatingBananas>> testConfigs() {
     Stream.Builder<SingleMethodTestConfig<KokoEatingBananas>> streamBuilder = Stream.builder();
     for (KokoEatingBananas kokoEatingBananas : kokoEatingBananasList) {
-      for (InputAndOutput kokoEatingBananasInputAndOutput : kokoEatingBananasInputAndOutputList) {
+      for (InputAndOutput kokoEatingBananasInputAndOutput : kokoEatingBananasInputAndOutputList
+  //      .subList(11,13)
+      ) {
         streamBuilder.add(new SingleMethodTestConfigBuilder<KokoEatingBananas>()
           .implementationToTest(kokoEatingBananas)
           .inputAndOutput(kokoEatingBananasInputAndOutput)
