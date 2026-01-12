@@ -22,13 +22,17 @@ public class TimeBasedKeyValueStoreTest {
     new SingleInputAndOutputBuilder<>()
       .input(new Object[] {"TimeBasedKeyValueStore", "set", "alice", "happy", 1, "get", "alice", 1, "get", "alice", 2, "set", "alice", "sad", 3, "get", "alice", 3})
       .output(new Object[] {null,null,"happy","happy",null,"sad"})
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new Object[] {"TimeBasedKeyValueStore", "set", "key1", "value1", 10, "get", "key1", 1, "get", "key1", 10, "get", "key1", 11})
+      .output(new Object[] {null,null,"","value1","value1"})
       .build()
   );
 
   static Stream<ConstructorAndMethodTestConfig> testConfigs() {
     Stream.Builder<ConstructorAndMethodTestConfig> streamBuilder = Stream.builder();
     for (Class<?> timeBasedKeyValueStore : timeBasedKeyValueStoreList) {
-      for(int i = 0; i < timeBasedKeyValueStorePushInputAndOutputList.size(); i++) {
+      for(int i = 1; i < timeBasedKeyValueStorePushInputAndOutputList.size(); i++) {
         streamBuilder.add(ConstructorAndMethodTestConfigBuilder.builder()
           .implementationToTest(timeBasedKeyValueStore)
           .inputAndOutputList(List.of(timeBasedKeyValueStorePushInputAndOutputList.get(i)))

@@ -5,9 +5,11 @@ import java.util.Map;
 
 public class TimeBasedKeyValueStoreNaive implements TimeBasedKeyValueStore {
   Map<String, Map<Integer, String>> map;
+  Map<String, Integer> minTimestampMap;
 
   public TimeBasedKeyValueStoreNaive() {
     map = new HashMap<>();
+    minTimestampMap = new HashMap<>();
   }
 
   @Override
@@ -20,6 +22,9 @@ public class TimeBasedKeyValueStoreNaive implements TimeBasedKeyValueStore {
     }
     timestampMap.put(timestamp, value);
     map.put(key, timestampMap);
+    if(!minTimestampMap.containsKey(key) || timestamp < minTimestampMap.get(key)) {
+      minTimestampMap.put(key, timestamp);
+    }
   }
 
   @Override
@@ -29,6 +34,10 @@ public class TimeBasedKeyValueStoreNaive implements TimeBasedKeyValueStore {
     }
     if(map.containsKey(key) && map.get(key).containsKey(timestamp)) {
       return map.get(key).get(timestamp);
+    }
+    Integer minTs = minTimestampMap.get(key);
+    if(timestamp < minTs) {
+      return "";
     }
     return get(key, timestamp - 1);
   }
