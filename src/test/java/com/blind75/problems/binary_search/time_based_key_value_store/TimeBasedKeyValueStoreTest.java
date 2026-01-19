@@ -15,7 +15,8 @@ import java.util.stream.Stream;
 public class TimeBasedKeyValueStoreTest {
 
   private static final List<Class<?>> timeBasedKeyValueStoreList = List.of(
-    TimeBasedKeyValueStoreNaive.class
+    TimeBasedKeyValueStoreNaive.class,
+    TimeBasedKeyValueStoreBinarySearch.class
   );
 
   private static final List<InputAndOutput> timeBasedKeyValueStorePushInputAndOutputList = List.of(
@@ -26,16 +27,30 @@ public class TimeBasedKeyValueStoreTest {
     new SingleInputAndOutputBuilder<>()
       .input(new Object[] {"TimeBasedKeyValueStore", "set", "key1", "value1", 10, "get", "key1", 1, "get", "key1", 10, "get", "key1", 11})
       .output(new Object[] {null,null,"","value1","value1"})
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new Object[] {"TimeBasedKeyValueStore", "set", "foo", "bar", 1, "get", "foo", 1, "get", "foo", 3,"set", "foo", "bar2", 4, "get", "foo", 4, "get", "foo", 5})
+      .output(new Object[] {null,null,"bar","bar",null,"bar2","bar2"})
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new Object[] {"TimeBasedKeyValueStore", "set", "test", "one", 10, "set", "test", "two", 20, "set", "test", "three", 30, "get", "test", 15, "get", "test", 25, "get", "test", 35})
+      .output(new Object[] {null,null,null,null,"one","two","three"})
+      .build(),
+    new SingleInputAndOutputBuilder<>()
+      .input(new Object[] {"TimeBasedKeyValueStore", "set", "sequence", "alpha", 100, "set", "sequence", "beta", 200, "set", "sequence", "gamma", 300, "get", "sequence", 150, "get", "sequence", 250, "get", "sequence", 350})
+      .output(new Object[] {null,null,null,null,"alpha","beta","gamma"})
       .build()
   );
 
   static Stream<ConstructorAndMethodTestConfig> testConfigs() {
     Stream.Builder<ConstructorAndMethodTestConfig> streamBuilder = Stream.builder();
     for (Class<?> timeBasedKeyValueStore : timeBasedKeyValueStoreList) {
-      for(int i = 1; i < timeBasedKeyValueStorePushInputAndOutputList.size(); i++) {
+      for (InputAndOutput inputAndOutput : timeBasedKeyValueStorePushInputAndOutputList
+    //    .subList(3,4)
+      ) {
         streamBuilder.add(ConstructorAndMethodTestConfigBuilder.builder()
           .implementationToTest(timeBasedKeyValueStore)
-          .inputAndOutputList(List.of(timeBasedKeyValueStorePushInputAndOutputList.get(i)))
+          .inputAndOutputList(List.of(inputAndOutput))
           .build());
       }
     }
